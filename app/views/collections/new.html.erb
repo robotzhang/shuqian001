@@ -1,0 +1,13 @@
+<%= form_for @collection do |f| %>
+  <div>
+    <%= f.label :title, "合集标题" %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :description, "补充描述" %>
+    <%= f.text_area :description, :rows => 2%>
+  </div>
+  <div>
+    <%= f.submit "好了", :class => "btn" %>
+  </div>
+<% end %>
