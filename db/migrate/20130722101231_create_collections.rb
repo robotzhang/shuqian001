@@ -4,7 +4,9 @@ class CreateCollections < ActiveRecord::Migration
     create_table :collections do |t|
       t.string :title # 合集标题
       t.string :description # 补充描述
+
       t.references :user # 所属用户
+
       t.timestamps
     end
   end

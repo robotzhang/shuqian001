@@ -8,6 +8,7 @@ class CreateLinks < ActiveRecord::Migration
 
       t.references :user # 所属用户
       t.references :collection # 所属合集
+
       t.timestamps
     end
   end
