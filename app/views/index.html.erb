@@ -1,0 +1,5 @@
+<ul>
+  <% @collections.each do |collection| %>
+  <li><a href="<%= collection_path(collection) %>"><%= collection.title %></a></li>
+  <% end %>
+</ul>
