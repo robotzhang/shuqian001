@@ -4,3 +4,11 @@
 <ul>
   <li></li>
 </ul>
+<div>
+  <span>添加链接</span>
+  <%= form_for Link.new do |f| %>
+      <%= f.label :url, "链接地址" %>
+      <%= f.text_field :url %>
+      <%= f.submit "添加", :class => "btn" %>
+  <% end %>
+</div>

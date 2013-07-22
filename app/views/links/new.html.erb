@@ -1,0 +1,5 @@
+<%= form_for @link do |f| %>
+  <%= f.label :url, "链接地址" %>
+  <%= f.text_field :url %>
+  <%= f.submit "添加", :class => "btn" %>
+<% end %>
