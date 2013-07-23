@@ -2,13 +2,18 @@
 <div><small class="muted"><%= @collection.description %></small></div>
 <div>链接列表：</div>
 <ul>
-  <li></li>
+  <% @collection.links.each do |link| %>
+  <li><a href="<%= link.url %>"><%= link.title %></a></li>
+  <% end %>
 </ul>
 <div>
   <span>添加链接</span>
   <%= form_for Link.new do |f| %>
-      <%= f.label :url, "链接地址" %>
-      <%= f.text_field :url %>
-      <%= f.submit "添加", :class => "btn" %>
+      <span>链接地址</span>
+      <div class="input-prepend input-append">
+
+          <%= f.text_field :url %>
+          <%= f.submit "添加", :class => "btn" %>
+      </div>
   <% end %>
 </div>
