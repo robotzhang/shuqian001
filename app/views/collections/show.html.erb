@@ -1,14 +1,15 @@
 <h1><%= @collection.title %></h1>
 <div><small class="muted"><%= @collection.description %></small></div>
 <div>链接列表：</div>
-<ul>
+<ul class="links">
   <% @collection.links.each do |link| %>
-  <li><a href="<%= link.url %>"><%= link.title %></a></li>
+  <%= render "links/item", link: link %>
   <% end %>
 </ul>
 <div>
   <span>添加链接</span>
-  <%= form_for Link.new do |f| %>
+  <%= form_for Link.new, remote: true do |f| %>
+      <%= f.hidden_field :collection_id, value: @collection.id %>
       <span>链接地址</span>
       <div class="input-prepend input-append">
 
