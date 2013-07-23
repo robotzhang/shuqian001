@@ -4,7 +4,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(params[:link])
+    @link = Link.new_from_url(params[:link][:url])
     @link.save
     respond_to do |format|
       format.js

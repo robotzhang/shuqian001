@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20130722101643) do
 
   create_table "links", :force => true do |t|
     t.string   "title"
+    t.string   "description"
     t.string   "url"
     t.string   "status"
     t.integer  "user_id"
