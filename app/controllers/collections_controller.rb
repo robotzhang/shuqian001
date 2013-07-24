@@ -5,6 +5,7 @@ class CollectionsController < ApplicationController
 
   def create
     @collection = Collection.new(params[:collection])
+    @collection.user_id = current_user.id
     @collection.save ? redirect_to(root_path) : render(:new)
   end
 
