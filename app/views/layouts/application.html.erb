@@ -29,6 +29,17 @@
         </div>
         <ul class="nav pull-right">
           <li><a href="">求资源</a></li>
+          <% if user_signed_in? %>
+          <li><a href=""><%= current_user.email %></a></li>
+          <li><%= link_to '退出', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+          <li>
+            <a href="<%= new_user_session_path %>">登录</a>
+          </li>
+          <li>
+            <a href="<%= new_user_registration_path %>">注册</a>
+          </li>
+          <% end %>
         </ul>
       </div>
     </div><!-- /navbar-inner -->

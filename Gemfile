@@ -43,6 +43,9 @@ gem 'jquery-rails'
 # 图片上传
 gem 'carrierwave'
 
+# 注册登录
+gem 'devise'
+
 # 权限管理
 gem 'cancan'
 
