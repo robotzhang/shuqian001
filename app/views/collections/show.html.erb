@@ -6,8 +6,10 @@
   <%= render "links/item", link: link %>
   <% end %>
 </ul>
+
 <div>
   <span>添加链接</span>
+  <div class="alert alert-error hide" id="create_link_error"></div>
   <%= form_for Link.new, remote: true do |f| %>
       <%= f.hidden_field :collection_id, value: @collection.id %>
       <span>链接地址</span>

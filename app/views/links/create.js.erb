@@ -1,1 +1,6 @@
-$('<%= j render "links/item", locals: { link: @link } %>').appendTo($('.links'));
+<% if @link.errors.any? %>
+$('#create_link_error').html('<%= j @link.errors.full_messages.join("<br>").html_safe %>').fadeIn();
+<% else %>
+$('<%= j render :partial => "links/item", locals: { link: @link } %>').appendTo($('.links'));
+$('#create_link_error').html('').hide();
+<% end %>
