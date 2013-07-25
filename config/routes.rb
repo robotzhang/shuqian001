@@ -2,7 +2,8 @@ Shuqian001::Application.routes.draw do
   root :to => 'application#index'
 
   devise_for :users
-  get 'users/:id' => 'users#index'
+  resources :users
+  #get 'users/:id' => 'users#index'
 
   resources :links
   resources :collections, :path => 'heji' do
