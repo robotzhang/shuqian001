@@ -1,3 +1,6 @@
+#require 'openssl'
+#OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
 class Link < ActiveRecord::Base
   attr_accessible :title, :url, :collection_id
   belongs_to :collection
@@ -7,6 +10,7 @@ class Link < ActiveRecord::Base
   def self.new_from_url(url)
     link = Link.new
     return link if url.blank?
+
     page = Nokogiri::HTML(open(url))
     link.url = url
     link.title = page.css("title").text
