@@ -1,21 +1,26 @@
 <h1><%= @collection.title %></h1>
 <div><small class="muted"><%= @collection.description %></small></div>
+
+<div>
+  评论(<%=@collection.comments.size%>)：
+  <ul>
+    <% @collection.comments.each do |comment| %>
+        <li>
+          <%= comment.comment %>
+          <a href="<%= user_path(comment.user) %>"><%= comment.user.id %></a>
+          <small class="muted"><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
+        </li>
+    <% end %>
+  </ul>
+  <div><%= render :partial => 'comments/form', :locals => {:commentable => @collection} %></div>
+</div>
+
 <div>链接列表：</div>
 <ul class="links">
   <% @collection.links.each do |link| %>
   <%= render "links/item", link: link %>
   <% end %>
 </ul>
-
-<div>
-  评论：
-  <ul>
-    <% @collection.comments.each do |comment| %>
-    <li><%= comment.comment %></li>
-    <% end %>
-  </ul>
-  <div><%= render :partial => 'comments/form', :locals => {:commentable => @collection} %></div>
-</div>
 
 <div>
   <span>添加链接</span>
