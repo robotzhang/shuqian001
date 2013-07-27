@@ -9,11 +9,25 @@
   <%= yield :stylesheets %>
 </head>
 <body>
-<% if flash[:notice] %>
-  <div id="flash-notice" class="text-center mb0 alert alert-info">
-      <%=flash[:notice]%>
-  </div>
-<% end %>
+
+
+  <% if flash[:notice] %>
+      <div id="flash-notice" class="mb0 alert alert-info">
+        <div class="container">
+          <%=flash[:notice]%>
+          <button class="close" onclick="$(this).parents('.alert').slideUp()">&times;</button>
+        </div>
+      </div>
+  <% end %>
+  <% if flash[:alert] %>
+      <div id="flash-alert" class="mb0 alert alert-error">
+        <div class="container">
+          <%=flash[:alert]%>
+          <button class="close" onclick="$(this).parents('.alert').slideUp()">&times;</button>
+        </div>
+      </div>
+  <% end %>
+
 <div class="header">
   <div class="navbar navbar-static-top">
     <div class="navbar-inner">

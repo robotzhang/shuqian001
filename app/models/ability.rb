@@ -18,18 +18,15 @@ class Ability
 
   protected
   def base_user_role(user)
-    can [:edit, :update], Store do |store|
-      (store.user_id == user.id)
+    can [:edit, :update], Collection do |collection|
+      (collection.user_id == user.id)
     end
-    can [:create], Store
+    can [:create], Collection
     can :manage, Theme do |theme|
       (theme.store.user_id == user.id)
     end
     can :manage, Link do |link|
-      (link.store.user_id == user.id)
-    end
-    can :manage, Contact do |contact|
-      (contact.user_id == user.id)
+      (link.collection.user_id == user.id)
     end
     can [:update, :logout], User do |me|
       me.id == user.id

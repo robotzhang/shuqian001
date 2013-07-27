@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :collections
+
+  def has_role(role)
+    self.role == role.to_s
+  end
 end
