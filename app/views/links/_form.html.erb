@@ -1,0 +1,26 @@
+<% if link.errors.any? %>
+    <div class="alert alert-error">
+        <%= link.errors.full_messages.join('<br>') %>
+    </div>
+<% end %>
+<%= form_for Link.new, remote: true do |f| %>
+    <%= f.hidden_field :collection_id, value: @collection.id %>
+    <div>
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+    </div>
+
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+
+    <div>
+      <%= f.submit "添加", :class => "btn" %>
+    </div>
+<% end %>

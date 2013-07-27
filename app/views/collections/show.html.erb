@@ -24,14 +24,5 @@
 
 <div>
   <span>添加链接</span>
-  <div class="alert alert-error hide" id="create_link_error"></div>
-  <%= form_for Link.new, remote: true do |f| %>
-      <%= f.hidden_field :collection_id, value: @collection.id %>
-      <span>链接地址</span>
-      <div class="input-prepend input-append">
-
-          <%= f.text_field :url %>
-          <%= f.submit "添加", :class => "btn" %>
-      </div>
-  <% end %>
+  <%= render :partial => "links/form", locals: {link: Link.new(collection_id: @collection.id)} %>
 </div>
