@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
          :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :avatar, :username
+  mount_uploader :avatar, ImageUploader
 
   has_many :collections
 
