@@ -9,9 +9,13 @@
   <%= yield :stylesheets %>
 </head>
 <body>
-<div id="flash-notice"></div>
+<% if flash[:notice] %>
+  <div id="flash-notice" class="text-center mb0 alert alert-info">
+      <%=flash[:notice]%>
+  </div>
+<% end %>
 <div class="header">
-  <div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-static-top">
     <div class="navbar-inner">
       <div class="container">
         <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
@@ -58,10 +62,5 @@
 </div><!-- footer -->
 <%= javascript_include_tag 'application' %>
 <%= yield :javascripts %>
-<% if flash[:notice] %>
-    <script type="text/javascript">
-        $('div#flash-notice').html('<%= flash[:notice] %>').show().fadeOut(3000);
-    </script>
-<% end %>
 </body>
 </html>

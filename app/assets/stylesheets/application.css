@@ -12,3 +12,5 @@
  *= require bootstrap-responsive
  *= require_self
  */
+
+.mb0 { margin-bottom: 0; }
