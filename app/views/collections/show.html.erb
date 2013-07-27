@@ -8,6 +8,16 @@
 </ul>
 
 <div>
+  评论：
+  <ul>
+    <% @collection.comments.each do |comment| %>
+    <li><%= comment.comment %></li>
+    <% end %>
+  </ul>
+  <div><%= render :partial => 'comments/form', :locals => {:commentable => @collection} %></div>
+</div>
+
+<div>
   <span>添加链接</span>
   <div class="alert alert-error hide" id="create_link_error"></div>
   <%= form_for Link.new, remote: true do |f| %>

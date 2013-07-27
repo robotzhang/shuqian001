@@ -9,6 +9,8 @@ gem 'mysql2'
 gem 'kaminari'
 gem 'nokogiri'
 
+# 评论
+gem 'acts_as_commentable', '3.0.1'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -22,6 +22,7 @@ class Ability
       (collection.user_id == user.id)
     end
     can [:create], Collection
+    can [:create], Comment
     can :manage, Link do |link|
       (link.collection.user_id == user.id)
     end
