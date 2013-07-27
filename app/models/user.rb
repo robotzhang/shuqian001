@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   has_many :collections
 
-  def has_role(role)
+  def has_role?(role)
     self.role == role.to_s
   end
 end

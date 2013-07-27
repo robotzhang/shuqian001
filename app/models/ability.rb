@@ -22,9 +22,6 @@ class Ability
       (collection.user_id == user.id)
     end
     can [:create], Collection
-    can :manage, Theme do |theme|
-      (theme.store.user_id == user.id)
-    end
     can :manage, Link do |link|
       (link.collection.user_id == user.id)
     end
