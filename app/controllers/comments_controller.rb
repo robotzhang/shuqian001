@@ -7,8 +7,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @commentable }
+        format.js
       else
         format.html { render :action => 'new' }
+        format.js
       end
     end
   end
