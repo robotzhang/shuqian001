@@ -5,6 +5,7 @@ zh-CN:
       already_confirmed: "已经确认"
       not_locked: "没有锁定"
       not_saved: "有 %{count} 个错误发生导致「%{resource}」无法被保存。"
+      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
   devise:
     omniauth_callbacks:
       user:
@@ -28,11 +29,19 @@ zh-CN:
       updated: '您的密码已修改成功，请重新登录.'
     confirmations:
       send_instructions: '几分后，您将收到帐号激活的电子邮件.'
-      confirmed: '您的帐号已经激活，请登录.'
+      confirmed: '您的帐号已经激活并且已自动登录.'
     account:
       signed_up: '您的帐号已注册成功，如无意外，您将地收到一封确认邮件.'
       updated: '帐号资料更新成功.'
       destroyed: '再见！您的帐户已成功注销。我们希望很快可以再见到您.'
+    registrations:
+      signed_up: '欢迎! 您已成功登陆.'
+      signed_up_but_unconfirmed: '验证邮件已发送，请激活您的账号.'
+      signed_up_but_inactive: '请先激活您的帐号.'
+      signed_up_but_locked: '账号已经被锁定.'
+      updated: '成功更新账号信息.'
+      update_needs_confirmation: "请先验证邮件地址的."
+      destroyed: '再见！您的帐号已经被注销，期待您的再次光临.'
     unlocks:
       send_instructions: '几分后，您将收到一封帐号解锁的邮件.'
       unlocked: '您的帐号已成功解锁，请登录.'
