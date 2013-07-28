@@ -1,0 +1,6 @@
+<% if @comment.errors.any? %>
+$('#new_comment').replaceWith($('<%= j render :partial => 'comments/form', :locals => {:comment => @comment} %>'));
+<% else %>
+$('#comments').append($('<%= j render partial: "comments/item", locals: {comment: @comment} %>'));
+$('#new_comment')[0].reset();
+<% end %>

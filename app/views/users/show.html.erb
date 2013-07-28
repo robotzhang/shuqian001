@@ -24,5 +24,15 @@
       <li><a href="<%= collection_path(collection) %>"><%= collection.title %></a></li>
       <% end %>
     </ul>
+
+    <div>留言</div>
+    <ul id="comments">
+      <% @user.comments.each do |comment| %>
+      <%= render partial: "comments/item", locals: {comment: comment} %>
+      <% end %>
+    </ul>
+    <div>
+      <%= render :partial => 'comments/form', :locals => {:comment => @comment} %>
+    </div>
   </div>
 </div>

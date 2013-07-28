@@ -3,16 +3,12 @@
 
 <div>
   评论(<%=@collection.comments.size%>)：
-  <ul>
+  <ul id="comments">
     <% @collection.comments.each do |comment| %>
-        <li>
-          <%= comment.comment %>
-          <a href="<%= user_path(comment.user) %>"><%= comment.user.id %></a>
-          <small class="muted"><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
-        </li>
+        <%= render partial: "comments/item", locals: {comment: comment} %>
     <% end %>
   </ul>
-  <div><%= render :partial => 'comments/form', :locals => {:commentable => @collection} %></div>
+  <div><%= render :partial => 'comments/form', :locals => {:comment => @comment} %></div>
 </div>
 
 <div>链接列表：</div>
