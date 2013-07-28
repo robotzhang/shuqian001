@@ -1,3 +1,4 @@
+#coding=utf-8
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -6,7 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: {case_sensitive: false}
+            #:format => {:with => /\A\w+\z/, :message => '只允许数字、大小写字母和下划线'}, :length => {:in => 3..20}
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :avatar, :username
