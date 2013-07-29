@@ -4,19 +4,14 @@
     </div>
 <% end %>
 <%= form_for Link.new, remote: true do |f| %>
-    <%= f.hidden_field :collection_id, value: @collection.id %>
+    <%= f.hidden_field :collection_id, value: link.collection.id %>
     <div>
-      <%= f.label :url %>
+      <%= f.label :url, "链接地址" %>
       <%= f.text_field :url %>
     </div>
 
     <div>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-
-    <div>
-      <%= f.label :description %>
+      <%= f.label :description, "描述" %>
       <%= f.text_field :description %>
     </div>
 

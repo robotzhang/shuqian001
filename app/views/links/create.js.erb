@@ -1,6 +1,7 @@
 <% if @link.errors.any? %>
-$('#create_link_error').html('<%= j @link.errors.full_messages.join("<br>").html_safe %>').fadeIn();
+$('#new_link').replaceWith('<%= j render :partial => "links/form", locals: { link: @link } %>');
 <% else %>
 $('<%= j render :partial => "links/item", locals: { link: @link } %>').appendTo($('.links'));
 $('#create_link_error').html('').hide();
+$('#new_link')[0].reset();
 <% end %>

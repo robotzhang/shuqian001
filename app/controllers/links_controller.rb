@@ -4,8 +4,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new_from_url(params[:link][:url])
-    @link.collection_id = params[:link][:collection_id]
+    @link = Link.parser(Link.new(params[:link]))
     @link.save
     respond_to do |format|
       format.js
