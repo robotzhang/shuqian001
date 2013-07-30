@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :avatar, :username
   mount_uploader :avatar, ImageUploader
   acts_as_commentable
+  acts_as_tagger
 
   has_many :collections
 
