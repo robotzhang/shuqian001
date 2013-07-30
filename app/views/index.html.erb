@@ -1,5 +1,7 @@
 <ul>
   <% @collections.each do |collection| %>
-  <li><a href="<%= collection_path(collection) %>"><%= collection.title %></a></li>
+  <li>
+    <%= render partial: "collections/item", locals: { collection: collection } %>
+  </li>
   <% end %>
 </ul>
