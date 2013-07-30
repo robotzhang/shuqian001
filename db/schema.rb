@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730072247) do
+ActiveRecord::Schema.define(:version => 20130730124315) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20130730072247) do
   end
 
   create_table "users", :force => true do |t|
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.string   "email",                  :default => "",       :null => false
     t.string   "encrypted_password",     :default => "",       :null => false
     t.string   "reset_password_token"
@@ -85,5 +87,14 @@ ActiveRecord::Schema.define(:version => 20130730072247) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.string   "vote"
+    t.string   "votable_type"
+    t.integer  "votable_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
 end

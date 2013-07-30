@@ -11,6 +11,10 @@ Shuqian001::Application.routes.draw do
     resources :comments
   end
 
+  scope ':votable_type/:votable_id' do
+    resources :votes
+  end
+
   resources :collections, :path => 'heji' do
     #resources :comments
     member do
