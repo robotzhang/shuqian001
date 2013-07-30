@@ -14,7 +14,7 @@
   </div>
   <div>
     <label>标签 <small class='muted'>多个标签用","隔开</small></label>
-    <%= f.text_field :tag_list %>
+    <%= f.text_field :tag_list, value: @collection.tags.join(", ") %>
   </div>
   <div>
     <%= f.submit "好了", :class => "btn" %>
