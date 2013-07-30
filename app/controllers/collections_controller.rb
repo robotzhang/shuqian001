@@ -8,8 +8,7 @@ class CollectionsController < ApplicationController
   def create
     @collection = Collection.new(params[:collection])
     @collection.user_id = current_user.id
-    #current_user.tag(@collection, with: @collection.tag_list, on: :tags)
-    @collection.save ? redirect_to(root_path) : render(:new)
+    @collection.save ? redirect_to(user_path(current_user)) : render(:new)
   end
 
   def edit

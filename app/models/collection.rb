@@ -5,7 +5,7 @@ class Collection < ActiveRecord::Base
 
   attr_accessible :title, :description, :tag_list
   validates :title, presence: true, uniqueness: true
-  validates :description, presence: true, uniqueness: true
+  #validates :description, presence: true, uniqueness: true
 
   has_many :links
   #has_many :comments, :through => 'commentable_type'
