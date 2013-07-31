@@ -1,9 +1,10 @@
-<% if link.errors.any? %>
-    <div class="alert alert-error">
-        <%= link.errors.full_messages.join('<br>') %>
-    </div>
-<% end %>
-<%= form_for Link.new, remote: true do |f| %>
+<%= form_for link, remote: true do |f| %>
+    <% if link.errors.any? %>
+        <div class="alert alert-error">
+          <%= link.errors.full_messages.join('<br>') %>
+        </div>
+    <% end %>
+
     <%= f.hidden_field :collection_id, value: link.collection.id %>
     <div>
       <%= f.label :url, "链接地址" %>
