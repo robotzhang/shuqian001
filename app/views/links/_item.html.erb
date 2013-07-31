@@ -20,7 +20,7 @@
   <div><a target="_blank" href="<%= link.url %>"><%= link.title %></a></div>
   <div><small><%= link.description %></small></div>
   <div style="font-size: 12px;">
-    <a href="<%= users_path(link.user) %>"><%= link.user.username %></a>
+    <a href="<%= user_path(link.user) %>"><%= link.user.username %></a>
     <span class="muted"><%= link.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
     第一次添加
   </div>
