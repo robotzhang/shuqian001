@@ -1,7 +1,15 @@
-<ul>
+<%= content_for(:stylesheets, stylesheet_link_tag("home")) %>
+<ul class="collections">
   <% @collections.each do |collection| %>
   <li>
-    <%= render partial: "collections/item", locals: { collection: collection } %>
+    <div class="user">
+      <img src="<%= collection.user.avatar %>"/>
+    </div>
+    <div class="collection">
+      <a href="<%= collection_path(collection) %>">
+        <%= collection.title %>
+      </a>
+    </div>
   </li>
   <% end %>
 </ul>

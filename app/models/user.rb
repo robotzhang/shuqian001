@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :avatar, :username
-  mount_uploader :avatar, ImageUploader
+  mount_uploader :avatar, AvatarUploader
   acts_as_commentable
   acts_as_tagger
 

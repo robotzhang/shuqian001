@@ -47,6 +47,7 @@ gem 'jquery-rails'
 
 # 图片上传
 gem 'carrierwave'
+gem 'mini_magick'
 
 # 注册登录
 gem 'devise'
