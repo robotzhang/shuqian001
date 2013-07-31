@@ -5,6 +5,7 @@ require 'timeout'
 class Link < ActiveRecord::Base
   attr_accessible :title, :url, :description, :collection_id
   belongs_to :collection
+  belongs_to :user
   has_many :votes, {:as => :votable, :dependent => :destroy}
   validates :title, presence: true, uniqueness: { scope: :collection_id }
   validates :url, presence: true, uniqueness: { scope: :collection_id }
