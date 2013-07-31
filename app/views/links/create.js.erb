@@ -3,6 +3,6 @@ $('#new_link').replaceWith('<%= j render :partial => "links/form", locals: { lin
 <% else %>
 $('<li class="clearfix"><%= j render :partial => "links/item", locals: { link: @link } %></li>')
         .appendTo($('.links'));
-$('#create_link_error').html('').hide();
+$('#new_link .alert-error').remove();
 $('#new_link')[0].reset();
 <% end %>

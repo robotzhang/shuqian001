@@ -1,7 +1,8 @@
 <%= form_for link, remote: true do |f| %>
     <% if link.errors.any? %>
         <div class="alert alert-error">
-          <%= link.errors.full_messages.join('<br>') %>
+          <button class="close">&times;</button>
+          <%= link.errors.full_messages.join('<br>').html_safe %>
         </div>
     <% end %>
 
@@ -10,6 +11,13 @@
       <%= f.label :url, "链接地址" %>
       <%= f.text_field :url %>
     </div>
+
+    <% unless link.errors.messages[:title].blank? %>
+    <div>
+      <%= f.label :title, "标题" %>
+      <%= f.text_field :title %>
+    </div>
+    <% end %>
 
     <div>
       <%= f.label :description, "描述" %>

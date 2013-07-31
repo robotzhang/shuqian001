@@ -1,6 +1,8 @@
+#coding=utf-8
 #require 'openssl'
 #OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 require 'timeout'
+require 'open-uri'
 
 class Link < ActiveRecord::Base
   attr_accessible :title, :url, :description, :collection_id
