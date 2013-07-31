@@ -1,3 +1,6 @@
-.collections { list-style: none; }
-.collections .user {  }
-.collections .user img { width: 60px; height: 60px; box-shadow: 0 0 5px rgba(0,0,0,.3) inset; }
+.collections { margin-left: 0; }
+.collections li { list-style: none; margin-bottom: 10px; margin-left: 0; }
+.collections .user { float: left; }
+.collections .user img { width: 60px; height: 60px; border-radius: 3px; box-shadow: 0 0 5px rgba(0,0,0,.3) inset; }
+
+.collections .collection {  }
