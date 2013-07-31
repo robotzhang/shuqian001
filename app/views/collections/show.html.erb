@@ -14,7 +14,7 @@
 <div>链接列表：</div>
 <ul class="links">
   <% @collection.links.each do |link| %>
-  <%= render "links/item", link: link %>
+  <li class="clearfix"><%= render "links/item", link: link %></li>
   <% end %>
 </ul>
 

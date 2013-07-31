@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  load_and_authorize_resource
   before_filter :load_votable
   def create
     @vote = @votable.votes.build(params[:vote])

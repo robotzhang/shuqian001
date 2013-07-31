@@ -1,4 +1,22 @@
-<li>
+<div class="pull-left">
+  <%= form_tag votes_path(link.class.to_s.underscore, link.id), :method => "post", :remote => true do %>
+      <input type="hidden" name="vote[vote]" value="up"/>
+      <button type="submit" title="好东西，赞">
+        <i class="icon-thumbs-up"></i>
+        <%= link.votes.where(vote: 'up').size %>
+      </button>
+  <% end %>
+
+  <%= form_tag votes_path(link.class.to_s.underscore, link.id), :method => "post", :remote => true do %>
+      <input type="hidden" name="vote[vote]" value="down"/>
+      <button type="submit" title="坑爹">
+        <i class="icon-thumbs-down"></i>
+        <%= link.votes.where(vote: 'down').size %>
+      </button>
+  <% end %>
+</div>
+
+<div class="pull-left">
   <div><a target="_blank" href="<%= link.url %>"><%= link.title %></a></div>
   <div><small><%= link.description %></small></div>
-</li>
+</div>
