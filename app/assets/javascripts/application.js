@@ -15,7 +15,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-    $('.alert').find('.close').live('click', function() {
+    $('.alert').find('.close').die('click').live('click', function() {
         $(this).parents('.alert').slideUp();
         return false;
     });
