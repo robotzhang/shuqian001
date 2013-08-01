@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     @collections = Collection.all
     render :template => "index"
   end
+
+  def feedback
+    render :template => "feedback"
+  end
 end
