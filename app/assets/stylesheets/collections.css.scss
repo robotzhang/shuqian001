@@ -1,3 +1,6 @@
-// Place all the styles related to the collections controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.page-title { font-size: 32px; font-weight: 400; line-height: 1.4; margin: 0; padding: 0; }
+#collection .links { list-style: none; margin: 0; padding: 0; }
+#collection .links .vote { padding: 10px 0; }
+#collection .links .vote form { margin: 0; }
+#collection .links .vote button { background: none; border: none; }
+#collection .links .link { border-top: #EEEEEE 1px solid; margin-left: 28px;  padding: 10px 0; }

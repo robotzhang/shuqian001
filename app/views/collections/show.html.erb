@@ -1,24 +1,37 @@
-<h1><%= @collection.title %></h1>
-<div><small class="muted"><%= @collection.description %></small></div>
+<div class="row" id="collection">
+  <div class="span9">
+    <h1 class="page-title"><%= @collection.title %></h1>
+    <div><%= @collection.description %></div>
 
-<div>
-  评论(<%=@collection.comments.size%>)：
-  <ul id="comments">
-    <% @collection.comments.each do |comment| %>
-        <%= render partial: "comments/item", locals: {comment: comment} %>
-    <% end %>
-  </ul>
-  <div><%= render :partial => 'comments/form', :locals => {:comment => @comment} %></div>
-</div>
+    <div class="muted fs12">
+      <%= @collection.created_at.strftime("%Y-%m-%d %H:%I:%S") %>
+      <a href="" class="muted">
+        <i class="icon-comment"></i><%= @collection.comments.size %>条评论
+      </a>
+      •
+      <a href="" class="muted">
+        <i class="icon-tasks"></i>
+        <%= @collection.links.size %>条链接
+      </a>
+    </div>
 
-<div>链接列表：</div>
-<ul class="links">
-  <% @collection.links.each do |link| %>
-  <li class="clearfix"><%= render "links/item", link: link %></li>
-  <% end %>
-</ul>
+    <div id="comment-panel">
 
-<div>
-  <span>添加链接</span>
-  <%= render :partial => "links/form", locals: {link: Link.new(collection_id: @collection.id)} %>
+    </div>
+
+    <div>链接列表：</div>
+    <ul class="links">
+      <% @collection.links.each do |link| %>
+          <li class="clearfix"><%= render "links/item", link: link %></li>
+      <% end %>
+    </ul>
+
+    <div>
+      <span>添加链接</span>
+      <%= render :partial => "links/form", locals: {link: Link.new(collection_id: @collection.id)} %>
+    </div>
+  </div>
+  <div class="span3">
+    相关合集：
+  </div>
 </div>
