@@ -1,27 +1,39 @@
 <%= content_for(:stylesheets, stylesheet_link_tag("home")) %>
-<ul class="collections">
-  <% @collections.each do |collection| %>
-  <li class="clearfix">
-
-    <div class="collection">
-      <a href="<%= collection_path(collection) %>">
-        <%= collection.title %>
-      </a>
-      <div>
-        <small>
-          <%= collection.user.username %>
-          <%= collection.created_at.strftime("%Y-%m-%d %H:%I:%S") %>
-        </small>
-      </div>
-      <div><small><%= collection.description %></small></div>
-      <div>
-        <% collection.tags.each do |tag| %>
-        <code style="margin-right: 5px;">
-          <a href=""><%= tag.name %> </a>
-        </code>
-        <% end %>
-      </div>
-    </div>
-  </li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="span9">
+    <ul class="collections">
+      <% @collections.each do |collection| %>
+          <li class="clearfix">
+            <div class="collection">
+              <a href="<%= collection_path(collection) %>">
+                <%= collection.title %>
+              </a>
+              <% if can? :edit, collection %>
+                  <a href="<%= edit_collection_path(collection) %>" title="编辑"><i class="icon-edit"></i></a>
+              <% end %>
+              <div>
+                <small>
+                  <a href="<%= user_path(collection.user) %>"><%= collection.user.username %></a>
+                  <%= collection.created_at.strftime("%Y-%m-%d %H:%I:%S") %>
+                </small>
+              </div>
+              <div>
+                <% collection.tags.each do |tag| %>
+                    <code style="margin-right: 5px;">
+                      <a href=""><%= tag.name %> </a>
+                    </code>
+                <% end %>
+              </div>
+              <div><small><%= collection.description %></small></div>
+              <div>
+                链接 评论
+              </div>
+            </div>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="span3">
+    侧边栏
+  </div>
+</div>
