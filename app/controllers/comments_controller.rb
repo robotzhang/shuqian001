@@ -1,6 +1,14 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
   before_filter :load_commentable
+
+  def index
+    @comments = @commentable.comments
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     @comment = @commentable.comments.build(params[:comment])
     @comment.user = current_user
