@@ -8,18 +8,17 @@
       <a href="" class="muted">
         <i class="icon-comment"></i><%= @collection.comments.size %>条评论
       </a>
-      •
-      <a href="" class="muted">
-        <i class="icon-tasks"></i>
-        <%= @collection.links.size %>条链接
-      </a>
     </div>
 
     <div id="comment-panel">
 
     </div>
 
-    <div>链接列表：</div>
+    <div>
+      <i class="icon-tasks"></i>
+      <%= @collection.links.size %>
+      条链接：
+    </div>
     <ul class="links">
       <% @collection.links.each do |link| %>
           <li class="clearfix"><%= render "links/item", link: link %></li>

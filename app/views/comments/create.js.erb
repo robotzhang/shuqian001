@@ -1,6 +1,8 @@
+<% views = @comment.commentable.class.to_s.downcase.pluralize; %>
+
 <% if @comment.errors.any? %>
-$('#new_comment').replaceWith($('<%= j render :partial => 'comments/form', :locals => {:comment => @comment} %>'));
+    $('#new_comment').replaceWith($('<%= j render :partial => views + '/comment_form', :locals => {:comment => @comment} %>'));
 <% else %>
-$('#comments').append($('<%= j render partial: "comments/item", locals: {comment: @comment} %>'));
-$('#new_comment')[0].reset();
+    $('#comments').append($('<%= j render partial: views + "/comment_item", locals: {comment: @comment} %>'));
+    $('#new_comment')[0].reset();
 <% end %>
