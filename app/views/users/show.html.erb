@@ -13,7 +13,7 @@
   </div>
   <div class="span9">
     <div class="mb10 clearfix" style="border-bottom: #dadada 1px solid; padding-bottom: 10px;">
-      合集列表
+      <%= @user.username %>合集
       <a href="<%= new_collection_path %>" class="btn btn-small pull-right">
         <i class="icon-plus-sign"></i>
         添加新合集
@@ -23,7 +23,7 @@
       <% @user.collections.each do |collection| %>
       <li>
         <%= render partial: "collections/item", locals: { collection: collection } %>
-        <small class="muted">更新于：<%= collection.updated_at.strftime("%Y-%m-%d %H:%I:%S") %></small>
+        <small class="muted">更新于：<%= collection.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></small>
         <div class="pull-right">
           <small class="muted">
             <a target="_blank" class="muted" href="<%= collection_path(collection) %>">
@@ -40,9 +40,25 @@
 
     <div class="board">
         <div class="title"><%= @user.username %>的留言板</div>
-        <ul id="comments">
+        <ul id="comments" class="comments">
           <% @user.comments.each do |comment| %>
-          <%= render partial: "comments/item", locals: {comment: comment} %>
+            <li>
+              <div class="head">
+                <a href="<%= user_path(comment.user) %>">
+                  <img src="<%= comment.user.avatar %>" />
+                </a>
+              </div>
+              <div class="comment">
+                <div>
+                  <small class="muted">
+                    <a href="<%= user_path(comment.user) %>"><%= comment.user.username %></a>
+                    <%= comment.created_at.strftime('%Y-%m-%d %H:%M') %>
+                  </small>
+                </div>
+                <div><%= comment.comment %></div>
+              </div>
+              <div class="clearfix"></div>
+            </li>
           <% end %>
         </ul>
         <div>

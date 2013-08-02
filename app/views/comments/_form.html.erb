@@ -6,6 +6,6 @@
       <button class="close" type="button" onclick="$(this).parents('.alert').slideUp();">&times;</button>
     </div>
     <% end %>
-    <%= f.text_field :comment %>
-    <%= f.submit "添加" %>
+    <div><%= f.text_area :comment %></div>
+    <div><%= f.submit "添加", class: "btn" %></div>
 <% end %>

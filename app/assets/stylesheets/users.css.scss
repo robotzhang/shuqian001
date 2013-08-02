@@ -1,3 +1,11 @@
 .collections li { padding: 8px 0; border-bottom: #dadada 1px solid; }
 .board {}
 .board .title { background-color: #EAEEF0; padding: 5px 10px; border-top: #BCC4CB 1px solid; }
+.board form { padding: 10px; background-color: #F9F9F9; }
+.board textarea { width: 600px; height: 100px; border-radius: 0; }
+.board .comments { margin: 10px; }
+.board .comments li { list-style: none; padding: 5px 0; }
+.board .comments .head { float: left; margin-top: 4px; }
+.board .comments .head a { display: block; padding: 1px; border: #9CB9CF 1px solid; }
+.board .comments .head img { width: 48px; height: 48px; }
+.board .comments .comment { min-height: 48px; padding-bottom: 10px; margin-left: 65px; font-size: 12px; border-bottom: #dadada 1px solid; }
