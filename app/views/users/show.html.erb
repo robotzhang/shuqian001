@@ -12,27 +12,42 @@
     </div>
   </div>
   <div class="span9">
-    <div>
+    <div class="mb10 clearfix" style="border-bottom: #dadada 1px solid; padding-bottom: 10px;">
       合集列表
-      <a href="<%= new_collection_path %>" class="btn btn-small">
+      <a href="<%= new_collection_path %>" class="btn btn-small pull-right">
         <i class="icon-plus-sign"></i>
         添加新合集
       </a>
     </div>
-    <ul>
+    <ul class="collections">
       <% @user.collections.each do |collection| %>
-      <li><%= render partial: "collections/item", locals: { collection: collection } %></li>
+      <li>
+        <%= render partial: "collections/item", locals: { collection: collection } %>
+        <small class="muted">更新于：<%= collection.updated_at.strftime("%Y-%m-%d %H:%I:%S") %></small>
+        <div class="pull-right">
+          <small class="muted">
+            <a target="_blank" class="muted" href="<%= collection_path(collection) %>">
+              <%= collection.comments.size %>
+            </a> 条评论
+            <a target="_blank" class="muted" href="<%= collection_path(collection) %>">
+              <%= collection.links.size %>
+            </a> 条链接
+          </small>
+        </div>
+      </li>
       <% end %>
     </ul>
 
-    <div>留言</div>
-    <ul id="comments">
-      <% @user.comments.each do |comment| %>
-      <%= render partial: "comments/item", locals: {comment: comment} %>
-      <% end %>
-    </ul>
-    <div>
-      <%= render :partial => 'comments/form', :locals => {:comment => @comment} %>
+    <div class="board">
+        <div class="title"><%= @user.username %>的留言板</div>
+        <ul id="comments">
+          <% @user.comments.each do |comment| %>
+          <%= render partial: "comments/item", locals: {comment: comment} %>
+          <% end %>
+        </ul>
+        <div>
+          <%= render :partial => 'comments/form', :locals => {:comment => @comment} %>
+        </div>
     </div>
   </div>
 </div>
