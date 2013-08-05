@@ -11,9 +11,15 @@
       %>
     </div>
 
-    <div id="comments"></div>
+    <div id="comments">
+      <div class="comments">
 
-    <div>
+      </div>
+      <div>
+        <%= render partial: "collections/comments_form", locals: {comment: @comment} %>
+      </div>
+    </div>
+    <div class="mb10 mt10">
       <i class="icon-tasks"></i>
       <%= @collection.links.size %>
       条链接：

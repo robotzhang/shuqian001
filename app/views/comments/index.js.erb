@@ -2,5 +2,6 @@
 暂无评论
 <% else %>
     <% views = @comments[0].commentable.class.to_s.downcase.pluralize; %>
-    $('#comments').append($("<%= j render partial: views+"/comments", locals: { comments: @comments } %>"));
+    $('#comments').find('.comments').append($("<%= j render partial: views+"/comments", locals: { comments: @comments } %>"));
+    $('#comments').slideDown();
 <% end %>

@@ -1,9 +1,9 @@
 <% comments.each do |comment| %>
-  <div>
+  <div class="comment">
     <div class="head-pic"><img src="<%= comment.user.avatar %>"/></div>
     <div class="muted">
       <small>
-        <%= comment.user.username %>
+        <a href="<%= user_path(comment.user) %>"><%= comment.user.username %></a>
         <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
       </small>
     </div>
