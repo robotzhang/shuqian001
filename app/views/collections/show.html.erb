@@ -7,6 +7,7 @@
       <%= @collection.created_at.strftime("%Y-%m-%d %H:%I:%S") %>
       <%= link_to  @collection.comments.size.to_s+"条评论",
                    comments_path(@collection.class.to_s.underscore, @collection.id),
+                   class: 'load-comments',
                    remote: true
       %>
     </div>

@@ -1,2 +1,8 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(document).ready(function() {
+    $('.load-comments').click(function() {
+        if ($('#comments').find('.comment').length > 0) {
+           $('#comments').slideToggle();
+            return false;
+        }
+    });
+});
