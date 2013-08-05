@@ -1,8 +1,12 @@
+#coding=utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    respond_to do |format|
+      format.html { redirect_to(root_url, :alert => exception.message) }
+      format.js {render :js => "alert('请先登录');"}
+    end
   end
 
   def index
