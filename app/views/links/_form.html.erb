@@ -8,23 +8,23 @@
 
     <%= f.hidden_field :collection_id, value: link.collection.id %>
     <div>
-      <%= f.label :url, "链接地址" %>
-      <%= f.text_field :url %>
+      <%= f.label :url, "链接地址<small>( 必填 )</small>".html_safe %>
+      <%= f.text_field :url, class: 'span5' %>
     </div>
 
     <% unless link.errors.messages[:title].blank? %>
     <div>
-      <%= f.label :title, "标题" %>
-      <%= f.text_field :title %>
+      <%= f.label :title, "标题<small>( 必填 )</small>".html_safe %>
+      <%= f.text_field :title, class: 'span5' %>
     </div>
     <% end %>
 
     <div>
-      <%= f.label :description, "描述" %>
-      <%= f.text_field :description %>
+      <%= f.label :description, "描述<small class='muted'>( 详细的描述有助于大家理解以节省验证的时间 )</small>".html_safe %>
+      <%= f.text_field :description, class: 'span5' %>
     </div>
 
     <div>
-      <%= f.submit "添加", :class => "btn" %>
+      <%= f.submit "添加链接", :class => "btn" %>
     </div>
 <% end %>
