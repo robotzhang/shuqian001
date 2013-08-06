@@ -143,3 +143,4 @@ DEPENDENCIES
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
+  unicorn
