@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  validates :username, presence: true, uniqueness: {case_sensitive: false}
+  validates :username, presence: true, uniqueness: {case_sensitive: false}, :length => {:in => 3..20}
             #:format => {:with => /\A\w+\z/, :message => '只允许数字、大小写字母和下划线'}, :length => {:in => 3..20}
 
   # Setup accessible (or protected) attributes for your model
