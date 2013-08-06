@@ -1,5 +1,5 @@
 <% if @comments.blank? %>
-暂无评论
+$('#comments').slideDown();
 <% else %>
     <% views = @comments[0].commentable.class.to_s.downcase.pluralize; %>
     $('#comments').find('.comments').append($("<%= j render partial: views+"/comments", locals: { comments: @comments } %>"));
