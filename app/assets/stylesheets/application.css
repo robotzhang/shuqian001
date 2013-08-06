@@ -11,6 +11,7 @@
  *= require bootstrap
  *= require bootstrap-responsive
  *= require_self
+ *= require_tree .
  */
 
 body { font-family: Arial,Helvetica,sans-serif,\5b8b\4f53; }
