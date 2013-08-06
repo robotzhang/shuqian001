@@ -1,6 +1,6 @@
 <% comments.each do |comment| %>
   <div class="comment">
-    <div class="head-pic"><img src="<%= comment.user.avatar %>"/></div>
+    <div class="head-pic"><img src="<%= comment.user.avatar.normal %>"/></div>
     <div class="muted">
       <small>
         <a href="<%= user_path(comment.user) %>"><%= comment.user.username %></a>

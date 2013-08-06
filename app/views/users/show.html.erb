@@ -1,7 +1,7 @@
 <div class="row">
   <div class="span3">
     <div>
-      <img src="<%= @user.avatar %>" />
+      <img src="<%= @user.avatar.big %>" />
     </div>
     <div>
       <a href="javascript:void(0);">修改头像</a>
@@ -13,7 +13,7 @@
   </div>
   <div class="span9">
     <div class="mb10 clearfix" style="border-bottom: #dadada 1px solid; padding-bottom: 10px;">
-      <%= @user.username %>合集
+      <%= @user.username %>的合集
       <a href="<%= new_collection_path %>" class="btn btn-small pull-right">
         <i class="icon-plus-sign"></i>
         添加新合集
@@ -45,7 +45,7 @@
             <li>
               <div class="head">
                 <a href="<%= user_path(comment.user) %>">
-                  <img src="<%= comment.user.avatar %>" />
+                  <img src="<%= comment.user.avatar.normal %>" />
                 </a>
               </div>
               <div class="comment">
