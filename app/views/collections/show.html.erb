@@ -1,5 +1,13 @@
+<% provide(:title, @collection.title) %>
+<% provide(:description, @collection.description) %>
+
 <div class="row" id="collection">
   <div class="span9">
+    <div>
+      <% @collection.tags.each do |tag| %>
+      <code><a href="#"><%= tag.name %></a></code>
+      <% end %>
+    </div>
     <h1 class="page-title"><%= @collection.title %></h1>
     <div><%= @collection.description %></div>
 

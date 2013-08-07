@@ -18,10 +18,10 @@
 
 <div class="link">
   <div><a target="_blank" href="<%= link.url %>"><%= link.title %></a></div>
-  <div><small><%= link.description %></small></div>
-  <div style="font-size: 12px;">
-    <a href="<%= user_path(link.user) %>"><%= link.user.username %></a>
-    <span class="muted"><%= link.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+  <div><%= link.description %></div>
+  <div style="font-size: 12px;" class="muted">
+    <a class="muted fs12" href="<%= user_path(link.user) %>"><%= link.user.username %></a>
+    <span><%= link.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
     第一次添加
   </div>
 </div>
