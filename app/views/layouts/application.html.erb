@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title><%= @title ? "#{@title}": "最懂你的网络书签" %></title>
-  <meta name="description" content="<%= @description %>">
+  <title><%= yield(:title).blank? ? "最懂你的网络书签" : yield(:title)+' - 书签网' %></title>
+  <meta name="description" content="<%= yield(:description).blank? ? "" : yield(:description) %>">
   <meta name="author" content="robot.zhang">
   <%= stylesheet_link_tag 'application', :media => "all" %>
   <%= yield :stylesheets %>
