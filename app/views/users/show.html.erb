@@ -3,6 +3,7 @@
     <div>
       <img src="<%= @user.avatar.big %>" />
     </div>
+    <% if can? :edit, @user %>
     <div>
       <a href="javascript:void(0);">修改头像</a>
       <%= form_for @user, html: { multipart: true } do |f| %>
@@ -10,6 +11,7 @@
           <%= f.submit "上传" %>
       <% end %>
     </div>
+    <% end %>
   </div>
   <div class="span9">
     <div class="mb10 clearfix" style="border-bottom: #dadada 1px solid; padding-bottom: 10px;">
