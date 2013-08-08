@@ -7,7 +7,7 @@ Shuqian001::Application.initialize!
 # config for email stmp server
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-    :address => "smtp.qq.com",
+    :address => "smtp.exmail.qq.com",
     :port => 25,
     :authentication => "plain",
     :user_name => "no-repay@shuqian001.com",
