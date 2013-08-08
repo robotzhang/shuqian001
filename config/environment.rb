@@ -10,6 +10,6 @@ ActionMailer::Base.smtp_settings = {
     :address => "smtp.qq.com",
     :port => 25,
     :authentication => "plain",
-    :user_name => "robotzhang@qq.com",
-    :password => "ZhangRobot"   #用户名和密码是163邮箱的，需要验证
+    :user_name => "no-repay@shuqian001.com",
+    :password => "ShuQian001"   #用户名和密码是163邮箱的，需要验证
 }
