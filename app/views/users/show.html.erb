@@ -42,7 +42,7 @@
 
     <div class="board">
         <div class="title"><%= @user.username %>的留言板</div>
-        <ul id="comments" class="comments">
+        <ul id="comments" class="comments" style="display: block;">
           <% @user.comments.each do |comment| %>
             <li>
               <div class="head">
