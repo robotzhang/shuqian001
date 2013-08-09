@@ -35,7 +35,7 @@
       条链接：
     </div>
     <ul class="links">
-      <% @collection.links.each do |link| %>
+      <% @collection.links.sort_by{|link| link.votes.where(vote: 'up').size - link.votes.where(vote: 'down').size }.reverse.each do |link| %>
           <li class="clearfix"><%= render "links/item", link: link %></li>
       <% end %>
     </ul>
