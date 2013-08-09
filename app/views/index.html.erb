@@ -43,7 +43,7 @@
     <p>
       <div>活跃用户：</div>
       <% @users.each do |user| %>
-      <a href="<%= user_path(user) %>" target="_blank">
+      <a title="<%= user.username %>" href="<%= user_path(user) %>" target="_blank">
         <img src="<%= user.avatar.normal %>" />
       </a>
       <% end %>
