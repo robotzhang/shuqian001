@@ -41,7 +41,12 @@
       热门标签：
     </p>
     <p>
-      活跃用户：
+      <div>活跃用户：</div>
+      <% @users.each do |user| %>
+      <a href="<%= user_path(user) %>" target="_blank">
+        <img src="<%= user.avatar.normal %>" />
+      </a>
+      <% end %>
     </p>
     <small class="muted">别在意这些正在完成的功能~</small>
   </div>

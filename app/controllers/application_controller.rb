@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
   def index
     @collections = Collection.all
+    @users = User.active
     render :template => "index"
   end
 

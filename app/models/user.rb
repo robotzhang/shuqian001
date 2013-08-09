@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
   def has_role?(role)
     self.role == role.to_s
   end
+
+  def self.active
+    User.order("sign_in_count DESC").limit(10)
+  end
 end
