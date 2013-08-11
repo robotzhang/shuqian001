@@ -15,6 +15,9 @@ gem 'acts_as_commentable', '3.0.1'
 # 标签
 gem 'acts-as-taggable-on'
 
+# 投票/喜欢
+#gem 'acts_as_votable', '~> 0.6.0'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
