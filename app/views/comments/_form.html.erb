@@ -6,6 +6,8 @@
       <button class="close" type="button" onclick="$(this).parents('.alert').slideUp();">&times;</button>
     </div>
     <% end %>
-    <div><%= f.text_field :comment %></div>
-    <div><%= f.submit "添加", class: "btn" %></div>
+    <div class="input-append mb0">
+      <%= f.text_field :comment, class: "span5", placeholder: '添加你的评论' %>
+      <%= f.submit "添加", class: "btn" %>
+    </div>
 <% end %>

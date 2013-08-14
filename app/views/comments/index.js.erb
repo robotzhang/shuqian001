@@ -2,5 +2,4 @@ var container = $("<%= '#c_' + @commentable.class.to_s.downcase + '_' + @comment
 <% views = @commentable.class.to_s.downcase.pluralize; %>
 var items = $("<%= j render partial: "comments/items" %>");
 var form = $("<%= j render partial: "comments/form" %>");
-container.append(items);
-container.append(form);
+container.append(items).append(form).slideDown();
