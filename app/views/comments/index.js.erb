@@ -1,7 +1,6 @@
-<% if @comments.blank? %>
-$('#comments').slideDown();
-<% else %>
-    <% views = @comments[0].commentable.class.to_s.downcase.pluralize; %>
-    $('#comments').find('.comments').append($("<%= j render partial: views+"/comments", locals: { comments: @comments } %>"));
-    $('#comments').slideDown();
-<% end %>
+var container = $("<%= '#c_' + @commentable.class.to_s.downcase + '_' + @commentable.id.to_s %>");
+<% views = @commentable.class.to_s.downcase.pluralize; %>
+var items = $("<%= j render partial: "comments/items" %>");
+var form = $("<%= j render partial: "comments/form" %>");
+container.append(items);
+container.append(form);

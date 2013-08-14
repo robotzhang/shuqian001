@@ -24,8 +24,17 @@
     <span><%= link.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
     第一次添加
 
+    <%= link_to  link.comments.size.to_s+"条评论",
+                 comments_path(link.class.to_s.underscore, link.id),
+                 remote: true
+    %>
+
     <!--a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-bookmark"></i>收藏</a>
     <a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-trash"></i>不相关链接</a>
     <a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-map-marker"></i>举报</a-->
+  </div>
+
+  <div id="<%= 'c_' + link.class.to_s.underscore + '_' + link.id.to_s %>">
+
   </div>
 </div>

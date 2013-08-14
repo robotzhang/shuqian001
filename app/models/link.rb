@@ -5,6 +5,8 @@ require 'timeout'
 require 'open-uri'
 
 class Link < ActiveRecord::Base
+  acts_as_commentable
+
   attr_accessible :title, :url, :description, :collection_id
   belongs_to :collection
   belongs_to :user
