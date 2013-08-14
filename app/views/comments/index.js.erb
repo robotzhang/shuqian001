@@ -1,4 +1,4 @@
-var container = $("<%= '#c_' + @commentable.class.to_s.downcase + '_' + @commentable.id.to_s %>");
+var container = $("<%= '#' + render_comment_id(@commentable) %>");
 <% views = @commentable.class.to_s.downcase.pluralize; %>
 var items = $("<%= j render partial: "comments/items" %>");
 var form = $("<%= j render partial: "comments/form" %>");

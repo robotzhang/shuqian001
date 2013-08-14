@@ -19,4 +19,13 @@ $(document).ready(function(){
         $(this).parents('.alert').slideUp();
         return false;
     });
+
+    //
+    $('.a_comment').click(function() {
+      var panel = $('#' + $(this).data('show'));
+      if (panel.find('form').length > 0) {
+        panel.slideToggle();
+        return false;
+      }
+    });
 });
