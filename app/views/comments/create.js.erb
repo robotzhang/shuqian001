@@ -1,8 +1,9 @@
 <% views = @comment.commentable.class.to_s.downcase.pluralize; %>
+var panel = $("#<%= render_comment_id(@comment.commentable) %>");
 
 <% if @comment.errors.any? %>
-    $('#new_comment').replaceWith($('<%= j render :partial => views + '/comments_form', :locals => {:comment => @comment} %>'));
+    panel.find('form').replaceWith($('<%= j render partial: "comments/form", :locals => {:comment => @comment} %>'));
 <% else %>
-    $('#comments').append($('<%= j render partial: views + "/comments_item", locals: {comment: @comment} %>'));
-    $('#new_comment')[0].reset();
+    panel.find('form').before($('<%= j render partial: "comments/item", locals: {comment: @comment} %>'));
+    panel.find('form')[0].reset();
 <% end %>
