@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to @commentable }
         format.js
       else
-        format.html { render :action => 'new' }
+        format.html { redirect_to(@commentable, :alert => @comment.errors.full_messages.join("<br>")) }
         format.js
       end
     end

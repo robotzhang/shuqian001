@@ -1,5 +1,5 @@
 <% url =  comments_path(comment.commentable.class.to_s.underscore, comment.commentable.id) %>
-<%= form_for comment, remote: true, url: url do |f| %>
+<%= form_for comment, url: url do |f| %>
     <% if comment.errors.any? %>
         <div class="alert alert-error">
           <%= comment.errors.full_messages().join("<br>") %>
