@@ -48,10 +48,10 @@
           <li><a href="">求资源</a></li>
           <% if user_signed_in? %>
           <li><a href="<%= user_path(current_user) %>"><%= current_user.username %></a></li>
-          <li><%= link_to '退出', destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to '退出', destroy_user_session_path(back: request.url), method: :delete %></li>
           <% else %>
           <li>
-            <a href="<%= new_user_session_path %>">登录</a>
+            <a href="<%= new_user_session_path(back: request.url) %>">登录</a>
           </li>
           <li>
             <a href="<%= new_user_registration_path %>">注册</a>

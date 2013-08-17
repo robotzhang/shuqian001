@@ -1,6 +1,7 @@
 <h2>登录</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <input type="hidden" name="back" value="<%= params[:back] || request.url %>" />
   <div><%= f.label :email, "邮件" %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
