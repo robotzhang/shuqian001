@@ -30,7 +30,12 @@
                  "data-show" => render_comment_id(link),
                  class: "a_comment"
     %>
-
+    •
+    <%= link_to link.likes.size.to_s+" 收藏".html_safe,
+                likes_path(link.class.to_s.underscore, link.id),
+                remote: true,
+                :method => "post"
+    %>
     <!--a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-bookmark"></i>收藏</a>
     <a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-trash"></i>不相关链接</a>
     <a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-map-marker"></i>举报</a-->

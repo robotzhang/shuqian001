@@ -1,0 +1,5 @@
+<% if @like.errors.any? %>
+ alert('<%= @like.errors.full_messages.join("\n") %>');
+<% else %>
+ alert('关注成功！');
+<% end %>

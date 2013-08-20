@@ -20,6 +20,12 @@
                    "data-show" => render_comment_id(@collection),
                    class: "a_comment"
       %>
+      •
+      <%= link_to @collection.likes.size.to_s+"关注".html_safe,
+                   likes_path(@collection.class.to_s.underscore, @collection.id),
+                   remote: true,
+                   :method => "post"
+      %>
     </div>
 
     <div id="<%= render_comment_id(@collection) %>" class="comments"></div>

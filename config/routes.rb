@@ -16,6 +16,10 @@ Shuqian001::Application.routes.draw do
     resources :votes
   end
 
+  scope ':likable_type/:likable_id' do
+    resources :likes
+  end
+
   resources :collections, :path => 'heji' do
     #resources :comments
     member do

@@ -8,6 +8,7 @@ class Collection < ActiveRecord::Base
   #validates :description, presence: true, uniqueness: true
 
   has_many :links
+  has_many :likes, {:as => :likable, :dependent => :destroy}
   #has_many :comments, :through => 'commentable_type'
   belongs_to :user
 

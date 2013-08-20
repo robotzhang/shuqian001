@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730124315) do
+ActiveRecord::Schema.define(:version => 20130819151202) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(:version => 20130730124315) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "likes", :force => true do |t|
+    t.string   "likable_type"
+    t.integer  "likable_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "links", :force => true do |t|
     t.string   "title"
     t.string   "description"
@@ -42,8 +50,10 @@ ActiveRecord::Schema.define(:version => 20130730124315) do
     t.string   "status"
     t.integer  "user_id"
     t.integer  "collection_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.string   "source",            :default => "web"
+    t.datetime "source_created_at"
   end
 
   create_table "taggings", :force => true do |t|
@@ -64,6 +74,8 @@ ActiveRecord::Schema.define(:version => 20130730124315) do
   end
 
   create_table "users", :force => true do |t|
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.string   "email",                  :default => "",       :null => false
     t.string   "encrypted_password",     :default => "",       :null => false
     t.string   "reset_password_token"

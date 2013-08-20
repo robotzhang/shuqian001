@@ -11,6 +11,7 @@ class Link < ActiveRecord::Base
   belongs_to :collection
   belongs_to :user
   has_many :votes, {:as => :votable, :dependent => :destroy}
+  has_many :likes, {:as => :likable, :dependent => :destroy}
   validates :title, presence: true, uniqueness: { scope: :collection_id }
   validates :description, presence: true
   validates :url, presence: true, uniqueness: { scope: :collection_id }
