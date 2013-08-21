@@ -1,53 +1,52 @@
 <%= content_for(:stylesheets, stylesheet_link_tag("home")) %>
 <div class="row">
-  <div class="span9">
-    <ul class="collections">
-      <% @collections.each do |collection| %>
-          <li class="clearfix">
-            <div class="collection">
-              <a href="<%= collection_path(collection) %>">
-                <%= collection.title %>
-              </a>
-              <% if can? :edit, collection %>
-                  <a href="<%= edit_collection_path(collection) %>" title="编辑"><i class="icon-edit"></i></a>
-              <% end %>
+  <div class="span8">
+    <% @collections.each do |collection| %>
+    <div class="box collection">
+      <div class="detail">
+        <a href="<%= collection_path(collection) %>"></a>
+      </div>
+      <div class="mb20">
+        <a href="<%= collection_path(collection) %>">
+          <%= collection.title %>
+        </a>
+      </div>
+      <div class="mb20"><%= collection.description %></div>
+      <div class="clearfix">
+        <div class="pull-left">
+          <a href="">
+            <i class="icon-tasks"></i>
+            <%= collection.links.size %>
+            链接
+          </a>
 
-              <% collection.tags.each do |tag| %>
-                  <code style="margin-right: 5px;">
-                    <a href="" class="fs12 muted"><%= tag.name %> </a>
-                  </code>
-              <% end %>
-
-              <div style="margin: 5px 0;"><%= collection.description %></div>
-
-              <div class="fs12 muted">
-                <a class="muted" href="<%= user_path(collection.user) %>"><%= collection.user.username %></a>
-                <%= collection.created_at.strftime("%Y-%m-%d %H:%I:%S") %>
-                •
-                <a class="muted" href="<%= collection_path(collection) %>"><%= collection.comments.size %> 条评论</a>
-                •
-                <a class="muted" href="<%= collection_path(collection) %>"><%= collection.links.size %> 条链接</a>
-              </div>
-            </div>
-          </li>
-      <% end %>
-    </ul>
+          <a href="">
+            <i class="icon-comment"></i>
+            <%= collection.comments.size %>
+            评论
+          </a>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
-  <div class="span3">
-    <p>
-      发现更多有趣的内容：
-    </p>
-    <p>
-      热门标签：
-    </p>
-    <p>
-      <div>活跃用户：</div>
+  <div class="span4">
+    <div class="box">
+      <h3>
+        发现更多有趣的内容：
+      </h3>
+      <h3>
+        热门标签：
+      </h3>
+      <h3>活跃用户：</h3>
+      <div class="content">
       <% @users.each do |user| %>
       <a title="<%= user.username %>" href="<%= user_path(user) %>" target="_blank">
         <img src="<%= user.avatar.normal %>" />
       </a>
       <% end %>
-    </p>
+      </div>
+    </div>
     <small class="muted">别在意这些正在完成的功能~</small>
   </div>
 </div>

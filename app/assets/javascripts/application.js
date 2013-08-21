@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 
 $(document).ready(function(){
     $('.alert').find('.close').die('click').live('click', function() {
@@ -28,4 +27,10 @@ $(document).ready(function(){
         return false;
       }
     });
+
+  $('.collection').mouseover(function() {
+    $(this).find('.detail').show();
+  }).mouseout(function() {
+    $(this).find('.detail').hide();
+  });
 });

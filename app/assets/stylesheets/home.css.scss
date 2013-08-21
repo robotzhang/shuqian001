@@ -1,6 +1,4 @@
-.collections { margin-left: 0; }
-.collections li { border-bottom: #dadada 1px solid; padding-bottom: 10px; list-style: none; margin-bottom: 10px; margin-left: 0; }
-.collections .user { float: left; }
-.collections .user img { width: 60px; height: 60px; border-radius: 3px; box-shadow: 0 0 5px rgba(0,0,0,.3) inset; }
-
-.collections .collection {  }
+.collection { padding: 15px; margin-bottom: 15px; }
+.collection .detail {  float: right; margin: -17px -17px 0 0; display: none; }
+.collection .detail a { background: url(/assets/home_go.png); height: 19px; width: 19px; display: block; }
+.collection .detail a:hover { background-position: -30px 0; }
