@@ -9,7 +9,9 @@
           <img width="200" height="200" src="<%= @user.avatar.big %>" />
           <% if can? :edit, @user %>
           <div class="edit">
-            <a  href="#avatar_form" data-toggle="modal">修改头像</a>
+            <%= form_for @user, html: { multipart: true } do |f| %>
+                修改头像 <%= f.file_field :avatar, style:"width:70px;" %>
+            <% end %>
           </div>
           <% end %>
           <div id="avatar_form" class="modal hide">

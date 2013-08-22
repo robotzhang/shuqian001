@@ -11,8 +11,9 @@
 .board .comments .comment { min-height: 48px; padding-bottom: 10px; margin-left: 65px; font-size: 12px; border-bottom: #dadada 1px solid; }
 
 .user .avatar { float: left; width: 200px; }
-.user .avatar .edit { margin-top: -30px; width: 200px; padding: 5px 0; position: absolute; display: none; text-align: center; background-color: #000; opacity: 0.6; filter: opacity(60); }
+.user .avatar .edit { color: #fff; font-size: 12px; margin-top: -30px; width: 200px; position: absolute; display: none; text-align: center; background-color: #000; opacity: 0.6; filter: opacity(60); }
 .user .avatar .edit a, .user .avartar .edit a:hover { color: #fff; }
+.user .avatar .edit form { margin: 0; }
 .user .attr { float: left; margin-left: 20px; }
 .user .attr h1 { font-size: 120%; height: 100%; line-height: 100%; margin: 0; }
 .user .nav-links { background-color: #fcfcfc; border-top: 1px solid #ddd; box-shadow: 0 2px 2px #f0f0f0 inset; }

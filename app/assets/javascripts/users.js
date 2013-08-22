@@ -6,4 +6,8 @@ $(document).ready(function() {
   }).mouseout(function() {
     $(this).find('.edit').hide();
   });
+
+  $('.edit form').find("input[type=file]").change(function() {
+    $('.edit form').submit();
+  });
 });
