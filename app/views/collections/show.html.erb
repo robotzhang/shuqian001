@@ -1,52 +1,83 @@
 <% provide(:title, @collection.title) %>
 <% provide(:description, @collection.description) %>
+<% provide(:stylesheets, stylesheet_link_tag("collections")) %>
 
 <div class="row" id="collection">
   <div class="span9">
-    <div>
-      <% @collection.tags.each do |tag| %>
-      <code><a href="#"><%= tag.name %></a></code>
-      <% end %>
-    </div>
-    <h1 class="page-title"><%= @collection.title %></h1>
-    <div><%= @collection.description %></div>
+    <div class="box padding20">
+        <div>
+          <% @collection.tags.each do |tag| %>
+          <code><a href="#"><%= tag.name %></a></code>
+          <% end %>
+        </div>
+        <h1 class="page-title"><%= @collection.title %></h1>
+        <div><%= @collection.description %></div>
 
-    <div class="muted fs12">
-      <a href="<%= user_path(@collection.user) %>" target="_blank"><%= @collection.user.username %></a>
-      <%= @collection.created_at.strftime("%Y-%m-%d %H:%I:%S") %>
-      <%= link_to  @collection.comments.size.to_s+"条评论",
-                   comments_path(@collection.class.to_s.underscore, @collection.id),
-                   remote: true,
-                   "data-show" => render_comment_id(@collection),
-                   class: "a_comment"
-      %>
-      •
-      <%= link_to @collection.likes.size.to_s+"关注".html_safe,
-                   likes_path(@collection.class.to_s.underscore, @collection.id),
-                   remote: true,
-                   :method => "post"
-      %>
-    </div>
+        <div class="muted fs12">
+          <a href="<%= user_path(@collection.user) %>" target="_blank"><%= @collection.user.username %></a>
+          <%= @collection.created_at.strftime("%Y-%m-%d %H:%I:%S") %>
+          <%= link_to  @collection.comments.size.to_s+"条评论",
+                       comments_path(@collection.class.to_s.underscore, @collection.id),
+                       remote: true,
+                       "data-show" => render_comment_id(@collection),
+                       class: "a_comment"
+          %>
+        </div>
 
-    <div id="<%= render_comment_id(@collection) %>" class="comments"></div>
+        <div id="<%= render_comment_id(@collection) %>" class="comments"></div>
 
-    <div class="mb10 mt10">
-      <i class="icon-tasks"></i>
-      <%= @collection.links.size %>
-      条链接：
-    </div>
-    <ul class="links">
-      <% @collection.links.sort_by{|link| link.votes.where(vote: 'up').size - link.votes.where(vote: 'down').size }.reverse.each do |link| %>
-          <li class="clearfix"><%= render "links/item", link: link %></li>
-      <% end %>
-    </ul>
+        <div class="mb10 mt10">
+          <i class="icon-tasks"></i>
+          <%= @collection.links.size %>
+          条链接：
+        </div>
+        <ul class="links">
+          <% @collection.links.sort_by{|link| link.votes.where(vote: 'up').size - link.votes.where(vote: 'down').size }.reverse.each do |link| %>
+              <li class="clearfix"><%= render "links/item", link: link %></li>
+          <% end %>
+        </ul>
 
-    <div class="add-links">
-      <%= render :partial => "links/form", locals: {link: Link.new(collection_id: @collection.id)} %>
+        <div class="add-links">
+          <%= render :partial => "links/form", locals: {link: Link.new(collection_id: @collection.id)} %>
+        </div>
     </div>
   </div>
   <div class="span3">
-    相关合集：
-    <div><small class="muted">别在意这个正在完成的细节~</small></div>
+    <div class="likable clearfix">
+      <%= link_to "关注",
+                  likes_path(@collection.class.to_s.underscore, @collection.id),
+                  remote: true,
+                  method: "post",
+                  class: "btn btn-block btn-success mb10"
+      %>
+      <div class="mb10 muted">
+        <a href="javascript:void(0);"><%= @collection.likes.size %></a>
+        人关注该合集：
+      </div>
+
+      <ul class="unstyled mb0">
+        <% @collection.likes.each do |like| %>
+        <li>
+          <a href="<%= user_path(like.user) %>" title="<%= like.user.username %>">
+            <img width="32" height="32" src="<%= like.user.avatar.three_two %>"/>
+          </a>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="clearfix line mt10 mb10"></div>
+
+    <div>
+        <div><strong>相关合集</strong></div>
+        <div><small class="muted">别在意这个正在完成的细节~</small></div>
+    </div>
+
+    <div class="clearfix line mt10 mb10"></div>
+
+    <div>
+      <div><strong>合集状态</strong></div>
+      <div><small class="muted">别在意这个正在完成的细节~</small></div>
+    </div>
   </div>
 </div>

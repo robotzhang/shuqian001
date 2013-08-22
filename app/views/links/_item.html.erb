@@ -17,13 +17,14 @@
 </div>
 
 <div class="link">
-  <div><a target="_blank" href="<%= link.url %>"><%= link.title %></a></div>
-  <div><%= link.description %></div>
-  <div style="font-size: 12px;" class="muted">
-    <a class="muted fs12" href="<%= user_path(link.user) %>"><%= link.user.username %></a>
-    <span><%= link.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
-    第一次添加
-
+  <div class="mb5">
+    <a target="_blank" href="<%= link.url %>"><%= link.title %></a>
+    <a class="pull-right" href="<%= user_path(link.user) %>" title="<%= link.user.username+link.created_at.strftime("%Y-%m-%d %H:%M:%S")+"第一次添加" %>">
+      <img src="<%= link.user.avatar.small %>" width="16" height="16" />
+    </a>
+  </div>
+  <div class="mb5"><%= link.description %></div>
+  <div class="fs12 muted">
     <%= link_to  link.comments.size.to_s+"条评论",
                  comments_path(link.class.to_s.underscore, link.id),
                  remote: true,
@@ -31,7 +32,7 @@
                  class: "a_comment"
     %>
     •
-    <%= link_to link.likes.size.to_s+" 收藏".html_safe,
+    <%= link_to link.likes.size.to_s+"收藏".html_safe,
                 likes_path(link.class.to_s.underscore, link.id),
                 remote: true,
                 :method => "post"
@@ -41,7 +42,5 @@
     <a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-map-marker"></i>举报</a-->
   </div>
 
-  <div id="<%= render_comment_id(link) %>" class="comments">
-
-  </div>
+  <div id="<%= render_comment_id(link) %>" class="comments"></div>
 </div>

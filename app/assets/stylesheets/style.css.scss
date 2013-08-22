@@ -3,6 +3,7 @@ a { color: #373d48; }
 .padding10 { padding: 10px; }
 .padding20 { padding: 20px; }
 .mb20 { margin-bottom: 20px; }
+.mb5 { margin-bottom: 5px; }
 .box { background: #fff; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
 .box h3 { padding: 10px; border-bottom: 1px dashed #ece5d8; font-size: 100%; line-height: 100%; }
 .box .content { padding: 10px; }
@@ -13,5 +14,6 @@ a { color: #373d48; }
 .navbar .nav > li > a { color: #fff; text-shadow: none; }
 .navbar .nav > li > a:hover{ color: #A0B3C0; }
 
-.footer { /*background-color: #144465;*/ padding: 20px; margin-top: 20px; color: #BBB; }
+.footer { /*background-color: #144465;*/ padding: 20px; margin-top: 20px; color: #BBB; font-size: 12px; }
 .footer a { color: #999; font-size: 12px; }
+.line { border-top: #dadada 1px solid; border-bottom: #fff 1px solid; }
