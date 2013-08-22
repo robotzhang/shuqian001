@@ -9,3 +9,17 @@
 .board .comments .head a { display: block; padding: 1px; border: #9CB9CF 1px solid; }
 .board .comments .head img { width: 48px; height: 48px; }
 .board .comments .comment { min-height: 48px; padding-bottom: 10px; margin-left: 65px; font-size: 12px; border-bottom: #dadada 1px solid; }
+
+.user .avatar { float: left; width: 200px; }
+.user .avatar .edit { margin-top: -30px; width: 200px; padding: 5px 0; position: absolute; display: none; text-align: center; background-color: #000; opacity: 0.6; filter: opacity(60); }
+.user .avatar .edit a, .user .avartar .edit a:hover { color: #fff; }
+.user .attr { float: left; margin-left: 20px; }
+.user .attr h1 { font-size: 120%; height: 100%; line-height: 100%; margin: 0; }
+.user .nav-links { background-color: #fcfcfc; border-top: 1px solid #ddd; box-shadow: 0 2px 2px #f0f0f0 inset; }
+.user .nav-links a { font-size: 110%; padding: 12px 20px; display: block; float: left; font-weight: 400px; }
+.user .nav-links a:hover { text-decoration: none; }
+.user .nav-links .current { color: #222; border: solid #ddd; border-width: 0 1px; background-color: #f7f7f7; }
+.user .nav-links .first { border-left: none; border-bottom: none; }
+
+.user .social .follower, .user .social .following { float: left; width: 50%; }
+.user .social .follower a, .user .social .following a { font-size: 120%; font-weight: bold; }

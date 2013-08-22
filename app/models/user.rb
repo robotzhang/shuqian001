@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   acts_as_tagger
 
   has_many :collections
+  has_many :likes
+  has_many :links
 
   def has_role?(role)
     self.role == role.to_s

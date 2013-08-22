@@ -1,49 +1,66 @@
-<div class="row">
-  <div class="span3">
-    <div>
-      <img src="<%= @user.avatar.big %>" />
-    </div>
-    <% if can? :edit, @user %>
-    <div>
-      <a href="javascript:void(0);">修改头像</a>
-      <%= form_for @user, html: { multipart: true } do |f| %>
-          <%= f.file_field :avatar %>
-          <%= f.submit "上传" %>
-      <% end %>
-    </div>
-    <% end %>
-  </div>
+<% provide(:title, @user.username + " - 书签网") %>
+<% provide(:stylesheets, stylesheet_link_tag("users")) %>
+<% provide(:javascripts, javascript_include_tag("users")) %>
+<div class="row user">
   <div class="span9">
-    <div class="mb10 clearfix" style="border-bottom: #dadada 1px solid; padding-bottom: 10px;">
-      <%= @user.username %>的合集
-      <a href="<%= new_collection_path %>" class="btn btn-small pull-right">
-        <i class="icon-plus-sign"></i>
-        添加新合集
-      </a>
-    </div>
-    <ul class="collections">
-      <% @user.collections.each do |collection| %>
-      <li>
-        <%= render partial: "collections/item", locals: { collection: collection } %>
-        <small class="muted">更新于：<%= collection.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></small>
-        <div class="pull-right">
-          <small class="muted">
-            <a target="_blank" class="muted" href="<%= collection_path(collection) %>">
-              <%= collection.comments.size %>
-            </a> 条评论
-            <a target="_blank" class="muted" href="<%= collection_path(collection) %>">
-              <%= collection.links.size %>
-            </a> 条链接
-          </small>
+    <div class="box mb20 clearfix">
+      <div class="padding20 clearfix">
+        <div class="avatar">
+          <img width="200" height="200" src="<%= @user.avatar.big %>" />
+          <% if can? :edit, @user %>
+          <div class="edit">
+            <a href="javascript:void(0);">修改头像</a>
+          </div>
+          <% end %>
+          <div class="form hide">
+            <%= form_for @user, html: { multipart: true } do |f| %>
+                <%= f.file_field :avatar %>
+                <%= f.submit "上传" %>
+            <% end %>
+          </div>
         </div>
-      </li>
-      <% end %>
-    </ul>
 
-    <div class="board">
-        <div class="title"><%= @user.username %>的留言板</div>
-        <ul id="comments" class="comments" style="display: block;">
-          <% @user.comments.each do |comment| %>
+        <div class="attr">
+          <h1><%= @user.username %></h1>
+          <div style="height: 150px;"></div>
+          <div class="muted fs12 mt10">于<%= @user.created_at.strftime("%Y-%m-%d %H:%I:%S") %>加入</div>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a class="current first" href="<%= user_path(@user) %>" title="<%= @user.username+"的主页" %>"><i class="icon-home"></i></a>
+        <a href="javascript:void(0);">合集 <span class="muted"><%= @user.collections.size %></span></a>
+        <a href="javascript:void(0);">留言 <span class="muted"><%= @user.comments.size %></span></a>
+        <a href="javascript:void(0);">收藏 <span class="muted"><%= @user.likes.size %></span></a>
+      </div>
+    </div>
+
+    <div class="box padding20 mb20">
+      <div><strong><%= @user.username %>的合集</strong></div>
+      <ul class="collections">
+        <% @user.collections.each do |collection| %>
+            <li>
+              <%= render partial: "collections/item", locals: { collection: collection } %>
+              <small class="muted">更新于：<%= collection.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></small>
+              <div class="pull-right">
+                <small class="muted">
+                  <a target="_blank" class="muted" href="<%= collection_path(collection) %>">
+                    <%= collection.comments.size %>
+                  </a> 条评论
+                  <a target="_blank" class="muted" href="<%= collection_path(collection) %>">
+                    <%= collection.links.size %>
+                  </a> 条链接
+                </small>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="board box padding20">
+      <div><strong><%= @user.username %>的留言板</strong></div>
+      <ul id="comments" class="comments" style="display: block;">
+        <% @user.comments.each do |comment| %>
             <li>
               <div class="head">
                 <a href="<%= user_path(comment.user) %>">
@@ -61,11 +78,40 @@
               </div>
               <div class="clearfix"></div>
             </li>
-          <% end %>
-        </ul>
-        <div>
-          <%= render :partial => 'users/comments_form', :locals => {:comment => @comment} %>
-        </div>
+        <% end %>
+      </ul>
+      <div>
+        <%= render :partial => 'users/comments_form', :locals => {:comment => @comment} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="span3 muted">
+    <div class="social">
+      <div class="following">
+        <div class="mb10">关注了</div>
+        <div><a href="javascript:void(0);">56</a>人</div>
+      </div>
+      <div class="follower">
+        <div class="mb10">关注者</div>
+        <div><a href="javascript:void(0);">21</a>人</div>
+      </div>
+
+      <div class="clearfix mb10"></div>
+
+      <a class="btn btn-success btn-block" href="javascript:void(0);">关注</a>
+    </div>
+
+    <div class="line mt10 mb10"></div>
+
+    <div>
+      <a class="muted fs12" href="">举报用户</a>
+    </div>
+
+    <div class="line mt10 mb10"></div>
+
+    <div>
+      个人主页被 <strong>127</strong> 人浏览
     </div>
   </div>
 </div>
