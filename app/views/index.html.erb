@@ -1,8 +1,11 @@
 <%= content_for(:stylesheets, stylesheet_link_tag("home")) %>
 <div class="row">
-  <div class="span8">
+  <div class="span8 collection">
     <% @collections.each do |collection| %>
-    <div class="box collection">
+    <a class="user" href="<%= user_path(collection.user) %>" title="<%= collection.user.username %>">
+      <img src="<%= collection.user.avatar.normal %>" width="56" height="56">
+    </a>
+    <div class="box">
       <div class="detail">
         <a href="<%= collection_path(collection) %>"></a>
       </div>

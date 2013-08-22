@@ -28,7 +28,7 @@ $(document).ready(function(){
       }
     });
 
-  $('.collection').mouseover(function() {
+  $('.collection .box').mouseover(function() {
     $(this).find('.detail').show();
   }).mouseout(function() {
     $(this).find('.detail').hide();
