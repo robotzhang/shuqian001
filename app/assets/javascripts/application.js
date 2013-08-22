@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-modal.js
 
 $(document).ready(function(){
     $('.alert').find('.close').die('click').live('click', function() {
