@@ -36,7 +36,10 @@
     </div>
 
     <div class="box padding20 mb20">
-      <div><strong><%= @user.username %>的合集</strong></div>
+      <div>
+        <strong><%= @user.username %>的合集</strong>
+        <a href="<%= new_collection_path %>" class="btn">创建合集</a>
+      </div>
       <ul class="collections">
         <% @user.collections.each do |collection| %>
             <li>
