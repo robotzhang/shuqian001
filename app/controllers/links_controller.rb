@@ -12,4 +12,10 @@ class LinksController < ApplicationController
       format.js
     end
   end
+
+  def show
+    @link = Like.find(params[:id])
+
+    Link.increment_counter(:views, @link.id) if !current_user || current_user.id != @link.user.id
+  end
 end

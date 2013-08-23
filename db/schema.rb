@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130819151202) do
+ActiveRecord::Schema.define(:version => 20130823022825) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "views",       :default => 0
   end
 
   create_table "comments", :force => true do |t|
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130819151202) do
     t.datetime "updated_at",                           :null => false
     t.string   "source",            :default => "web"
     t.datetime "source_created_at"
+    t.integer  "views",             :default => 0
   end
 
   create_table "taggings", :force => true do |t|
@@ -70,7 +72,8 @@ ActiveRecord::Schema.define(:version => 20130819151202) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", :force => true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "views", :default => 0
   end
 
   create_table "users", :force => true do |t|
@@ -93,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20130819151202) do
     t.string   "role",                   :default => "member"
     t.string   "username"
     t.string   "avatar"
+    t.integer  "views",                  :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

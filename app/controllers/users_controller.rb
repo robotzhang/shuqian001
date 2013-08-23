@@ -16,5 +16,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @comment = Comment.new
     @comment.commentable = @user
+
+    User.increment_counter(:views, @user.id) if !current_user || current_user.id != @user.id
   end
 end

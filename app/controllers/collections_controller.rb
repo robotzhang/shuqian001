@@ -29,5 +29,7 @@ class CollectionsController < ApplicationController
     @collection = Collection.find(params[:id])
     @comment = Comment.new
     @comment.commentable = @collection
+
+    Collection.increment_counter(:views, @collection.id) if !current_user || current_user.id != @collection.user.id
   end
 end
