@@ -7,7 +7,7 @@ a { color: #373d48; }
 .box { background: #fff; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
 .box h3 { padding: 10px; border-bottom: 1px dashed #ece5d8; font-size: 100%; line-height: 100%; }
 .box h2 { font-size: 140%; line-height: 100%; margin: 0; margin-bottom: 30px; }
-.box .content { padding: 10px; }
+.box .content { padding: 10px; padding-top: 0; margin: 0 2px 2px 0; }
 
 .header { background-color: #144465; color: #fff; }
 .header .navbar-inner { background: none; }

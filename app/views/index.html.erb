@@ -51,7 +51,7 @@
         热门标签：
       </h3>
       <h3>活跃用户：</h3>
-      <div class="content">
+      <div class="content active_users clearfix">
       <% @users.each do |user| %>
       <a title="<%= user.username %>" href="<%= user_path(user) %>" target="_blank">
         <img width="48" height="48" src="<%= user.avatar.normal %>" />
