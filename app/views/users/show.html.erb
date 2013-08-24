@@ -95,20 +95,45 @@
     <div class="social">
       <div class="following">
         <div class="mb10">关注了</div>
-        <div><a href="javascript:void(0);">56</a>人</div>
+        <div><a href="javascript:void(0);"><%= @user.follow_count %></a>人</div>
       </div>
       <div class="follower">
         <div class="mb10">关注者</div>
-        <div><a href="javascript:void(0);">21</a>人</div>
+        <div><a href="javascript:void(0);"><%= @user.followers_count %></a>人</div>
       </div>
 
       <div class="clearfix mb10"></div>
 
-      <a class="btn btn-success btn-block" href="javascript:void(0);">关注</a>
+      <% unless myself_user?(@user) %>
+          <% if current_user.following?(@user) %>
+              <%= link_to "取消关注", unfollow_user_path(@user), method: "post", remote: true, id: "follow_"+@user.id.to_s, class: "btn btn-danger btn-block" %>
+          <% else %>
+              <%= link_to "关注", follow_user_path(@user), method: "post", remote: true, id: "unfollow_"+@user.id.to_s, class: "btn btn-success btn-block" %>
+          <% end %>
+      <% end %>
     </div>
 
+    <% if @user.followers.any? %>
     <div class="line mt10 mb10"></div>
+    <div class="followers clearfix">
+      <div class="mb10"><strong><%= @user.username %></strong>的粉丝</div>
+      <% @user.followers.each do |follower| %>
+      <a href="<%= user_path(follower) %>" target="_blank"><img width="32" height="32" src="<%= follower.avatar.three_two %>" title="<%= follower.username %>"/></a>
+      <% end %>
+    </div>
+    <% end %>
 
+    <% if @user.followeds.any? %>
+        <div class="line mt10 mb10"></div>
+        <div class="followers clearfix">
+          <div class="mb10"><strong><%= @user.username %></strong>的关注</div>
+          <% @user.followeds.each do |followed| %>
+              <a href="<%= user_path(followed) %>" target="_blank"><img width="32" height="32" src="<%= followed.avatar.three_two %>" title="<%= followed.username %>"/></a>
+          <% end %>
+        </div>
+    <% end %>
+
+    <div class="line mt10 mb10"></div>
     <div>
       <a class="muted fs12" href="">举报用户</a>
     </div>
@@ -116,7 +141,7 @@
     <div class="line mt10 mb10"></div>
 
     <div>
-      个人主页被 <strong><%= @user.views %></strong> 人浏览
+      个人主页被 <strong><%= @user.views %></strong> 次浏览
     </div>
   </div>
 </div>

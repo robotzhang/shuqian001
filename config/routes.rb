@@ -3,7 +3,11 @@ Shuqian001::Application.routes.draw do
   get "feedback" => 'application#feedback'
 
   devise_for :users
-  resources :users
+  resources :users do
+     member do
+       post :follow, :unfollow
+     end
+  end
   #get 'users/:id' => 'users#index'
 
   resources :links

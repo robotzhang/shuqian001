@@ -28,6 +28,7 @@ class Ability
     can [:update, :logout], User do |me|
       me.id == user.id
     end
+    can [:follow, :unfollow], User
     can [:update], Vote do |vote|
       vote.user_id == user.id
     end

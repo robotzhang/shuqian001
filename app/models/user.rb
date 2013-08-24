@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   acts_as_commentable
   acts_as_tagger
+  acts_as_follower
+  acts_as_followable
 
   has_many :collections
   has_many :likes
@@ -26,5 +28,15 @@ class User < ActiveRecord::Base
 
   def self.active
     User.order("sign_in_count DESC").limit(10)
+  end
+
+  # 粉丝
+  def followers
+    self.user_followers
+  end
+
+  # 关注
+  def followeds
+    self.following_users
   end
 end

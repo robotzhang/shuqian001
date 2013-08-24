@@ -14,6 +14,8 @@ gem 'acts_as_commentable', '3.0.1'
 
 # 标签
 gem 'acts-as-taggable-on'
+#gem "socialization"
+gem "acts_as_follower"
 
 # 投票/喜欢
 #gem 'acts_as_votable', '~> 0.6.0'

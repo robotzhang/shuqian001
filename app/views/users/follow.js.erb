@@ -1,0 +1,4 @@
+<% unless @follow.blank? %>
+  var btn = $("<%= j link_to "取消关注", unfollow_user_path(@user), method: "post", remote: true, id: "follow_"+@user.id.to_s, class: "btn btn-danger btn-block" %>");
+  $('#unfollow_<%=@user.id%>').replaceWith(btn);
+<% end %>
