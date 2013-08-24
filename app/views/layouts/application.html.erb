@@ -38,27 +38,35 @@
           <span class="icon-bar"></span>
         </a>
         <a class="brand" href="<%=request.base_url%>">书签网</a>
-        <!--div class="nav-collapse pull-left">
-          <ul class="nav">
-            <li><a href="/"><i class="icon-home"></i> 首页</a></li>
-            <li><a href="#"><i class="icon-th-large"></i> 最新</a></li>
-            <li><a href="#"><i class="icon-fire"></i> 最热</a></li>
+
+        <% if user_signed_in? %>
+          <ul class="nav pull-right">
+             <li class="top-menu">
+               <a href="<%= user_path(current_user) %>">
+                 <img height="16" width="16" src="<%= current_user.avatar.small %>" />
+                 <%= current_user.username %>
+               </a>
+               <ul class="top-dropdown-menu">
+                 <li class="first">
+                   <a href="<%= user_path(current_user) %>">
+                     <i class="icon-home icon-white"></i>
+                     我的主页
+                   </a>
+                 </li>
+                 <li class="last"><%= link_to '<i class="icon-off icon-white"></i> 退出'.html_safe, destroy_user_session_path(back: request.url), method: :delete %></li>
+               </ul>
+             </li>
           </ul>
-        </div-->
-        <ul class="nav pull-right">
-          <li><a href="">求资源</a></li>
-          <% if user_signed_in? %>
-          <li><a href="<%= user_path(current_user) %>"><%= current_user.username %></a></li>
-          <li><%= link_to '退出', destroy_user_session_path(back: request.url), method: :delete %></li>
-          <% else %>
-          <li>
-            <a href="<%= new_user_session_path(back: request.url) %>">登录</a>
-          </li>
-          <li>
-            <a href="<%= new_user_registration_path %>">注册</a>
-          </li>
-          <% end %>
-        </ul>
+        <% else %>
+            <ul class="nav pull-right">
+              <li>
+                <a href="<%= new_user_session_path(back: request.url) %>">登录</a>
+              </li>
+              <li>
+                <a href="<%= new_user_registration_path %>">注册</a>
+              </li>
+            </ul>
+        <% end %>
       </div>
     </div><!-- /navbar-inner -->
   </div>

@@ -105,7 +105,7 @@
       <div class="clearfix mb10"></div>
 
       <% unless myself_user?(@user) %>
-          <% if current_user.following?(@user) %>
+          <% if user_signed_in? && current_user.following?(@user) %>
               <%= link_to "取消关注", unfollow_user_path(@user), method: "post", remote: true, id: "follow_"+@user.id.to_s, class: "btn btn-danger btn-block" %>
           <% else %>
               <%= link_to "关注", follow_user_path(@user), method: "post", remote: true, id: "unfollow_"+@user.id.to_s, class: "btn btn-success btn-block" %>

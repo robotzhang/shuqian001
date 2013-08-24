@@ -13,7 +13,15 @@ a { color: #373d48; }
 .header .navbar-inner { background: none; }
 .header .brand { color: #fff; text-shadow: none; }
 .navbar .nav > li > a { color: #fff; text-shadow: none; }
-.navbar .nav > li > a:hover{ color: #A0B3C0; }
+.navbar .nav > li > a:hover { color: #A0B3C0; }
+.top-menu { min-width: 120px; }
+.top-menu img { margin-right: 5px; }
+.top-dropdown-menu { background-color: #144465; position: absolute; width: 100%; margin: 0; display: none; border-radius: 0 0 3px 3px; }
+.top-dropdown-menu a { color: #fff; padding: 10px 15px 10px; text-decoration: none; display: block; }
+.top-dropdown-menu a:hover { background-color: #216293; }
+.top-dropdown-menu a i { margin-right: 5px; }
+.open .top-dropdown-menu { display: block; }
+.top-dropdown-menu .last a{ border-radius: 0 0 3px 3px; }
 
 .footer { /*background-color: #144465;*/ padding: 20px; margin-top: 20px; color: #BBB; font-size: 12px; }
 .footer a { color: #999; font-size: 12px; }

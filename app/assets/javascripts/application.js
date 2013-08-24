@@ -34,4 +34,10 @@ $(document).ready(function(){
   }).mouseout(function() {
     $(this).find('.detail').hide();
   });
+
+  $('.top-menu').mouseenter(function(){
+    $(this).addClass('open');
+  }).mouseleave(function() {
+    $(this).removeClass('open');
+  });
 });
