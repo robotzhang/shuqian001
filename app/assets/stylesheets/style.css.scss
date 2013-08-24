@@ -12,6 +12,10 @@ a { color: #373d48; }
 .header { background-color: #144465; color: #fff; }
 .header .navbar-inner { background: none; }
 .header .brand { color: #fff; text-shadow: none; }
+.header a.dark_blue { color: #A0B3C0!important; }
+.header a.dark_blue:hover { color: #fff!important; }
+.header .help { margin-left: 20px; border-right: #12364D 1px solid;  }
+.header .help a { border-left: #12364D 1px solid; }
 .navbar .nav > li > a { color: #fff; text-shadow: none; }
 .navbar .nav > li > a:hover { color: #A0B3C0; }
 .top-menu { min-width: 120px; }

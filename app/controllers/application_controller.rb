@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
     render :template => "feedback"
   end
 
+  def helps
+    render :template => "helps"
+  end
+
   # devise注销成功后返回的url
   def after_sign_out_path_for(resource_or_scope)
     params[:back] || root_path

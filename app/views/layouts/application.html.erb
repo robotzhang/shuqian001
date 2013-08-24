@@ -38,6 +38,17 @@
           <span class="icon-bar"></span>
         </a>
         <a class="brand" href="<%=request.base_url%>">书签网</a>
+        <ul class="nav help">
+          <li><a href="<%= helps_path %>">帮助</a></li>
+          <% unless user_signed_in? %>
+          <li>
+            <a href="<%= new_user_registration_path %>">
+              <i class="icon-user icon-white"></i>
+              注册
+            </a>
+          </li>
+          <% end %>
+        </ul>
 
         <% if user_signed_in? %>
           <ul class="nav pull-right">
@@ -61,9 +72,6 @@
             <ul class="nav pull-right">
               <li>
                 <a href="<%= new_user_session_path(back: request.url) %>">登录</a>
-              </li>
-              <li>
-                <a href="<%= new_user_registration_path %>">注册</a>
               </li>
             </ul>
         <% end %>

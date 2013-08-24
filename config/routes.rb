@@ -1,6 +1,7 @@
 Shuqian001::Application.routes.draw do
   root :to => 'application#index'
   get "feedback" => 'application#feedback'
+  get "helps" => 'application#helps'
 
   devise_for :users
   resources :users do
