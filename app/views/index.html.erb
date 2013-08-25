@@ -15,6 +15,8 @@
         </a>
       </div>
 
+      <div class="mb10"><%= collection.description %></div>
+
       <% if collection.tags.any? %>
       <div class="mb10 tags">
         <% collection.tags.each do |tag| %>
@@ -23,7 +25,6 @@
       </div>
       <% end %>
 
-      <div class="mb10"><%= collection.description %></div>
       <div class="clearfix">
         <div class="pull-left">
           <a href="<%= collection_path(collection) %>">
