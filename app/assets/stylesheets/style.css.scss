@@ -10,7 +10,7 @@ a { color: #373d48; }
 .box .content { padding: 10px; padding-top: 0; margin: 0 2px 2px 0; }
 
 .header { background-color: #144465; color: #fff; }
-.header .navbar-inner { background: none; }
+.header .navbar-inner { background: none; filter: none; }
 .header .brand { color: #fff; text-shadow: none; }
 .header a.dark_blue { color: #A0B3C0!important; }
 .header a.dark_blue:hover { color: #fff!important; }
