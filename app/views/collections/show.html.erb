@@ -10,7 +10,12 @@
           <code><a href="#"><%= tag.name %></a></code>
           <% end %>
         </div>
-        <h1 class="page-title"><%= @collection.title %></h1>
+        <h1 class="page-title">
+          <a href="<%= user_path(@collection.user) %>" class="pull-right">
+            <img width="32" height="32" src="<%= @collection.user.avatar.normal %>"/>
+          </a>
+          <%= @collection.title %>
+        </h1>
         <div><%= @collection.description %></div>
 
         <div class="muted fs12">
