@@ -8,8 +8,8 @@ class AvatarUploader < BaseUploader
     process :resize_to_fill => [16, 16]
   end
 
-  version :three_two do
-    process :resize_to_fill => [32, 32]
+  version :middle do
+    process :resize_to_fill => [25, 25]
   end
 
   version :large do

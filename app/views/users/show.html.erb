@@ -118,7 +118,7 @@
     <div class="followers clearfix">
       <div class="mb10"><strong><%= @user.username %></strong>的粉丝</div>
       <% @user.followers.each do |follower| %>
-      <a href="<%= user_path(follower) %>" target="_blank"><img width="32" height="32" src="<%= follower.avatar.three_two %>" title="<%= follower.username %>"/></a>
+      <a href="<%= user_path(follower) %>" target="_blank"><img width="25" height="25" src="<%= follower.avatar.middle %>" title="<%= follower.username %>"/></a>
       <% end %>
     </div>
     <% end %>
@@ -128,7 +128,7 @@
         <div class="followers clearfix">
           <div class="mb10"><strong><%= @user.username %></strong>的关注</div>
           <% @user.followeds.each do |followed| %>
-              <a href="<%= user_path(followed) %>" target="_blank"><img width="32" height="32" src="<%= followed.avatar.three_two %>" title="<%= followed.username %>"/></a>
+              <a href="<%= user_path(followed) %>" target="_blank"><img width="25" height="25" src="<%= followed.avatar.middle %>" title="<%= followed.username %>"/></a>
           <% end %>
         </div>
     <% end %>

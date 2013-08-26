@@ -59,7 +59,7 @@
         <% @collection.likes.each do |like| %>
         <li>
           <a href="<%= user_path(like.user) %>" title="<%= like.user.username %>">
-            <img width="32" height="32" src="<%= like.user.avatar.three_two %>"/>
+            <img width="25" height="25" src="<%= like.user.avatar.middle %>"/>
           </a>
         </li>
         <% end %>
