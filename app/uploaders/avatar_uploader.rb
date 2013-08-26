@@ -21,12 +21,12 @@ class AvatarUploader < BaseUploader
   end
 
   def store_dir
-    "uploads/avatar"
+    "uploads/avatar/#{model.id}"
   end
 
   def filename
     if super.present?
-      "#{model.id}.#{file.extension.downcase}"
+      "#{Time.now.to_i}.#{file.extension.downcase}"
     end
   end
 
