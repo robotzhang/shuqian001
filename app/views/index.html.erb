@@ -25,16 +25,15 @@
       </div>
       <% end %>
 
-      <div class="clearfix">
+      <div class="clearfix bottom-links">
         <div class="pull-left">
           <a href="<%= collection_path(collection) %>">
-            <i class="icon-tasks"></i>
             <%= collection.links.size %>
             链接
           </a>
 
           <a href="<%= collection_path(collection) %>">
-            <i class="icon-comment"></i>
+            <i class="sq-icon-comments"></i>
             <%= collection.comments.size %>
             评论
           </a>

@@ -29,12 +29,13 @@
                  comments_path(link.class.to_s.underscore, link.id),
                  remote: true,
                  "data-show" => render_comment_id(link),
-                 class: "a_comment"
+                 class: "a_comment muted"
     %>
     •
     <%= link_to link.likes.size.to_s+"收藏".html_safe,
                 likes_path(link.class.to_s.underscore, link.id),
                 remote: true,
+                class: "muted",
                 :method => "post"
     %>
     <!--a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-bookmark"></i>收藏</a>

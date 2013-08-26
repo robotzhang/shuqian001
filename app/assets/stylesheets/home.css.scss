@@ -6,7 +6,9 @@
 .collection .user { padding-right: 15px; display: block; position: absolute; background: url(/assets/narrow_user_left.png) right center no-repeat; }
 .collection .user img { border-radius: 3px; }
 
-.tags a { margin-right: 5px; }
+.tags a { margin-right: 5px; margin: 0 2px 2px 0; }
 
 .active_users a { display: block; float: left; }
 .active_users img { border-radius: 3px; }
+
+.bottom-links a { color: #999; font-size: 12px; margin-right: 10px; }

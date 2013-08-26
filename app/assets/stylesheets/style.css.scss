@@ -1,5 +1,5 @@
 body { background-color: #EEF0F3; color: #494848; font-family: "Oxygen",Arial,"Hiragino Sans GB","Microsoft YaHei","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;}
-a { color: #373d48; }
+a { color: #259; }
 .padding10 { padding: 10px; }
 .padding20 { padding: 20px; }
 .mb20 { margin-bottom: 20px; }
@@ -33,3 +33,6 @@ a { color: #373d48; }
 
 .form-input { height: 20px; line-height: 19px; padding: 10px; margin: 0 0 2px; border-color: #b0b5bd #c1c5cb #d2d6dc; border-radius: 0!important; }
 .input-block-level { min-height: 40px; }
+
+i[class^=sq-icon-], i[class*=" sq-icon-"] { display: inline-block; line-height: 10px; vertical-align: 0; background-image: url(/assets/sprites.png); background-repeat: no-repeat; }
+.sq-icon-comments { background-position: -28px -22px; width: 9px; height: 10px; }
