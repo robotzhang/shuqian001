@@ -54,7 +54,7 @@
       <div class="content active_users clearfix">
       <% @users.each do |user| %>
       <a title="<%= user.username %>" href="<%= user_path(user) %>" target="_blank">
-        <img width="48" height="48" src="<%= user.avatar.normal %>" />
+        <img width="25" height="25" src="<%= user.avatar.middle %>" />
       </a>
       <% end %>
       </div>
