@@ -17,28 +17,46 @@
 
       <div class="mb10"><%= collection.description %></div>
 
-      <% if collection.tags.any? %>
-      <div class="mb5 tags">
-        <% collection.tags.each do |tag| %>
-          <a href="javascript:void(0);" class="fs12 muted"><%= "#"+tag.name %></a>
-        <% end %>
+      <div class="clearfix">
+          <% if collection.tags.any? %>
+          <div class="mb5 tags pull-right">
+            <% collection.tags.each do |tag| %>
+              <a href="javascript:void(0);" class="fs12 muted"><%= "#"+tag.name %></a>
+            <% end %>
+          </div>
+          <% end %>
+
+          <div class="bottom-links pull-left">
+            <div class="pull-left">
+              <a href="<%= collection_path(collection) %>">
+                <%= collection.links.size %>
+                链接
+              </a>
+
+              <a href="<%= collection_path(collection) %>">
+                <i class="sq-icon-comments"></i>
+                <%= collection.comments.size %>
+                评论
+              </a>
+            </div>
+          </div>
       </div>
+
+      <div class="line mb10"></div>
+
+      <% link = collection.links[0]; %>
+      <% unless link.blank? %>
+          <div class="links">
+            <div>
+              <a href="<%= collection_path(collection, link_id: link.id) %>" title="<%= link.user.username+"更新于"+link.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>">
+                <img width="16" height="16" src="<%= link.user.avatar.small %>"/> <%= link.title %>
+              </a>
+            </div>
+            <div class="fs12">
+              <%= truncate(link.description, :length => 48) %>
+            </div>
+          </div>
       <% end %>
-
-      <div class="clearfix bottom-links">
-        <div class="pull-left">
-          <a href="<%= collection_path(collection) %>">
-            <%= collection.links.size %>
-            链接
-          </a>
-
-          <a href="<%= collection_path(collection) %>">
-            <i class="sq-icon-comments"></i>
-            <%= collection.comments.size %>
-            评论
-          </a>
-        </div>
-      </div>
     </div>
     <% end %>
 
