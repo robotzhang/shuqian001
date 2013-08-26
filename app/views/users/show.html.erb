@@ -14,12 +14,6 @@
             <% end %>
           </div>
           <% end %>
-          <div id="avatar_form" class="modal hide">
-            <%= form_for @user, html: { multipart: true } do |f| %>
-                <%= f.file_field :avatar %>
-                <%= f.submit "上传" %>
-            <% end %>
-          </div>
         </div>
 
         <div class="attr">
