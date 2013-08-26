@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def index
-    @collections = Collection.all
+    @collections = Collection.page(params[:page]).per(20)
     @users = User.active
     render :template => "index"
   end
