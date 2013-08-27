@@ -2,3 +2,6 @@
 <% if can?(:edit, collection) %>
     <a href="<%= edit_collection_path(collection) %>" title="编辑"><i class="icon-edit"></i></a>
 <% end %>
+<% if can?(:destroy, collection) %>
+    <%= link_to '<i class="icon-remove"></i>'.html_safe, collection_path(collection), method: "delete", confirm: "确定删除？", title: "删除" %>
+<% end %>

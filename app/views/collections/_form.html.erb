@@ -20,6 +20,6 @@
   </div>
   <div>
     <%= f.submit "提交", :class => "btn btn-success span2" %>
-    <a style="margin-left: 10px;" href="<%= collection_path(@collection) %>" class="muted fs12">取消</a>
+    <a style="margin-left: 10px;" href="<%= @collection.id.blank? ? user_path(current_user) : collection_path(@collection) %>" class="muted fs12">取消</a>
   </div>
 <% end %>

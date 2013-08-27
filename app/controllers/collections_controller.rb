@@ -35,7 +35,12 @@ class CollectionsController < ApplicationController
 
   def tags
     @collections = Collection.tagged_with(params[:tag]).page(params[:page]).per(20)
-    p '-'*100
     @tags = Collection.tag_counts_on(:tags).limit(20)
+  end
+
+  def destroy
+    @collection = Collection.find(params[:id])
+    @collection.destroy
+    redirect_to user_path(current_user)
   end
 end
