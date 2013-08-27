@@ -37,3 +37,6 @@ form { margin: 0; }
 
 i[class^=sq-icon-], i[class*=" sq-icon-"] { display: inline-block; line-height: 10px; vertical-align: 0; background-image: url(/assets/sprites.png); background-repeat: no-repeat; }
 .sq-icon-comments { background-position: -28px -22px; width: 9px; height: 10px; }
+
+.sys_tags a { padding: 2px 5px; }
+.sys_tags a:hover, .sys_tags a.selected { background-color: #144465; color: #fff; text-decoration: none; border-radius: 2px; }

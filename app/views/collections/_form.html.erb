@@ -17,6 +17,12 @@
   <div class="mb20">
     <label>标签 <small class='muted'>输入完成按"回车"完成添加</small></label>
     <%= f.text_field :tag_list, value: @collection.tags.join(", "), class: 'form-input input-block-level', id: "tags" %>
+    <div class="sys_tags mt10">
+      <span class="muted">点击选择标签：</span>
+      <% Collection.sys_tags.each do |tag| %>
+      <a class="<%= 'selected' if @collection.tags.map{|t| t.name}.include?(tag) %>" href="javascript:void(0);"><%= tag %></a>
+      <% end %>
+    </div>
   </div>
   <div>
     <%= f.submit "提交", :class => "btn btn-success span2" %>
