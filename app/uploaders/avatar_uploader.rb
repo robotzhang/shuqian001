@@ -31,6 +31,6 @@ class AvatarUploader < BaseUploader
   end
 
   def extension_white_list
-    %w(jpg jpeg png)
+    %w(jpg jpeg png gif)
   end
 end
