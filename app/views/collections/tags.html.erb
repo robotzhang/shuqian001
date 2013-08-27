@@ -1,0 +1,84 @@
+<%= content_for(:stylesheets, stylesheet_link_tag("home")) %>
+<%= provide(:title, "标签#"+params[:tag]+"下的所有合集")  %>
+<div class="mb20">
+  标签 <strong class="muted">#<%= params[:tag] %></strong> 下的所有合集：
+</div>
+<div class="row">
+  <div class="span8 collection">
+    <% @collections.each do |collection| %>
+        <a class="user" href="<%= user_path(collection.user) %>" title="<%= collection.user.username %>">
+          <img src="<%= collection.user.avatar.normal %>" width="56" height="56">
+        </a>
+        <div class="box">
+          <div class="detail">
+            <a href="<%= collection_path(collection) %>"></a>
+          </div>
+          <div class="mb10">
+            <a href="<%= collection_path(collection) %>">
+              <%= collection.title %>
+            </a>
+          </div>
+
+          <div class="mb10"><%= collection.description %></div>
+
+          <div class="clearfix">
+            <% if collection.tags.any? %>
+                <div class="mb5 tags pull-right">
+                  <% collection.tags.each do |tag| %>
+                      <a href="<%= url_for(controller: "collections", action: "tags", tag: tag.name) %>" class="fs12 muted"><%= "#"+tag.name %></a>
+                  <% end %>
+                </div>
+            <% end %>
+
+            <div class="bottom-links pull-left">
+              <div class="pull-left">
+                <a href="<%= collection_path(collection) %>">
+                  <%= collection.links.size %>
+                  链接
+                </a>
+
+                <a href="<%= collection_path(collection) %>">
+                  <i class="sq-icon-comments"></i>
+                  <%= collection.comments.size %>
+                  评论
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="line mb10"></div>
+
+          <% link = collection.links[0]; %>
+          <% unless link.blank? %>
+              <div class="links">
+                <div>
+                  <a href="<%= collection_path(collection, link_id: link.id) %>" title="<%= link.user.username+"更新于"+link.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>">
+                    <img width="16" height="16" src="<%= link.user.avatar.small %>"/> <%= link.title %>
+                  </a>
+                </div>
+                <div class="fs12">
+                  <%= truncate(link.description, :length => 48) %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+    <% end %>
+
+    <div class="text-center"><%= paginate @collections, :theme => 'bootstrap', :remote => true %></div>
+  </div>
+  <div class="span4">
+    <div class="box clearfix">
+      <!--h3>
+        发现更多有趣的内容：
+      </h3-->
+      <h3>
+        热门标签：
+      </h3>
+      <div class="tags mb10">
+        <% @tags.each do |tag| %>
+            <%= link_to "#"+tag.name, controller: "collections", action: "tags", tag: tag.name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

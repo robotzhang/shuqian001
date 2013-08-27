@@ -32,4 +32,10 @@ class CollectionsController < ApplicationController
 
     Collection.increment_counter(:views, @collection.id) if !current_user || current_user.id != @collection.user.id
   end
+
+  def tags
+    @collections = Collection.tagged_with(params[:tag]).page(params[:page]).per(20)
+    p '-'*100
+    @tags = Collection.tag_counts_on(:tags).limit(20)
+  end
 end

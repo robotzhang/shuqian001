@@ -6,10 +6,11 @@
 .collection .user { padding-right: 15px; display: block; position: absolute; background: url(/assets/narrow_user_left.png) right center no-repeat; }
 .collection .user img { border-radius: 3px; }
 .collection .line { border-top-color: #f3f3f3; }
-
-.tags a { margin-right: 5px; margin: 0 2px 2px 0; }
+.collection .tags a { margin-right: 5px; margin: 0 2px 2px 0; }
 
 .active_users a { display: block; float: left; margin: 2px; }
 .active_users img { border-radius: 3px; }
 
 .bottom-links a { color: #999; font-size: 12px; margin-right: 10px; }
+.box .tags { padding: 0 5px; }
+.box .tags a{ color: #999; padding: 0 5px; white-space: nowrap; height: 100%; }

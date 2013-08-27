@@ -31,4 +31,5 @@ Shuqian001::Application.routes.draw do
       get :links
     end
   end
+  get "tags/:tag" => "collections#tags"
 end

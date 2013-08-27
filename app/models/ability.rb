@@ -35,6 +35,7 @@ class Ability
   end
 
   def basic_read_only
+    can [:tags], Collection
     can :read, :all
   end
 end

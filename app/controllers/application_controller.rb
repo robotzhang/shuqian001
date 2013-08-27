@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   def index
     @collections = Collection.includes([:links]).page(params[:page]).per(20)
     @users = User.active
+    @tags = Collection.tag_counts_on(:tags).limit(20)
     render :template => "index"
   end
 
