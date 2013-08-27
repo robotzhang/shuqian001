@@ -1,22 +1,25 @@
+<%= provide(:stylesheets, stylesheet_link_tag("jquery.tagsinput.css")) %>
+<%= provide(:javascripts, javascript_include_tag('jquery.tagsinput.js', "collections")) %>
 <%= form_for @collection do |f| %>
     <% if @collection.errors.any? %>
     <div class="alert alert-error">
       <%= @collection.errors.full_messages.join('<br>') %>
     </div>
     <% end %>
-  <div>
+  <div class="mb10">
     <%= f.label :title, "合集标题<small class='muted'>（必填）</small>".html_safe %>
-    <%= f.text_field :title, class: 'span6' %>
+    <%= f.text_field :title, class: 'form-input input-block-level' %>
   </div>
-  <div>
+  <div class="mb20">
     <%= f.label :description, "补充描述<small class='muted'>（必填）</small>".html_safe %>
-    <%= f.text_area :description, :rows => 4, class: 'span6' %>
+    <%= f.text_area :description, :rows => 4, class: 'input-block-level form-input', style: "height: 150px;" %>
+  </div>
+  <div class="mb20">
+    <label>标签 <small class='muted'>输入完成按"回车"完成添加</small></label>
+    <%= f.text_field :tag_list, value: @collection.tags.join(", "), class: 'form-input input-block-level', id: "tags" %>
   </div>
   <div>
-    <label>标签 <small class='muted'>多个标签用","隔开</small></label>
-    <%= f.text_field :tag_list, value: @collection.tags.join(", "), class: 'span6' %>
-  </div>
-  <div>
-    <%= f.submit "好了", :class => "btn" %>
+    <%= f.submit "提交", :class => "btn btn-success span2" %>
+    <a style="margin-left: 10px;" href="<%= collection_path(@collection) %>" class="muted fs12">取消</a>
   </div>
 <% end %>
