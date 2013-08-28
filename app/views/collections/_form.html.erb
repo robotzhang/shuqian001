@@ -1,11 +1,14 @@
 <%= provide(:stylesheets, stylesheet_link_tag("jquery.tagsinput.css")) %>
 <%= provide(:javascripts, javascript_include_tag('jquery.tagsinput.js', "collections")) %>
 <%= form_for @collection do |f| %>
-    <% if @collection.errors.any? %>
-    <div class="alert alert-error">
-      <%= @collection.errors.full_messages.join('<br>') %>
-    </div>
-    <% end %>
+  <%= f.hidden_field :types, :value => params[:types] %>
+
+  <% if @collection.errors.any? %>
+  <div class="alert alert-error">
+    <%= @collection.errors.full_messages.join('<br>').html_safe %>
+  </div>
+  <% end %>
+
   <div class="mb10">
     <%= f.label :title, "合集标题<small class='muted'>（必填）</small>".html_safe %>
     <%= f.text_field :title, class: 'form-input input-block-level' %>

@@ -52,21 +52,21 @@
 
         <% if user_signed_in? %>
           <ul class="nav pull-right">
-             <li class="top-menu">
-               <a href="<%= user_path(current_user) %>">
-                 <img height="25" width="25" src="<%= current_user.avatar.middle %>" />
-                 <%= current_user.username %>
-               </a>
-               <ul class="top-dropdown-menu">
-                 <li class="first">
-                   <a href="<%= user_path(current_user) %>">
-                     <i class="icon-home icon-white"></i>
-                     我的主页
-                   </a>
-                 </li>
-                 <li class="last"><%= link_to '<i class="icon-off icon-white"></i> 退出'.html_safe, destroy_user_session_path(back: request.url), method: :delete %></li>
-               </ul>
-             </li>
+            <li class="top-menu">
+              <a href="<%= user_path(current_user) %>">
+                <img height="25" width="25" src="<%= current_user.avatar.middle %>" />
+                <%= current_user.username %>
+              </a>
+              <ul class="top-dropdown-menu">
+                <li class="first">
+                  <a href="<%= user_path(current_user) %>">
+                    <i class="icon-home icon-white"></i>
+                    我的主页
+                  </a>
+                </li>
+                <li class="last"><%= link_to '<i class="icon-off icon-white"></i> 退出'.html_safe, destroy_user_session_path(back: request.url), method: :delete %></li>
+              </ul>
+            </li>
           </ul>
         <% else %>
             <ul class="nav pull-right">
@@ -75,6 +75,15 @@
               </li>
             </ul>
         <% end %>
+
+        <ul class="nav pull-right help">
+          <li>
+            <a href="<%= user_signed_in? ? new_collection_path(types: "ask") : new_user_session_path(back: request.url) %>">
+              <i class="icon-bullhorn icon-white"></i>
+              求资源
+            </a>
+          </li>
+        </ul>
       </div>
     </div><!-- /navbar-inner -->
   </div>

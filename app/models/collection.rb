@@ -4,9 +4,9 @@ class Collection < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :tags
 
-  attr_accessible :title, :description, :tag_list
+  attr_accessible :title, :description, :types, :tag_list
   validates :title, presence: true, uniqueness: true
-  #validates :description, presence: true, uniqueness: true
+  validates :description, presence: true#, uniqueness: true
 
   has_many :links
   has_many :likes, {:as => :likable, :dependent => :destroy}
@@ -14,6 +14,9 @@ class Collection < ActiveRecord::Base
   belongs_to :user
 
   before_save :set_tag_owner
+  before_save do
+    self.types = self.types != "ask" ? "share" : "ask"
+  end
 
   # 设置打标签的用户
   def set_tag_owner

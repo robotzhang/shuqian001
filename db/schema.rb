@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130823130041) do
+ActiveRecord::Schema.define(:version => 20130828153753) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "views",       :default => 0
+    t.string   "types",       :default => "share"
   end
 
   create_table "comments", :force => true do |t|
@@ -64,11 +65,9 @@ ActiveRecord::Schema.define(:version => 20130823130041) do
     t.string   "status"
     t.integer  "user_id"
     t.integer  "collection_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.string   "source",            :default => "web"
-    t.datetime "source_created_at"
-    t.integer  "views",             :default => 0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "views",         :default => 0
   end
 
   create_table "taggings", :force => true do |t|
