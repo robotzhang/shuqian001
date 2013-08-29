@@ -1,0 +1,7 @@
+<% if @link_group.errors.any? %>
+$('#new_link_group').replaceWith('<%= j render :partial => "links/link_group_form", locals: { link_group: @link_group } %>');
+<% else %>
+
+$('#new_link_group .alert-error').remove();
+$('#new_link_group')[0].reset();
+<% end %>

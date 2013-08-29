@@ -1,0 +1,25 @@
+<%= form_for link_group, remote: true, html: {class: "hide"} do |f| %>
+    <%= f.hidden_field :collection_id %>
+
+    <% if link_group.errors.any? %>
+        <div class="alert alert-error">
+          <button class="close">&times;</button>
+          <%= link_group.errors.full_messages.join('<br>').html_safe %>
+        </div>
+    <% end %>
+
+    <div>
+      <%= f.label :name, "分组名称<small class='muted'>(必填)</small>".html_safe %>
+      <%= f.text_field :name, class: "form-input input-block-level" %>
+    </div>
+
+    <div class="mb20">
+      <%= f.label :content, "分组描述<small class='muted'>(必填)</small>".html_safe %>
+      <%= f.text_area :content, class: "form-input input-block-level", style: "height: 100px;" %>
+    </div>
+
+    <div>
+      <%= f.submit "添加分组", class: "btn" %>
+      <a href="javascript:void(0);" class="muted fs12" id="cancel_create_link_group" style="margin-left: 10px;">取消</a>
+    </div>
+<% end %>

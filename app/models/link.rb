@@ -7,9 +7,10 @@ require 'open-uri'
 class Link < ActiveRecord::Base
   acts_as_commentable
 
-  attr_accessible :title, :url, :description, :collection_id
+  attr_accessible :title, :url, :description, :collection_id, :link_group_id
   belongs_to :collection
   belongs_to :user
+  belongs_to :link_group
   has_many :votes, {:as => :votable, :dependent => :destroy}
   has_many :likes, {:as => :likable, :dependent => :destroy}
   validates :title, presence: true, uniqueness: { scope: :collection_id }

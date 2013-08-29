@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828153753) do
+ActiveRecord::Schema.define(:version => 20130829071404) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(:version => 20130828153753) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "link_groups", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "collection_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "links", :force => true do |t|
     t.string   "title"
     t.string   "description"
@@ -68,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130828153753) do
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
     t.integer  "views",         :default => 0
+    t.integer  "link_group_id"
   end
 
   create_table "taggings", :force => true do |t|

@@ -8,7 +8,8 @@ class Collection < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true#, uniqueness: true
 
-  has_many :links
+  has_many :links, :order => 'created_at DESC'
+  has_many :link_groups, :order => 'created_at DESC'
   has_many :likes, {:as => :likable, :dependent => :destroy}
   #has_many :comments, :through => 'commentable_type'
   belongs_to :user
@@ -29,5 +30,16 @@ class Collection < ActiveRecord::Base
   # 系统标签
   def self.sys_tags
     ["技术", "电影", "音乐", "读书", "游戏", "小说", "设计", "博文", "软件", "学习", "创意", "互联网", "品牌"]
+  end
+
+  def all_links
+    links = self.links.sort_by{|link|  link.votes.where(vote: 'down').size - link.votes.where(vote: 'up').size }
+    hash = Hash.new
+    links.each do |link|
+      hash[link.link_group] = [] if hash[link.link_group].blank?
+      hash[link.link_group] << link
+    end
+
+    hash
   end
 end

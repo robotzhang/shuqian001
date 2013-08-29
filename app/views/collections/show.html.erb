@@ -1,6 +1,7 @@
 <% provide(:title, @collection.title) %>
 <% provide(:description, @collection.description) %>
 <% provide(:stylesheets, stylesheet_link_tag("collections")) %>
+<%= provide(:javascripts, javascript_include_tag("collections")) %>
 
 <div class="row" id="collection">
   <div class="span9">
@@ -36,14 +37,22 @@
           <%= @collection.links.size %>
           条链接：
         </div>
-        <ul class="links">
-          <% @collection.links.sort_by{|link| link.votes.where(vote: 'up').size - link.votes.where(vote: 'down').size }.reverse.each do |link| %>
-              <li class="clearfix"><%= render "links/item", link: link %></li>
+
+        <div class="links">
+        <% @collection.all_links.each do |group, links| %>
+          <% unless group.blank? %>
+            <h3><%= group.name %></h3>
+            <div><%= group.content %></div>
           <% end %>
-        </ul>
+          <% links.each do |link| %>
+            <div class="clearfix"><%= render "links/item", link: link %></div>
+          <% end %>
+        <% end %>
+        </div>
 
         <div class="add-links">
           <%= render :partial => "links/form", locals: {link: Link.new(collection_id: @collection.id)} %>
+          <%= render :partial => "links/link_group_form", locals: {link_group: LinkGroup.new(collection_id: @collection.id)} %>
         </div>
     </div>
   </div>

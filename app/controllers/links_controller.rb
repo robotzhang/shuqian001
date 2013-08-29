@@ -18,4 +18,10 @@ class LinksController < ApplicationController
 
     Link.increment_counter(:views, @link.id) if !current_user || current_user.id != @link.user.id
   end
+
+  # 添加分组
+  def group
+    @link_group = LinkGroup.new(params[:link_group])
+    @link_group.save
+  end
 end

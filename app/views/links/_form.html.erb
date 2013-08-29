@@ -9,28 +9,26 @@
     <%= f.hidden_field :collection_id, value: link.collection.id %>
 
     <div>
-      <%= f.label :link_group_id, "分组" %>
-      <select name="link_group_id">
-        <option></option>
-      </select>
-      <a href=""><i class="icon-plus-sign"></i>添加分组</a>
+      <%= f.label :link_group_id, "所属分组" %>
+      <%= f.select :link_group_id, @collection.link_groups.collect {|lg| [lg.name, lg.id] } %>
+      <a href="javascript:void(0);" id="create_link_group"><i class="icon-plus-sign"></i>添加分组</a>
     </div>
 
     <div>
       <%= f.label :url, "链接地址<small>( 必填 )</small>".html_safe %>
-      <%= f.text_field :url, class: 'span5' %>
+      <%= f.text_field :url, class: 'form-input input-block-level' %>
     </div>
 
     <% unless link.errors.messages[:title].blank? %>
     <div>
       <%= f.label :title, "标题<small>( 必填 )</small>".html_safe %>
-      <%= f.text_field :title, class: 'span5' %>
+      <%= f.text_field :title, class: 'form-input input-block-level' %>
     </div>
     <% end %>
 
     <div>
       <%= f.label :description, "描述<small class='muted'>( 详细的描述有助于大家理解以节省验证的时间 )</small>".html_safe %>
-      <%= f.text_area :description, class: 'span5', rows: 3 %>
+      <%= f.text_area :description, class: 'form-input input-block-level', style: "height: 100px;" %>
     </div>
 
     <div>
