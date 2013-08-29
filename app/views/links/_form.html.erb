@@ -7,6 +7,15 @@
     <% end %>
 
     <%= f.hidden_field :collection_id, value: link.collection.id %>
+
+    <div>
+      <%= f.label :link_group_id, "分组" %>
+      <select name="link_group_id">
+        <option></option>
+      </select>
+      <a href=""><i class="icon-plus-sign"></i>添加分组</a>
+    </div>
+
     <div>
       <%= f.label :url, "链接地址<small>( 必填 )</small>".html_safe %>
       <%= f.text_field :url, class: 'span5' %>
