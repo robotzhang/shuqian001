@@ -1,0 +1,8 @@
+<% if @link.errors.any? %>
+    var form = "<%= j render partial: "links/edit_form", locals: {link: @link} %>";
+    $('<%= "#edit_link_"+@link.id.to_s %>').replaceWith(form);
+<% else %>
+    var item = "<%= j render "links/item", link: @link %>";
+    $('#link_item_<%=@link.id.to_s%>').replaceWith(item);
+    $('#modal').modal('hide');
+<% end %>

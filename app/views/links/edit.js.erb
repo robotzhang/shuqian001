@@ -1,0 +1,5 @@
+var form = "<%= j render partial: "links/edit_form", locals: {link: @link} %>";
+var modal = $('#modal');
+modal.find('#modal_label').text('修改链接');
+modal.find('.modal-body').html(form);
+modal.modal();

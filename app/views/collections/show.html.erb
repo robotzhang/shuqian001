@@ -41,7 +41,11 @@
         <div class="links">
         <% @collection.all_links.each do |group, links| %>
           <% unless group.blank? %>
-            <h3><%= group.name %></h3>
+            <h2>
+              <%= group.name %>
+              <a href="" class="sq-btn"><i class="sq-icon-add"></i> 添加链接</a>
+              <a href="" class="sq-btn"><i class="sq-icon-edit"></i>修改分组</a>
+            </h2>
             <div><%= group.content %></div>
           <% end %>
           <% links.each do |link| %>

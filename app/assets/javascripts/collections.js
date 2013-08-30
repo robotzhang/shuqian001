@@ -44,4 +44,11 @@ $(document).ready(function() {
     $('#new_link').show();
     $('#new_link_group').hide();
   });
+
+  //
+  $("div[id^=link_item]").mouseover(function() {
+    $(this).find('.sq-btn').show();
+  }).mouseout(function() {
+    $(this).find('.sq-btn').hide();
+  });
 });

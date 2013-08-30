@@ -1,47 +1,54 @@
-<div class="pull-left vote">
-  <%= form_tag votes_path(link.class.to_s.underscore, link.id), :method => "post", :remote => true do %>
-      <input type="hidden" name="vote[vote]" value="up"/>
-      <button type="submit" title="好东西，赞" class="up">
-        <i class="icon-thumbs-up"></i>
-      </button>
-  <% end %>
-  <div class="number text-center">
-    <%= (link.votes.where(vote: 'up').size - link.votes.where(vote: 'down').size) %>
-  </div>
-  <%= form_tag votes_path(link.class.to_s.underscore, link.id), :method => "post", :remote => true do %>
-      <input type="hidden" name="vote[vote]" value="down"/>
-      <button type="submit" title="坑爹" class="down">
-        <i class="icon-thumbs-down"></i>
-      </button>
-  <% end %>
-</div>
+<div id="<%= "link_item_"+link.id.to_s %>">
+    <div class="pull-left vote">
+      <%= form_tag votes_path(link.class.to_s.underscore, link.id), :method => "post", :remote => true do %>
+          <input type="hidden" name="vote[vote]" value="up"/>
+          <button type="submit" title="好东西，赞" class="up">
+            <i class="icon-thumbs-up"></i>
+          </button>
+      <% end %>
+      <div class="number text-center">
+        <%= (link.votes.where(vote: 'up').size - link.votes.where(vote: 'down').size) %>
+      </div>
+      <%= form_tag votes_path(link.class.to_s.underscore, link.id), :method => "post", :remote => true do %>
+          <input type="hidden" name="vote[vote]" value="down"/>
+          <button type="submit" title="坑爹" class="down">
+            <i class="icon-thumbs-down"></i>
+          </button>
+      <% end %>
+    </div>
 
-<div class="link">
-  <div class="mb5">
-    <a target="_blank" href="<%= link.url %>"><%= link.title %></a>
-    <a class="pull-right" href="<%= user_path(link.user) %>" title="<%= link.user.username+link.created_at.strftime("%Y-%m-%d %H:%M:%S")+"第一次添加" %>">
-      <img src="<%= link.user.avatar.middle %>" width="25" height="25" />
-    </a>
-  </div>
-  <div class="mb5"><%= link.description %></div>
-  <div class="fs12 muted">
-    <%= link_to  link.comments.size.to_s+"条评论",
-                 comments_path(link.class.to_s.underscore, link.id),
-                 remote: true,
-                 "data-show" => render_comment_id(link),
-                 class: "a_comment muted"
-    %>
-    •
-    <%= link_to link.likes.size.to_s+"收藏".html_safe,
-                likes_path(link.class.to_s.underscore, link.id),
-                remote: true,
-                class: "muted",
-                :method => "post"
-    %>
-    <!--a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-bookmark"></i>收藏</a>
-    <a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-trash"></i>不相关链接</a>
-    <a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-map-marker"></i>举报</a-->
-  </div>
+    <div class="link">
+      <div class="mb5">
+        <a target="_blank" href="<%= link.url %>"><%= link.title %></a>
+        <a href="<%= edit_link_path(link) %>" data-remote="true" class="sq-btn" style="display: none;">
+          <i class="sq-icon-edit"></i>修改
+        </a>
+        <a class="pull-right" href="<%= user_path(link.user) %>" title="<%= link.user.username+link.created_at.strftime("%Y-%m-%d %H:%M:%S")+"第一次添加" %>">
+          <img src="<%= link.user.avatar.middle %>" width="25" height="25" />
+        </a>
+      </div>
+      <div class="mb5">
+        <%= link.description %>
+      </div>
+      <div class="fs12 muted">
+        <%= link_to  link.comments.size.to_s+"条评论",
+                     comments_path(link.class.to_s.underscore, link.id),
+                     remote: true,
+                     "data-show" => render_comment_id(link),
+                     class: "a_comment muted"
+        %>
+        •
+        <%= link_to link.likes.size.to_s+"收藏".html_safe,
+                    likes_path(link.class.to_s.underscore, link.id),
+                    remote: true,
+                    class: "muted",
+                    :method => "post"
+        %>
+        <!--a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-bookmark"></i>收藏</a>
+        <a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-trash"></i>不相关链接</a>
+        <a class="black fs12" style="color: #000;" href="javascript:void(0);"><i class="icon-map-marker"></i>举报</a-->
+      </div>
 
-  <div id="<%= render_comment_id(link) %>" class="comments"></div>
+      <div id="<%= render_comment_id(link) %>" class="comments"></div>
+    </div>
 </div>

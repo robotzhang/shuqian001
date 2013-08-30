@@ -10,12 +10,12 @@
 
     <div>
       <%= f.label :link_group_id, "所属分组" %>
-      <%= f.select :link_group_id, @collection.link_groups.collect {|lg| [lg.name, lg.id] } %>
+      <%= f.select :link_group_id, (link.collection || @collection).link_groups.collect {|lg| [lg.name, lg.id] } %>
       <a href="javascript:void(0);" id="create_link_group"><i class="icon-plus-sign"></i>添加分组</a>
     </div>
 
     <div>
-      <%= f.label :url, "链接地址<small>( 必填 )</small>".html_safe %>
+      <%= f.label :url, "链接地址<small class='muted'>( 必填 )</small>".html_safe %>
       <%= f.text_field :url, class: 'form-input input-block-level' %>
     </div>
 
@@ -26,7 +26,7 @@
     </div>
     <% end %>
 
-    <div>
+    <div class="mb20">
       <%= f.label :description, "描述<small class='muted'>( 详细的描述有助于大家理解以节省验证的时间 )</small>".html_safe %>
       <%= f.text_area :description, class: 'form-input input-block-level', style: "height: 100px;" %>
     </div>

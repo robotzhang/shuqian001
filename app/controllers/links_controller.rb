@@ -13,6 +13,15 @@ class LinksController < ApplicationController
     end
   end
 
+  def edit
+    @link = Link.find(params[:id])
+  end
+
+  def update
+    @link = Link.find(params[:id])
+    @link.update_attributes(params[:link])
+  end
+
   def show
     @link = Like.find(params[:id])
 

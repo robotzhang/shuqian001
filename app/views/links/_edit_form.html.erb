@@ -1,0 +1,25 @@
+<%= form_for link, remote: true do |f| %>
+    <div class="mb10">
+      <%= f.label :title, "链接标题<small>( 必填 )</small>".html_safe %>
+      <%= f.text_field :title, class: 'form-input input-block-level mb0' %>
+      <div class="fs12 muted">地址：<%= link.url %></div>
+    </div>
+
+    <div class="mb10">
+      <%= f.label :link_group_id, "所属分组" %>
+      <%= f.select :link_group_id,
+                   (link.collection || @collection).link_groups.collect {|lg| [lg.name, lg.id] },
+                   { "#{link.link_group.name}" => "#{link.link_group.id}"},
+                   class: "form-input input-block-level"
+      %>
+    </div>
+
+    <div class="mb20">
+      <%= f.label :description, "连接描述<small class='muted'>( 详细的描述有助于大家理解以节省验证的时间 )</small>".html_safe %>
+      <%= f.text_area :description, class: 'form-input input-block-level', style: "height: 150px;" %>
+    </div>
+
+    <div>
+      <%= f.submit "确定", :class => "btn btn-info span2" %>
+    </div>
+<% end %>
