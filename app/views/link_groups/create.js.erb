@@ -1,7 +1,10 @@
 <% if @link_group.errors.any? %>
-$('#new_link_group').replaceWith('<%= j render :partial => "link_groups/form", locals: { link_group: @link_group } %>');
-$('#new_link_group').show();
+    $('#new_link_group').replaceWith('<%= j render :partial => "link_groups/form", locals: { link_group: @link_group } %>');
 <% else %>
-$('#new_link_group .alert-error').remove();
-$('#new_link_group')[0].reset();
+    // 插入到正文
+    $('.add-links').before($('<%= j render "link_groups/item", link_group: @link_group %>'));
+    // 更新select项
+    var select = "<%= j select_tag "link_group_id", options_for_select(@link_group.collection.link_groups.collect {|lg| [lg.name, lg.id] }) %>";
+    $('select[name="link[link_group_id]"]').replaceWith(select);
+    $('#modal').modal('hide');
 <% end %>

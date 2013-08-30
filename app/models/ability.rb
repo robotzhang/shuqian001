@@ -18,13 +18,18 @@ class Ability
 
   protected
   def base_user_role(user)
-    can [:create], [Collection, Comment, Link, Vote, Like]
+    can [:create], [Collection, Comment, Link, Vote, Like, LinkGroup]
     can [:edit, :update, :destroy], Collection do |collection|
       (collection.user_id == user.id)
     end
     can :manage, Link do |link|
       (link.user_id == user.id)
     end
+    # link_group
+    can [:edit, :update, :destroy], LinkGroup do |group|
+      (group.collection.user_id == user.id)
+    end
+
     can [:update, :logout], User do |me|
       me.id == user.id
     end
