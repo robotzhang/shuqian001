@@ -1,0 +1,8 @@
+<div class="link_group" id="<%= "link_group_"+link_group.id.to_s %>">
+  <h2>
+    <%= link_group.name %>
+    <a href="" class="sq-btn"><i class="sq-icon-add"></i> 添加链接</a>
+    <a href="<%= edit_link_group_path(link_group) %>" class="sq-btn" data-remote="true"><i class="sq-icon-edit"></i>修改分组</a>
+  </h2>
+  <div><%= link_group.content %></div>
+</div>

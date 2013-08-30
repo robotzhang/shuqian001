@@ -11,8 +11,8 @@ Shuqian001::Application.routes.draw do
   end
   #get 'users/:id' => 'users#index'
 
-  post "link_groups" => "links#group"
   resources :links
+  resources :link_groups
 
   scope ':commentable_type/:commentable_id' do
     resources :comments

@@ -1,0 +1,5 @@
+var form = "<%= j render :partial => "link_groups/form", locals: { link_group: @link_group } %>";
+var modal = $('#modal');
+modal.find('#modal_label').text('修改分组');
+modal.find('.modal-body').html(form);
+modal.modal();

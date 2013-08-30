@@ -38,25 +38,22 @@
           条链接：
         </div>
 
-        <div class="links">
-        <% @collection.all_links.each do |group, links| %>
+      <% @collection.all_links.each do |group, links| %>
+        <div class="group">
           <% unless group.blank? %>
-            <h2>
-              <%= group.name %>
-              <a href="" class="sq-btn"><i class="sq-icon-add"></i> 添加链接</a>
-              <a href="" class="sq-btn"><i class="sq-icon-edit"></i>修改分组</a>
-            </h2>
-            <div><%= group.content %></div>
+              <%= render "link_groups/item", link_group: group %>
           <% end %>
-          <% links.each do |link| %>
-            <div class="clearfix"><%= render "links/item", link: link %></div>
-          <% end %>
-        <% end %>
+
+          <div class="links">
+            <% links.each do |link| %>
+              <%= render "links/item", link: link %>
+            <% end %>
+          </div>
         </div>
+      <% end %>
 
         <div class="add-links">
           <%= render :partial => "links/form", locals: {link: Link.new(collection_id: @collection.id)} %>
-          <%= render :partial => "links/link_group_form", locals: {link_group: LinkGroup.new(collection_id: @collection.id)} %>
         </div>
     </div>
   </div>

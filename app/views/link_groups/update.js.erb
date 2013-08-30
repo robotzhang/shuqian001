@@ -1,0 +1,8 @@
+<% if @link_group.errors.any? %>
+var form = "<%= j render :partial => "link_groups/form", locals: { link_group: @link_group } %>";
+$('<%= "#edit_link_group_"+@link_group.id.to_s %>').replaceWith(form);
+<% else %>
+var item = "<%= j render "link_groups/item", link_group: @link_group %>";
+$('#link_group_<%=@link_group.id.to_s%>').replaceWith(item);
+$('#modal').modal('hide');
+<% end %>

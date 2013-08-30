@@ -33,8 +33,13 @@ class Collection < ActiveRecord::Base
   end
 
   def all_links
-    links = self.links.sort_by{|link|  link.votes.where(vote: 'down').size - link.votes.where(vote: 'up').size }
     hash = Hash.new
+    groups = self.link_groups.reverse
+    groups.each do |group|
+      hash[group] = []
+    end
+
+    links = self.links.sort_by{|link|  link.votes.where(vote: 'down').size - link.votes.where(vote: 'up').size }
     links.each do |link|
       hash[link.link_group] = [] if hash[link.link_group].blank?
       hash[link.link_group] << link

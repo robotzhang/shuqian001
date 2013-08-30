@@ -11,7 +11,9 @@
     <div>
       <%= f.label :link_group_id, "所属分组" %>
       <%= f.select :link_group_id, (link.collection || @collection).link_groups.collect {|lg| [lg.name, lg.id] } %>
-      <a href="javascript:void(0);" id="create_link_group"><i class="icon-plus-sign"></i>添加分组</a>
+      <a href="<%= new_link_group_path(collection_id: @collection.id) %>" data-remote="true">
+        <i class="icon-plus-sign"></i>添加分组
+      </a>
     </div>
 
     <div>
