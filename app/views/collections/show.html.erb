@@ -6,20 +6,21 @@
 <div class="row" id="collection">
   <div class="span9">
     <div class="box padding20">
+      <div class="info">
         <div>
           <% @collection.tags.each do |tag| %>
           <code><a href="#"><%= tag.name %></a></code>
           <% end %>
         </div>
         <h1 class="page-title">
-          <a href="<%= user_path(@collection.user) %>" class="pull-right">
-            <img width="32" height="32" src="<%= @collection.user.avatar.normal %>"/>
+          <a title="<%= @collection.user.username %>" href="<%= user_path(@collection.user) %>" class="pull-right">
+            <img width="25" height="25" src="<%= @collection.user.avatar.middle %>"/>
           </a>
           <%= @collection.title %>
         </h1>
-        <div><%= @collection.description %></div>
+        <div class="fs12 mt5"><%= @collection.description %></div>
 
-        <div class="muted fs12">
+        <div class="muted fs12 mt5">
           <a href="<%= user_path(@collection.user) %>" target="_blank"><%= @collection.user.username %></a>
           <%= @collection.created_at.strftime("%Y-%m-%d %H:%I:%S") %>
           <%= link_to  @collection.comments.size.to_s+"条评论",
@@ -32,11 +33,12 @@
 
         <div id="<%= render_comment_id(@collection) %>" class="comments"></div>
 
-        <div class="mb10 mt10">
+        <!--div class="mb10 mt10">
           <i class="icon-tasks"></i>
           <%= @collection.links.size %>
           条链接：
-        </div>
+        </div-->
+      </div>
 
       <% @collection.all_links.each do |group, links| %>
         <div class="group">
