@@ -13,7 +13,7 @@
         <%= f.label :link_group_id, "所属分组" %>
         <%= f.select :link_group_id, (link.collection || @collection).link_groups.collect {|lg| [lg.name, lg.id] } %>
       <% end %>
-      <% if can? :edit, @collection %>
+      <% if can? :edit, @collection && @collection.types != "ask" %>
       <a href="<%= new_link_group_path(collection_id: @collection.id) %>" data-remote="true">
         <i class="icon-plus-sign"></i>添加分组
       </a>
