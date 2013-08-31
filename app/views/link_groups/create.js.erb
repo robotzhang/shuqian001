@@ -6,6 +6,7 @@
     $('.add-links').before($("<div class='group'></div>").append(item).append($("<div class='links'></div>")));
     // 更新select项
     var select = "<%= j select_tag "link_group_id", options_for_select(@link_group.collection.link_groups.collect {|lg| [lg.name, lg.id] }) %>";
+    select.find("option:first").attr("selected", true);
     $('select[name="link[link_group_id]"]').replaceWith(select);
     $('#modal').modal('hide');
 <% end %>
