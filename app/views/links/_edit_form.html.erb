@@ -5,14 +5,16 @@
       <div class="fs12 muted">地址：<%= link.url %></div>
     </div>
 
+    <% if link.collection.types == "share" && link.collection.link_groups.any? %>
     <div class="mb10">
       <%= f.label :link_group_id, "所属分组" %>
       <%= f.select :link_group_id,
                    (link.collection || @collection).link_groups.collect {|lg| [lg.name, lg.id] },
-                   { "#{link.link_group.name}" => "#{link.link_group.id}"},
+                   link.link_group.blank? ? Hash.new : { "#{link.link_group.name}" => "#{link.link_group.id}"},
                    class: "form-input input-block-level"
       %>
     </div>
+    <% end %>
 
     <div class="mb20">
       <%= f.label :description, "连接描述<small class='muted'>( 详细的描述有助于大家理解以节省验证的时间 )</small>".html_safe %>

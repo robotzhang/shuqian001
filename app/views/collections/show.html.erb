@@ -54,9 +54,16 @@
         </div>
       <% end %>
 
-        <div class="add-links">
-          <%= render :partial => "links/form", locals: {link: Link.new(collection_id: @collection.id)} %>
+      <% if @collection.all_links.blank? %>
+        <div class="group">
+          <div class="links">
+          </div>
         </div>
+      <% end %>
+
+      <div class="add-links">
+        <%= render :partial => "links/form", locals: {link: Link.new(collection_id: @collection.id)} %>
+      </div>
     </div>
   </div>
   <div class="span3">
