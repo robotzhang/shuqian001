@@ -5,7 +5,7 @@ var item = $('<%= j render :partial => "links/item", locals: { link: @link } %>'
 <% if @link.link_group.blank? %>
     var container = $(".group:last").find(".links");
 <% else %>
-    var container = $("#link_group_<%=@link.link_group_id%>").parents(".group");
+    var container = $("#link_group_<%=@link.link_group_id%>").parents(".group").find(".links");
 <% end %>
 
 item.appendTo(container);
