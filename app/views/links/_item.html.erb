@@ -18,12 +18,14 @@
     </div>
 
     <div class="link">
-      <div class="mb5">
+      <div class="mb5 title">
         <a target="_blank" href="<%= link.url %>"><%= link.title %></a>
         <% if can? :edit, link %>
-        <a href="<%= edit_link_path(link) %>" data-remote="true" class="sq-btn" style="display: none;">
-          <i class="sq-icon-edit"></i>修改
-        </a>
+          <ul class="actions box">
+            <a href="<%= edit_link_path(link) %>" data-remote="true" class="sq-btn">
+              <i class="sq-icon-edit"></i>修改
+            </a>
+          </ul>
         <% end %>
         <a class="pull-right" href="<%= user_path(link.user) %>" title="<%= link.user.username+link.created_at.strftime("%Y-%m-%d %H:%M:%S")+"第一次添加" %>">
           <img src="<%= link.user.avatar.middle %>" width="25" height="25" />

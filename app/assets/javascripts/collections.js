@@ -34,21 +34,22 @@ $(document).ready(function() {
     }
   });
 
-  // 添加分组和添加链接的切换
-  $("#create_link_group").click(function() {
-    $('#new_link').hide();
-    $('#new_link_group').show();
-  });
-
-  $("#cancel_create_link_group").click(function() {
-    $('#new_link').show();
-    $('#new_link_group').hide();
-  });
-
   //
-  $("div[id^=link_item]").mouseover(function() {
-    $(this).find('.sq-btn').show();
+  $("div[id^=link_item] .link").mouseover(function() {
+    $(this).find('.actions').show();
   }).mouseout(function() {
-    $(this).find('.sq-btn').hide();
+    $(this).find('.actions').hide();
+  });
+
+  // 分组action的显示控制
+  $('.link_group h2').live({
+    "mouseover": function() {
+      var actions = $(this).find(".actions");
+      actions.css({left: $(this).offset().left, top: $(this).offset().top + $(this).height()});
+      actions.show();
+    },
+    "mouseout": function() {
+      $(this).find(".actions").hide();
+    }
   });
 });
