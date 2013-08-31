@@ -35,10 +35,13 @@ $(document).ready(function() {
   });
 
   //
-  $("div[id^=link_item] .link").mouseover(function() {
-    $(this).find('.actions').show();
-  }).mouseout(function() {
-    $(this).find('.actions').hide();
+  $("div[id^=link_item] .link").live({
+    "mouseover": function() {
+      $(this).find('.actions').show();
+    },
+    "mouseout": function() {
+      $(this).find('.actions').hide();
+    }
   });
 
   // 分组action的显示控制
@@ -50,6 +53,17 @@ $(document).ready(function() {
     },
     "mouseout": function() {
       $(this).find(".actions").hide();
+    }
+  });
+
+  //
+  $('.add-link-to-group').live({
+    "click": function() {
+      var group_id = $(this).data('group');
+      $('select[name="link[link_group_id]"]').val(group_id);
+      $('#new_link').find('[name="link[url]"]').focus();
+      //$("html,body").animate({scrollTop: $("#"+$(this).attr("href")).offset().top}, 1000);
+      //return false;
     }
   });
 });

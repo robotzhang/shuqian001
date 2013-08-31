@@ -2,22 +2,28 @@
   <h2>
     <%= link_group.name %>
     <ul class="actions box hide">
-        <li><a href="" class="sq-btn"><i class="sq-icon-add"></i>添加链接</a></li>
-        <% if can? :edit, link_group %>
+      <% if can? :edit, link_group %>
         <li>
-          <a href="<%= edit_link_group_path(link_group) %>" class="sq-btn" data-remote="true"><i class="sq-icon-edit"></i>修改分组</a>
+          <a href="#new_link" data-group="<%= link_group.id %>" class="sq-btn add-link-to-group">
+            <i class="sq-icon-add"></i>添加链接
+          </a>
         </li>
-        <% end %>
-        <% if can? :destroy, link_group %>
-        <li>
-        <%= link_to '<i class="sq-icon-remove"></i>删除分组'.html_safe,
-                    link_group_path(link_group),
-                    class: "sq-btn",
-                    method: :delete,
-                    confirm: "确定删除"
-        %>
-        </li>
-        <% end %>
+      <% end %>
+      <% if can? :edit, link_group %>
+      <li>
+        <a href="<%= edit_link_group_path(link_group) %>" class="sq-btn" data-remote="true"><i class="sq-icon-edit"></i>修改分组</a>
+      </li>
+      <% end %>
+      <% if can? :destroy, link_group %>
+      <li>
+      <%= link_to '<i class="sq-icon-remove"></i>删除分组'.html_safe,
+                  link_group_path(link_group),
+                  class: "sq-btn",
+                  method: :delete,
+                  confirm: "确定删除"
+      %>
+      </li>
+      <% end %>
     </ul>
   </h2>
   <div><%= link_group.content %></div>
