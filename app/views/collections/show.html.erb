@@ -17,8 +17,11 @@
             <img width="25" height="25" src="<%= @collection.user.avatar.middle %>"/>
           </a>
           <%= @collection.title %>
+          <% if can? :edit, @collection %>
+              <a href="<%= edit_collection_path(@collection) %>" class="sq-btn"><i class="sq-icon-edit"></i>修改合集</a>
+          <% end %>
         </h1>
-        <div class="fs12 mt5"><%= @collection.description %></div>
+        <div class="fs12 mt5"><%= simple_format @collection.description %></div>
 
         <div class="muted fs12 mt5">
           <a href="<%= user_path(@collection.user) %>" target="_blank"><%= @collection.user.username %></a>
