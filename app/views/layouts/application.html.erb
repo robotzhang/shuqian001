@@ -5,6 +5,7 @@
   <meta name="baidu-site-verification" content="cqRqijz3h9" />
   <%= csrf_meta_tag %>
   <title><%= yield(:title).blank? ? "发现和分享你的网络世界 - 书签网" : yield(:title)+' - 书签网' %></title>
+  <link rel="shortcut icon" href="<%= asset_path("favicon.png") %>">
   <meta name="description" content="<%= yield(:description).blank? ? "" : yield(:description) %>">
   <meta name="author" content="robot.zhang">
   <%= stylesheet_link_tag 'application', :media => "all" %>
