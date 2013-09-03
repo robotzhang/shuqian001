@@ -20,6 +20,10 @@ class AvatarUploader < BaseUploader
     process :resize_to_fill => [200, 200]
   end
 
+  def default_url
+    "/assets/avatar/" + [version_name, "default.jpg"].compact.join('_')
+  end
+
   def store_dir
     "uploads/avatar/#{model.id}"
   end
