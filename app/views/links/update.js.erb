@@ -3,6 +3,10 @@
     $('<%= "#edit_link_"+@link.id.to_s %>').replaceWith(form);
 <% else %>
     var item = "<%= j render "links/item", link: @link %>";
-    $('#link_item_<%=@link.id.to_s%>').replaceWith(item);
+    var link = $("#link_item_<%=@link.id.to_s%>");
+    link.replaceWith(item);
+    <% unless @link.link_group.blank? # 如果有分组，在插入到分组下 %>
+        $("#link_group_<%=@link.link_group_id%>").parents(".group").find(".links").append(link);
+    <% end %>
     $('#modal').modal('hide');
 <% end %>
