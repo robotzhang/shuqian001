@@ -52,3 +52,6 @@ i[class^=sq-icon-], i[class*=" sq-icon-"] { display: inline-block; line-height: 
 
 .sys_tags a { padding: 2px 5px; }
 .sys_tags a:hover, .sys_tags a.selected { background-color: #144465; color: #fff; text-decoration: none; border-radius: 2px; }
+
+.user_list a { display: block; float: left; margin: 2px; }
+.user_list img { border-radius: 3px; }

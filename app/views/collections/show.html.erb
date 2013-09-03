@@ -82,15 +82,13 @@
         人关注该合集：
       </div>
 
-      <ul class="unstyled mb0">
+      <div class="user_list unstyled mb0">
         <% @collection.likes.each do |like| %>
-        <li>
           <a href="<%= user_path(like.user) %>" title="<%= like.user.username %>">
             <img width="25" height="25" src="<%= like.user.avatar.middle %>"/>
           </a>
-        </li>
         <% end %>
-      </ul>
+      </div>
     </div>
 
     <div class="clearfix line mt10 mb10"></div>
