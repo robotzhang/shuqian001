@@ -33,8 +33,4 @@ class AvatarUploader < BaseUploader
       "#{Time.now.to_i}.#{file.extension.downcase}"
     end
   end
-
-  def extension_white_list
-    %w(jpg jpeg png gif)
-  end
 end

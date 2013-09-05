@@ -34,6 +34,11 @@
       <div class="mb5 fs12">
         <%= link.description %>
       </div>
+      <div class="mb10">
+        <% link.images.each do |image| %>
+            <%= image_tag image.file.url %>
+        <% end %>
+      </div>
       <div class="fs12 muted">
         <%= link_to  link.comments.size.to_s+"条评论",
                      comments_path(link.class.to_s.underscore, link.id),

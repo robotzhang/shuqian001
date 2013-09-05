@@ -26,6 +26,10 @@ Shuqian001::Application.routes.draw do
     resources :likes
   end
 
+  scope ':imagable_type/(:imagable_id)' do
+    resources :images
+  end
+
   resources :collections, :path => 'heji' do
     #resources :comments
     member do

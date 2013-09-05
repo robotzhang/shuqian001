@@ -33,11 +33,22 @@
     <% end %>
 
     <div class="mb20">
+      <div class="pull-right">
+        <a href="javascript:void(0);" data-action="<%= images_path(link.class.to_s.underscore, link.id) %>" class="add-image" title="添加图片">
+          <i class="sq-icon-image "></i>
+        </a>
+      </div>
       <%= f.label :description, "描述<small class='muted'>( 详细的描述有助于大家理解以节省验证的时间 )</small>".html_safe %>
       <%= f.text_area :description, class: 'form-input input-block-level', style: "height: 100px;" %>
     </div>
 
     <div>
+      <div class="link_images box pull-right">
+        <div class="hide"><input type="hidden" name="image_ids" value="<%= link.images.map{|image| image.id}.join(",") %>" /></div>
+        <% link.images.each do |image| %>
+        <%= image_tag image.file.url %>
+        <% end %>
+      </div>
       <%= f.submit "添加链接", :class => "btn" %>
       <% unless user_signed_in? %>
       <a href="<%= new_user_session_path %>" class="muted fs12">登录</a>

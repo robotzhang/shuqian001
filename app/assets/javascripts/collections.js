@@ -1,3 +1,5 @@
+//= require jquery.uploader.js
+
 $(document).ready(function() {
     $('.load-comments').click(function() {
         $('#comments').slideToggle();
@@ -65,5 +67,23 @@ $(document).ready(function() {
       //$("html,body").animate({scrollTop: $("#"+$(this).attr("href")).offset().top}, 1000);
       //return false;
     }
+  });
+
+  // 添加图片
+  function add_image_success(res) { // 添加图片成功的回调函数
+    var ids = $('.link_images').find('input[name=image_ids]');
+    ids.val(ids.val() + "," + res.id);
+    var textarea = $('#new_link').find('textarea');
+    $('.link_images').css({
+      top: textarea.offset().top + textarea.height() + 25,
+      left: textarea.offset().left + textarea.width() - $('.link_images').width() + 10
+    });
+  }
+  $('.add-image').click(function(){
+    $(this).uploader({
+      action: $(this).data('action'),
+      success_info_panel: ".link_images",
+      callback: add_image_success
+    });
   });
 });

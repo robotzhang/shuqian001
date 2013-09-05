@@ -10,6 +10,7 @@ form { margin: 0; }
 .box h3 { padding: 10px; border-bottom: 1px dashed #ece5d8; font-size: 100%; line-height: 100%; margin: 0; margin-bottom: 7px; }
 .box h2 { font-size: 140%; line-height: 100%; margin: 0; margin-bottom: 30px; }
 .box .content { padding: 10px; padding-top: 0; margin: 0 2px 2px 0; }
+.abs { position: absolute; z-index: 999; }
 
 .modal { width: 700px; border-radius: 0; left: 45%; }
 .modal h3 { font-size: 120%; font-weight: normal; }
@@ -45,6 +46,7 @@ i[class^=sq-icon-], i[class*=" sq-icon-"] { display: inline-block; line-height: 
 .sq-icon-edit { background-position: -118px -50px; height: 12px; margin-right: 4px; outline: medium none; overflow: hidden; width: 12px; vertical-align: -3px!important; }
 .sq-icon-remove { background-position: -234px -91px; height: 12px; width: 12px; margin-right: 4px; vertical-align: -2px!important; }
 .sq-icon-setting { background-position: -88px -147px; width: 14px; height: 14px; vertical-align: -2px!important; }
+.sq-icon-image { background-position: -28px -0px; width: 13px; height: 16px; }
 .sq-btn { color: #999; display: inline-block; font-size: 12px; -webkit-text-size-adjust: none; font-weight: 400; padding: 0 5px 0 2px; border-radius: 2px; margin: 0 0 0 2px; }
 .sq-btn:hover { text-decoration: none; background-color: #EFF6FA; color: #698EBF; }
 .sq-btn:hover > .sq-icon-edit { background-position: -131px -50px; }

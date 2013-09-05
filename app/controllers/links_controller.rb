@@ -6,6 +6,9 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.parser(Link.new(params[:link]))
+    if params[:image_ids]
+      @link.images = Image.find(params[:image_ids].split(",").map{|id| id.strip unless id.strip.blank?})
+    end
     @link.user_id = current_user.id
     @link.save
     respond_to do |format|

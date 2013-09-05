@@ -13,6 +13,7 @@ class Link < ActiveRecord::Base
   belongs_to :link_group
   has_many :votes, {:as => :votable, :dependent => :destroy}
   has_many :likes, {:as => :likable, :dependent => :destroy}
+  has_many :images, {:as => :imagable}
   validates :title, presence: true, uniqueness: { scope: :collection_id }
   validates :description, presence: true
   validates :url, presence: true, uniqueness: { scope: :collection_id }
