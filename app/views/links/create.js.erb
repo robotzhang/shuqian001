@@ -12,6 +12,6 @@ item.appendTo(container);
 
 $('#new_link .alert-error').remove();
 $('#new_link .link_images img').remove();
-$('#new_link .link_image input').val("");
+$('#new_link .link_images').find("input[name=image_ids]").val("");
 $('#new_link')[0].reset();
 <% end %>
