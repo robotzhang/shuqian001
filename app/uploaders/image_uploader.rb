@@ -1,6 +1,8 @@
 # coding: utf-8
 class ImageUploader < BaseUploader
-  #process :resize_to_limit => [680, nil]
+  #version :thumb  do
+  #  process :resize_to_fill => [100, nil]
+  #end
 
   def store_dir
     "uploads/images"
