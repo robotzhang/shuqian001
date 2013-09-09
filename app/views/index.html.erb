@@ -21,7 +21,7 @@
           <% if collection.tags.any? %>
           <div class="mb5 tags pull-right">
             <% collection.tags.each do |tag| %>
-              <a href="<%= url_for(controller: "collections", action: "tags", tag: tag.name) %>" class="fs12 muted"><%= "#"+tag.name %></a>
+              <a href="<%= tag_path(tag.name) %>" class="fs12 muted"><%= "#"+tag.name %></a>
             <% end %>
           </div>
           <% end %>
@@ -72,7 +72,7 @@
       </h3>
       <div class="tags">
         <% @tags.each do |tag| %>
-            <%= link_to "#"+tag.name, controller: "collections", action: "tags", tag: tag.name %>
+            <%= link_to "#"+tag.name, tag_path(tag.name) %>
         <% end %>
       </div>
       <h3>活跃用户：</h3>

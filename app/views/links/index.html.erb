@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="span9">
+    <div class="box padding20">
+      <% @links.each do |link| %>
+        <div>
+          <a href="<%= link_path(link) %>">
+            <%= link.title %>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="span3">
+    <div class="line mb10"></div>
+    <div class="mb10">
+      <a href="<%= new_link_path %>" class="btn btn-success btn-block">添加链接</a>
+    </div>
+    <div class="line mb10"></div>
+    <div>
+      <div><strong>热门标签</strong><a href="" class="fs12 muted pull-right">更多</a> </div>
+      <div>
+
+      </div>
+    </div>
+  </div>
+</div>

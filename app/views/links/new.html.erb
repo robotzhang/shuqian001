@@ -1,5 +1,36 @@
-<%= form_for @link do |f| %>
-  <%= f.label :url, "链接地址" %>
-  <%= f.text_field :url %>
-  <%= f.submit "添加", :class => "btn" %>
-<% end %>
+<div class="row">
+  <div class="span9">
+    <div class="box padding20">
+        <%= form_for @link do |f| %>
+          <% if @link.errors.any? %>
+              <div class="alert alert-error">
+                <button class="close">&times;</button>
+                <%= @link.errors.full_messages.join('<br>').html_safe %>
+              </div>
+          <% end %>
+
+          <div>
+            <label for="link_url">
+              链接地址
+              <a href="javascript:void(0);" class="pull-right muted fs12">自动标题</a>
+            </label>
+            <%= f.text_field :url, class: "form-input input-block-level" %>
+          </div>
+
+          <div>
+            <%= f.label :title, "链接标题" %>
+            <%= f.text_field :title, class: "form-input input-block-level" %>
+          </div>
+
+          <div>
+            <%= f.label :tag_list, "标签" %>
+            <%= f.text_field :tag_list, value:  (@link.tag_list.blank? ? @link.tags : @link.tag_list).join(", "), class: "form-input input-block-level" %>
+          </div>
+
+          <div class="mt10">
+            <%= f.submit "添加", :class => "btn btn-success span2" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

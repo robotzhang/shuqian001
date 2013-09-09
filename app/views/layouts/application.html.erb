@@ -40,7 +40,10 @@
         </a>
         <a class="brand" href="<%=request.base_url%>">书签网</a>
         <ul class="nav help">
-          <li><a href="<%= helps_path %>">帮助</a></li>
+          <li><a href="<%= helps_path %>">首页</a></li>
+          <li><a href="<%= helps_path %>">合集</a></li>
+          <li><a href="<%= links_path %>">链接</a></li>
+          <li><a href="<%= links_path %>">标签</a></li>
           <% unless user_signed_in? %>
           <li>
             <a href="<%= new_user_registration_path %>">

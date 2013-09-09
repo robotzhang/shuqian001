@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="span9">
+    <div class="box padding20">
+      <div>
+        <div class="pull-left vote">
+          <%= form_tag votes_path(@link.class.to_s.underscore, @link.id), :method => "post", :remote => true do %>
+              <input type="hidden" name="vote[vote]" value="up"/>
+              <button type="submit" title="好东西，赞" class="up">
+                <i class="icon-thumbs-up"></i>
+              </button>
+          <% end %>
+          <div class="number text-center">
+            <%= (@link.votes.where(vote: 'up').size - @link.votes.where(vote: 'down').size) %>
+          </div>
+          <%= form_tag votes_path(@link.class.to_s.underscore, @link.id), :method => "post", :remote => true do %>
+              <input type="hidden" name="vote[vote]" value="down"/>
+              <button type="submit" title="坑爹" class="down">
+                <i class="icon-thumbs-down"></i>
+              </button>
+          <% end %>
+        </div>
+        <div>
+            <h2 class="mb10"><a href="<%= @link.url %>"><%= @link.title %></a></h2>
+            <div>
+              <%= @link.user.username %>
+              <a href=""><%= @link.likes.size %>收藏</a>
+            </div>
+        </div>
+      </div>
+
+
+      <div class="comments">
+        <% @link.comments.each do |comment| %>
+          <div><%= comment.comment %></div>
+        <% end %>
+
+        <%= render :partial => "comments/form" %>
+      </div>
+    </div>
+  </div>
+  <div class="span3">
+    <div class="mb10">
+      <div><strong>所属标签</strong></div>
+    </div>
+
+    <div class="line mb10"></div>
+
+    <div class="mb10">
+      <div><strong>相似链接</strong></div>
+    </div>
+    <div class="line mb10"></div>
+    <div class="mb10">
+      <a href="<%= new_link_path %>" class="btn btn-success btn-block">添加链接</a>
+    </div>
+    <div class="line mb10"></div>
+    <div>
+      <div><strong>链接状态</strong></div>
+      <div class="fs12 muted">被 <strong><%= @link.views %></strong> 次浏览</div>
+    </div>
+  </div>
+</div>

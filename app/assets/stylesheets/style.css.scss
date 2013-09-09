@@ -37,7 +37,7 @@ form { margin: 0; }
 .footer a { color: #999; font-size: 12px; }
 .line { border-top: #dadada 1px solid; border-bottom: #fff 1px solid; }
 
-.form-input { height: 20px; line-height: 19px; padding: 10px; margin: 0 0 2px; border-color: #b0b5bd #c1c5cb #d2d6dc; border-radius: 0!important; }
+.form-input { height: 20px; line-height: 19px; padding: 10px!important; margin: 0 0 2px; border-color: #b0b5bd #c1c5cb #d2d6dc; border-radius: 0!important; }
 .input-block-level { min-height: 40px; }
 
 i[class^=sq-icon-], i[class*=" sq-icon-"] { display: inline-block; line-height: 10px; vertical-align: 0; background-image: url(/assets/sprites.png); background-repeat: no-repeat; }

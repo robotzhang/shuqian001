@@ -1,5 +1,10 @@
 class LinksController < ApplicationController
   load_and_authorize_resource
+
+  def index
+    @links = Link.all
+  end
+
   def new
     @link = Link.new
   end
@@ -10,8 +15,13 @@ class LinksController < ApplicationController
       @link.images = Image.find(params[:image_ids].split(",").map{|id| id.strip unless id.strip.blank?})
     end
     @link.user_id = current_user.id
-    @link.save
+
     respond_to do |format|
+      if @link.save
+        format.html { redirect_to tags_path(@link.tags[0]) }
+      else
+        format.html {render(:action => "new")}
+      end
       format.js
     end
   end
@@ -26,7 +36,8 @@ class LinksController < ApplicationController
   end
 
   def show
-    @link = Like.find(params[:id])
+    @link = Link.find(params[:id])
+    @commentable = @link
 
     Link.increment_counter(:views, @link.id) if !current_user || current_user.id != @link.user.id
   end
