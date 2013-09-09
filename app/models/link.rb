@@ -7,7 +7,6 @@ require 'open-uri'
 class Link < ActiveRecord::Base
   acts_as_commentable
   acts_as_taggable
-  acts_as_taggable_on :tags
 
   attr_accessible :title, :url, :description, :collection_id, :link_group_id, :tag_list
   belongs_to :collection

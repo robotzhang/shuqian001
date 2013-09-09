@@ -18,7 +18,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to tags_path(@link.tags[0]) }
+        format.html { redirect_to tag_path(@link.tags[0].name) }
       else
         format.html {render(:action => "new")}
       end
