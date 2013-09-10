@@ -60,6 +60,10 @@ ActiveRecord::Schema.define(:version => 20130905090621) do
     t.datetime "updated_at",    :null => false
   end
 
+  add_index "images", ["imagable_id"], :name => "index_images_on_imagable_id"
+  add_index "images", ["imagable_type"], :name => "index_images_on_imagable_type"
+  add_index "images", ["user_id"], :name => "index_images_on_user_id"
+
   create_table "likes", :force => true do |t|
     t.string   "likable_type"
     t.integer  "likable_id"

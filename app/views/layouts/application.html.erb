@@ -44,14 +44,6 @@
           <li><a href="<%= collections_path %>">合集</a></li>
           <li><a href="<%= links_path %>">链接</a></li>
           <li><a href="<%= tags_path %>">标签</a></li>
-          <% unless user_signed_in? %>
-          <li>
-            <a href="<%= new_user_registration_path %>">
-              <i class="icon-user icon-white"></i>
-              注册
-            </a>
-          </li>
-          <% end %>
         </ul>
 
         <% if user_signed_in? %>
@@ -80,6 +72,13 @@
           </ul>
         <% else %>
             <ul class="nav pull-right">
+              <li>
+                <a href="<%= new_user_registration_path %>">
+                  <i class="icon-user icon-white"></i>
+                  注册
+                </a>
+              </li>
+
               <li>
                 <a href="<%= new_user_session_path(back: request.url) %>">登录</a>
               </li>
