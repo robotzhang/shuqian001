@@ -2,11 +2,12 @@ class LinksController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @links = Link.order("views DESC, updated_at DESC").page(params[:page]).per(20)
+    @links = Link.hottest.page(params[:page]).per(20)
   end
 
   def new
     @link = Link.new
+    @link.tag_list = params[:tags] if !params[:tags].blank?
   end
 
   def create
