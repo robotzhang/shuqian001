@@ -2,23 +2,8 @@
   <div class="span9">
     <div class="box padding20">
       <div>
-        <div class="pull-left vote">
-          <%= form_tag votes_path(@link.class.to_s.underscore, @link.id), :method => "post", :remote => true do %>
-              <input type="hidden" name="vote[vote]" value="up"/>
-              <button type="submit" title="好东西，赞" class="up">
-                <i class="icon-thumbs-up"></i>
-              </button>
-          <% end %>
-          <div class="number text-center">
-            <%= (@link.votes.where(vote: 'up').size - @link.votes.where(vote: 'down').size) %>
-          </div>
-          <%= form_tag votes_path(@link.class.to_s.underscore, @link.id), :method => "post", :remote => true do %>
-              <input type="hidden" name="vote[vote]" value="down"/>
-              <button type="submit" title="坑爹" class="down">
-                <i class="icon-thumbs-down"></i>
-              </button>
-          <% end %>
-        </div>
+        <%= render :partial => "votes/form", :locals => {:votable => @link} %>
+
         <div>
             <h2 class="mb10"><a href="<%= @link.url %>"><%= @link.title %></a></h2>
             <div>
@@ -33,8 +18,6 @@
         <% @link.comments.each do |comment| %>
           <div><%= comment.comment %></div>
         <% end %>
-
-        <%= render :partial => "comments/form" %>
       </div>
     </div>
   </div>

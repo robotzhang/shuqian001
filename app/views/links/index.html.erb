@@ -1,12 +1,44 @@
 <div class="row">
   <div class="span9">
     <div class="box padding20">
+      <div class="sort">
+        <a href="">最热</a>
+        <a href="">最新</a>
+        <a href="">得分最高</a>
+      </div>
+
       <% @links.each do |link| %>
+      <div class="clearfix">
+        <%= render partial: "votes/form", locals: {votable: link} %>
+
         <div>
-          <a href="<%= link_path(link) %>">
-            <%= link.title %>
-          </a>
+          <div>
+            <a href="<%= link_path(link) %>">
+              <%= link.title %>
+            </a>
+          </div>
+
+          <div>
+            <% if link.collection_id.blank? %>
+              来自标签：<a href="<%= tag_path(link.tagsp[0].name) %>"><%= link.tags[0].name %></a>
+            <% else %>
+              来自合集：<%= link.collection.title unless link.collection.blank? %>
+            <% end %>
+          </div>
+
+          <div class="muted fs12">
+            <img width="16" height="16" src="<%= link.user.avatar.small %>" alt="<%= link.user.username %>" title="<%= link.user.username %>"/>
+            <span>
+              <%= link.user.username %>
+              更新于
+              <%= link.updated_at.strftime("%Y-%m-%d") %>
+            </span>
+
+            <a href=""><%= link.likes.size %>收藏</a>
+            <a href=""><%= link.comments.size %>评论</a>
+          </div>
         </div>
+      </div>
       <% end %>
     </div>
   </div>

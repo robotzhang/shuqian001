@@ -1,0 +1,17 @@
+<div class="pull-left vote">
+  <%= form_tag votes_path(votable.class.to_s.underscore, votable.id), :method => "post", :remote => true do %>
+      <input type="hidden" name="vote[vote]" value="up"/>
+      <button type="submit" title="好东西，赞" class="up">
+        <i class="icon-thumbs-up"></i>
+      </button>
+  <% end %>
+  <div class="number text-center">
+    <%= (votable.votes.where(vote: 'up').size - votable.votes.where(vote: 'down').size) %>
+  </div>
+  <%= form_tag votes_path(votable.class.to_s.underscore, votable.id), :method => "post", :remote => true do %>
+      <input type="hidden" name="vote[vote]" value="down"/>
+      <button type="submit" title="坑爹" class="down">
+        <i class="icon-thumbs-down"></i>
+      </button>
+  <% end %>
+</div>
