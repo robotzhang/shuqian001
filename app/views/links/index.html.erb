@@ -41,6 +41,10 @@
       </div>
       <% end %>
     </div>
+
+    <div class="text-center">
+      <%= paginate @links, :theme => 'bootstrap', :remote => true %>
+    </div>
   </div>
   <div class="span3">
     <div class="line mb10"></div>

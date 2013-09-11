@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @links = Link.all
+    @links = Link.order("views DESC, updated_at DESC").page(params[:page]).per(20)
   end
 
   def new
