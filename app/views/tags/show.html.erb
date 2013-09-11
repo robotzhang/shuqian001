@@ -1,2 +1,61 @@
-<%= debug @links %>
-<%= debug @tags %>
+<div class="row">
+  <div class="span9">
+    <div class="sort mb10">
+      <a href="<%= tag_path(@tag.name, :sort => "hottest") %>">最热</a>
+      <a href="<%= tag_path(@tag.name, :sort => "latest") %>">最新</a>
+      <a href="<%= tag_path(@tag.name, :sort => "comment") %>">最多评论</a>
+    </div>
+
+    <div class="box padding20">
+      <% @tag.taggings.each do |tagging| %>
+          <div>
+            <% case tagging.taggable.class.to_s.downcase %>
+            <% when "collection" %>
+                <div>
+                  合集
+                  <a href="<%= collection_path(tagging.taggable) %>">
+                    <%= tagging.taggable.title %>
+                  </a>
+                </div>
+            <% when "link" %>
+                <div>
+                  链接
+                  <a href="<%= link_path(tagging.taggable) %>">
+                    <%= tagging.taggable.title %>
+                  </a>
+                </div>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="span3">
+    <div class="mb5">
+      <%= @tag.name %>
+      <div class="muted"><small>被浏览 <%= @tag.views %> 次</small></div>
+    </div>
+
+    <div class="line mb10"></div>
+
+    <div class="mb10">
+      <a class="btn btn-success btn-block" href="<%=  %>">关注该标签</a>
+      <div class="mt10">
+        <%= @tag.likes.size %> 人关注该标签
+        <% if @tag.likes.any? %>
+        <div class="mt10"></div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="line mb10"></div>
+
+    <div>
+      <a class="btn btn-block mb5" href="<%= new_link_path(:tags => @tag.name) %>">添加链接</a>
+      <div class="muted fs12">
+        请不要添加违反国家法律规定的链接内容
+      </div>
+    </div>
+
+  </div>
+</div>

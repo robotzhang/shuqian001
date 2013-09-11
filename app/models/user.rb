@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def self.active
-    User.order("sign_in_count DESC").limit(10)
+    User.order("sign_in_count DESC").limit(18)
   end
 
   # 粉丝

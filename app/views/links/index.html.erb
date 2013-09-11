@@ -1,12 +1,12 @@
 <div class="row">
   <div class="span9">
-    <div class="box padding20">
-      <div class="sort">
-        <a href="">最热</a>
-        <a href="">最新</a>
-        <a href="">得分最高</a>
-      </div>
+    <div class="sort mb10">
+      <a href="">最热</a>
+      <a href="">最新</a>
+      <a href="">得分最高</a>
+    </div>
 
+    <div class="box padding20">
       <% @links.each do |link| %>
       <div class="clearfix">
         <%= render partial: "votes/form", locals: {votable: link} %>
@@ -49,9 +49,11 @@
     </div>
     <div class="line mb10"></div>
     <div>
-      <div><strong>热门标签</strong><a href="" class="fs12 muted pull-right">更多</a> </div>
+      <div><strong>热门标签</strong><a href="<%= tags_path %>" class="fs12 muted pull-right">更多</a> </div>
       <div>
-
+        <% Tag.hottest.each do |tag| %>
+          <a href="<%= tag_path(tag.name) %>">#<%= tag.name %></a>
+        <% end %>
       </div>
     </div>
   </div>
