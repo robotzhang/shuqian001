@@ -1,21 +1,35 @@
-<div class="sort">
+<div class="sort mb10">
   <a href="<%= tags_path(:sort => "hottest") %>">最热</a>
   <a href="<%= tags_path(:sort => "latest") %>">最新</a>
   <a href="<%= tags_path(:sort => "likest") %>">最多关注</a>
 </div>
 
-<% @tags.each do |tag| %>
-    <div>
-      <div><a href="<%= tag_path(tag.name) %>"><%= tag.name %></a></div>
-      <div>
-        <span>
+<div class="row">
+  <div class="span9">
+    <div class="box padding20">
+      <% @tags.each do |tag| %>
+        <div><a href="<%= tag_path(tag.name) %>"><%= tag.name %></a></div>
+
+        <div>
           <%= link_to tag.likes.size.to_s+"关注".html_safe,
                       likes_path(tag.class.to_s.underscore, tag.id),
                       remote: true,
                       class: "muted",
                       :method => "post"
           %>
-        </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="span3">
+    <div>
+      <div><strong>热门标签</strong></div>
+      <div>
+        <% Tag.hottest.each do |tag| %>
+          <a href="<%= tag_path(tag.name) %>">#<%= tag.name %></a>
+        <% end %>
       </div>
     </div>
-<% end %>
+  </div>
+</div>
