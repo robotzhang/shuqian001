@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   def index
-
+    @tags = Collection.tag_counts_on(:tags).page(params[:page]).per(20)
   end
 
   def show
