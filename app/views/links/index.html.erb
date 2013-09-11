@@ -34,8 +34,8 @@
               <%= link.updated_at.strftime("%Y-%m-%d") %>
             </span>
 
-            <a href=""><%= link.likes.size %>收藏</a>
-            <a href=""><%= link.comments.size %>评论</a>
+            <%= link_do_like(link, "收藏") %>
+            <a class="muted" href="<%= link_path(link) %>#comments"><%= link.comments.size %>评论</a>
           </div>
         </div>
       </div>
