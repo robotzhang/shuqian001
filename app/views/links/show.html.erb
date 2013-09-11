@@ -23,7 +23,17 @@
   </div>
   <div class="span3">
     <div class="mb10">
-      <div><strong>所属标签</strong></div>
+      <% if @link.tags.any? %>
+        <div><strong>所属标签</strong></div>
+        <% @link.tags.each do |tag| %>
+          <a href="<%= tag_path(tag.name) %>"><%= tag.name %></a>
+        <% end %>
+      <% end %>
+
+      <% if !@link.collection.blank? %>
+        <div><strong>所属合集</strong></div>
+        <a href="<%= collection_path(@link.collection) %>"><%= @link.collection.title %></a>
+      <% end %>
     </div>
 
     <div class="line mb10"></div>
