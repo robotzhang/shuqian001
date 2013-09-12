@@ -2,6 +2,10 @@
 class CollectionsController < ApplicationController
   load_and_authorize_resource
 
+  def index
+    @collections = Collection.includes([:links]).order("updated_at DESC").page(params[:page]).per(20)
+  end
+
   def new
     @collection = Collection.new
   end
