@@ -69,4 +69,13 @@ class Link < ActiveRecord::Base
 
     link
   end
+
+  # 相关链接
+  def relates
+    unless self.collection.blank?
+      return collection.links.limit(10)
+    end
+
+    Link.tagged_with(self.tags).limit(20)
+  end
 end

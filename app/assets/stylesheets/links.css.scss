@@ -4,3 +4,8 @@
 @import "votes.css.scss";
 @import "comments.css.scss";
 .link h2 { margin-bottom: 10px; }
+.relates { margin: 0px; list-style: none; margin-top: 5px; }
+.relates li { line-height: 110%; border-bottom: #dadada 1px dotted; clear: both; padding-bottom: 5px; margin-bottom: 5px; }
+.relates li:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+.relates li span { float: left; }
+.relates a { color: #005eac; font-size: 12px; margin-left: 14px; display: block; }
