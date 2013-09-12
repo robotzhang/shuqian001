@@ -12,9 +12,12 @@
       <% @tags.each do |tag| %>
       <div class="box span3 mb10 mt10">
         <div class="tag">
-            <div><a href="<%= tag_path(tag.name) %>"><%= tag.name %></a></div>
-            <div>
+            <div class="mb5"><a href="<%= tag_path(tag.name) %>"><%= tag.name %></a></div>
+            <div class="fs12 muted">
+              <a href="" class="muted pull-right"><%= tag.taggings.count %>个链接</a>
               <%= link_do_like(tag, "关注") %>
+              -
+              <span>被浏览<%= tag.views %>次</span>
             </div>
         </div>
       </div>
