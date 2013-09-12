@@ -2,7 +2,13 @@ class LinksController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @links = Link.page(params[:page]).per(20)
+    scope =  case params[:sort]
+               when "latest" then Link.latest
+               when "hottest" then Link.hottest
+               when "comment" then Link.comment
+               else  Link.hottest
+             end
+    @links = scope.page(params[:page]).per(20)
   end
 
   def new
