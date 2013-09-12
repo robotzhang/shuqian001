@@ -11,6 +11,11 @@
               </a>
               <a href="<%= @link.url %>"><%= @link.title %></a>
             </h2>
+
+            <% unless @link.description.blank? %>
+            <div class="mb5"><%= @link.description %></div>
+            <% end %>
+
             <div class="timeline fs12">
               <span title="<%= @link.updated_at.strftime("%Y-%m-%d %H:%I:%S") %>">
                 <%= time_ago_in_words(@link.updated_at) %>前
@@ -24,8 +29,8 @@
 
 
       <ul class="comments" id="comments">
-        <% @link.comments.each do |comment| %>
-            <%= render partial: "comments/item", locals: { comment: comment } %>
+        <% @link.comments.each_with_index do |comment, index| %>
+            <%= render partial: "comments/item", locals: { comment: comment, comment_counter: index } %>
         <% end %>
       </ul>
 

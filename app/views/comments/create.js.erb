@@ -1,10 +1,11 @@
+var item = $('<%= j render partial: "comments/item", locals: {comment: @comment, comment_counter: (@comment.commentable.comments.count - 1)} %>');
 <% if params[:form_type] == "full" %>
     var panel = $("#comments");
     var form = $("#new_comment");
     <% if @comment.errors.any? %>
         form.replaceWith(<%= j render :partial => "comments/form_full", :locals => {:commentable => @link, :comment => Comment.new} %>);
     <% else %>
-        panel.append($('<%= j render partial: "comments/item", locals: {comment: @comment} %>'));
+        panel.append(item);
         form[0].reset();
     <% end %>
 
@@ -14,7 +15,7 @@
     <% if @comment.errors.any? %>
         panel.find('form').replaceWith($('<%= j render partial: "comments/form", :locals => {:comment => @comment} %>'));
     <% else %>
-        panel.find('form').before($('<%= j render partial: "comments/item", locals: {comment: @comment} %>'));
+        panel.find('form').before(item);
         panel.find('form')[0].reset();
     <% end %>
 <% end %>

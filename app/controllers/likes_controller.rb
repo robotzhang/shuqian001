@@ -9,9 +9,7 @@ class LikesController < ApplicationController
 
   protected
   def build_like
-    like = Like.new
-    like.likable_type = params[:likable_type]
-    like.likable_id = params[:likable_id]
+    like = @likable.likes.build
     like.user_id = current_user.id
 
     like
