@@ -1,0 +1,16 @@
+<% url =  comments_path(commentable.class.to_s.underscore, commentable.id) %>
+<div class="pull-left">
+  <img src="<%= user_signed_in? ? current_user.avatar.normal : asset_path("avatar/normal_default.jpg") %>" width="45" height="45" class="box">
+</div>
+
+<div style="margin-left: 55px;">
+<%= form_for comment, remote: true, url: url do |f| %>
+    <div class="mb10">
+      <%= f.text_area :comment, rows: 3, class: "form-input input-block-level", style: "height: 100px;" %>
+    </div>
+
+    <div>
+      <%= f.submit "发表", class: "btn btn-success span2" %>
+    </div>
+<% end %>
+</div>

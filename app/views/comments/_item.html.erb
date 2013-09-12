@@ -1,12 +1,17 @@
 <div class="comment">
-  <div class="head-pic"><img src="<%= comment.user.avatar.normal %>"/></div>
-  <div class="muted">
-    <small>
-      <a href="<%= user_path(comment.user) %>"><%= comment.user.username %></a>
-      <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-    </small>
+  <div class="head-pic"><img width="45" height="45" src="<%= comment.user.avatar.normal %>"/></div>
+  <div class="body-head">
+    <div class="pull-right">
+      <%= link_do_like(comment, "赞") %>
+      <a href="javascript:void(0);" class="muted">回复</a>
+      #1楼
+    </div>
+    <a href="<%= user_path(comment.user) %>" title="<%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>">
+      <%= comment.user.username %>
+    </a>
+    <%= time_ago_in_words(comment.created_at) %>
   </div>
-  <div>
+  <div class="body">
     <%= comment.comment %>
   </div>
 </div>

@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   validates :comment, presence: true
 
   belongs_to :commentable, :polymorphic => true
+  has_many :likes, {:as => :likable, :dependent => :destroy}
 
   default_scope :order => 'created_at ASC'
 
