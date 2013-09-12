@@ -13,7 +13,7 @@
     <span>由 <a href="<%= user_path(link.user) %>"><%= link.user.username %></a> 发布</span>
     <% if !link.collection.blank? %>
         所属合集：
-        <a href="<%= collection_path(link.collection) %>"><%= truncate(link.collection.titile, 20) %></a>
+        <a href="<%= collection_path(link.collection) %>"><%= truncate(link.collection.title, length: 20) %></a>
     <% elsif link.tags.any? %>
         所属标签：
         <% link.tags.each do |tag| %>

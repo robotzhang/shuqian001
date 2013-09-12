@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @links = Link.hottest.page(params[:page]).per(20)
+    @links = Link.page(params[:page]).per(20)
   end
 
   def new
