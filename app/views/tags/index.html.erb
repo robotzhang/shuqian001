@@ -1,39 +1,28 @@
+<%= provide :title, "#{sort_cn(params[:sort])}标签" %>
+
 <div class="row">
-  <div class="span9">
+  <div class="span12">
     <ul class="sort mb0 nav nav-tabs">
       <li <%= 'class=active' if params[:sort].blank? || params[:sort] == "hottest" %>><a href="<%= tags_path(:sort => "hottest") %>">最热</a></li>
       <li <%= 'class=active' if params[:sort] == "latest" %>><a href="<%= tags_path(:sort => "latest") %>">最新</a></li>
       <li <%= 'class=active' if params[:sort] == "comment" %>><a href="<%= tags_path(:sort => "comment") %>">最多评论</a></li>
     </ul>
 
-    <div class="box padding20">
+    <div class="row tags">
       <% @tags.each do |tag| %>
-        <div><a href="<%= tag_path(tag.name) %>"><%= tag.name %></a></div>
-
-        <div>
-          <%= link_to tag.likes.size.to_s+"关注".html_safe,
-                      likes_path(tag.class.to_s.underscore, tag.id),
-                      remote: true,
-                      class: "muted",
-                      :method => "post"
-          %>
+      <div class="box span3 mb10 mt10">
+        <div class="tag">
+            <div><a href="<%= tag_path(tag.name) %>"><%= tag.name %></a></div>
+            <div>
+              <%= link_do_like(tag, "关注") %>
+            </div>
         </div>
+      </div>
       <% end %>
     </div>
 
     <div class="text-center">
       <%= paginate @tags, :theme => 'bootstrap', :remote => true %>
-    </div>
-  </div>
-
-  <div class="span3">
-    <div>
-      <div><strong>热门标签</strong></div>
-      <div>
-        <% Tag.hottest.each do |tag| %>
-          <a href="<%= tag_path(tag.name) %>">#<%= tag.name %></a>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>

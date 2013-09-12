@@ -7,4 +7,13 @@ module ApplicationHelper
     return true if user_signed_in? && user.id == current_user.id
     false
   end
+
+  def sort_cn(sort)
+    case sort
+      when "hottest" then "最热"
+      when "latest" then "最新"
+      when "comment" then "最多评论"
+      else "最热"
+    end
+  end
 end
