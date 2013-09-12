@@ -14,4 +14,8 @@ module LikesHelper
             class: "btn btn-success btn-block",
             :method => "post"
   end
+
+  def help_new_link
+    "<div class='muted fs12 mt5'>请不要添加违反国家法律规定的链接内容</div>".html_safe
+  end
 end

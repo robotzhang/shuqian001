@@ -48,10 +48,8 @@
     <div class="line mb10"></div>
 
     <div>
-      <a class="btn btn-success btn-block mb5" href="<%= new_link_path(:tags => @tag.name) %>">添加链接</a>
-      <div class="muted fs12">
-        请不要添加违反国家法律规定的链接内容
-      </div>
+      <a class="btn btn-success btn-block" href="<%= new_link_path(:tags => @tag.name) %>">添加链接</a>
+      <%= help_new_link %>
     </div>
 
   </div>
