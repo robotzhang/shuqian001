@@ -26,11 +26,7 @@
     <div class="line mb10"></div>
     <div>
       <div><strong>热门标签</strong><a href="<%= tags_path %>" class="fs12 muted pull-right">更多</a> </div>
-      <div>
-        <% Tag.hottest.each do |tag| %>
-          <a href="<%= tag_path(tag.name) %>">#<%= tag.name %></a>
-        <% end %>
-      </div>
+      <%= render "tags/hot" %>
     </div>
   </div>
 </div>
