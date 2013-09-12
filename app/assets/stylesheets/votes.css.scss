@@ -1,3 +1,7 @@
 // Place all the styles related to the votes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.vote { text-align: center; }
+.vote form { margin: 0; line-height: 14px; }
+.vote button { background: none; border: none; height: 14px; line-height: 14px; padding: 0; margin: 0; }
+.vote .number { color: #999; line-height: 100%; margin-top: 3px; }

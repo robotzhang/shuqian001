@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="<%= asset_path("favicon.png") %>">
   <meta name="description" content="<%= yield(:description).blank? ? "" : yield(:description) %>">
   <meta name="author" content="robot.zhang">
-  <%= stylesheet_link_tag 'application', :media => "all" %>
+  <%= stylesheet_link_tag 'application', controller.controller_name, :media => "all" %>
   <%= yield :stylesheets %>
 </head>
 <body>
@@ -116,7 +116,7 @@
     </div>
   </div>
 
-<%= javascript_include_tag 'application' %>
+<%= javascript_include_tag 'application', controller.controller_name %>
 <%= yield :javascripts %>
 <%= render :template =>  "common/tongji" %>
 </body>

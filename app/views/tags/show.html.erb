@@ -1,14 +1,16 @@
+<% provide :styles %>
+
 <div class="row">
   <div class="span9">
-    <div class="sort mb10">
-      <a href="<%= tag_path(@tag.name, :sort => "hottest") %>">最热</a>
-      <a href="<%= tag_path(@tag.name, :sort => "latest") %>">最新</a>
-      <a href="<%= tag_path(@tag.name, :sort => "comment") %>">最多评论</a>
-    </div>
+    <ul class="sort mb0 nav nav-tabs">
+      <li <%= 'class=active' if params[:sort].blank? || params[:sort] == "hottest" %>><a href="<%= tag_path(@tag.name, :sort => "hottest") %>">最热</a></li>
+      <li <%= 'class=active' if params[:sort] == "latest" %>><a href="<%= tag_path(@tag.name, :sort => "latest") %>">最新</a></li>
+      <li <%= 'class=active' if params[:sort] == "comment" %>><a href="<%= tag_path(@tag.name, :sort => "comment") %>">最多评论</a></li>
+    </ul>
 
     <div class="box padding20">
       <% @tag.taggings.each do |tagging| %>
-          <div>
+          <div class="item clearfix">
             <% case tagging.taggable.class.to_s.downcase %>
             <% when "collection" %>
                 <div>
@@ -18,12 +20,7 @@
                   </a>
                 </div>
             <% when "link" %>
-                <div>
-                  链接
-                  <a href="<%= link_path(tagging.taggable) %>">
-                    <%= tagging.taggable.title %>
-                  </a>
-                </div>
+                <%= render :partial => "links/item_simple", :locals => {:link => tagging.taggable} %>
             <% end %>
           </div>
       <% end %>
@@ -32,14 +29,14 @@
 
   <div class="span3">
     <div class="mb5">
-      <%= @tag.name %>
+      <div><strong><%= @tag.name %></strong></div>
       <div class="muted"><small>被浏览 <%= @tag.views %> 次</small></div>
     </div>
 
     <div class="line mb10"></div>
 
     <div class="mb10">
-      <a class="btn btn-success btn-block" href="<%=  %>">关注该标签</a>
+      <%= button_do_like(@tag, "关注该标签") %>
       <div class="mt10">
         <%= @tag.likes.size %> 人关注该标签
         <% if @tag.likes.any? %>

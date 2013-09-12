@@ -1,0 +1,29 @@
+<%= render :partial => "votes/form", :locals => {:votable => link} %>
+<div class="link">
+  <div>
+    <a href="<%= link_path(link) %>">
+      <%= link.title %>
+    </a>
+  </div>
+
+  <div class="timeline fs12 muted">
+    <span title="<%= link.updated_at.strftime("%Y-%m-%d %H:%I:%S") %>">
+      <%= time_ago_in_words(link.updated_at) %>前
+    </span>
+    <span>由 <a href="<%= user_path(link.user) %>"><%= link.user.username %></a> 发布</span>
+    <% if !link.collection.blank? %>
+        所属合集：
+        <a href="<%= collection_path(link.collection) %>"><%= truncate(link.collection.titile, 20) %></a>
+    <% elsif link.tags.any? %>
+        所属标签：
+        <% link.tags.each do |tag| %>
+            <a href="<%= tag_path(tag.name) %>"><%= tag.name %></a>
+        <% end %>
+    <% end %>
+  </div>
+
+  <div class="buttons fs12">
+    <%= link_do_like(link) %>
+    <a href="<%= link_path(link) %>#comments"><%= link.comments.count %>评论</a>
+  </div>
+</div>
