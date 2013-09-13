@@ -1,3 +1,5 @@
+<%= provide :stylesheets, stylesheet_link_tag("home") %>
+
 <div class="row">
   <div class="span8">
     <div class="box padding20">
@@ -7,12 +9,27 @@
   </div>
   <div class="span4">
     <div class="box padding10">
-      <h3>登陆</h3>
+      <div class="mb10">
+        <a href="<%= new_user_session_path(back: request.url) %>" class="btn btn-success btn-block">你为什么还不登陆？</a>
+        <div class="muted fs12 mb10 padding10">
+          登陆后可以分享/收藏链接，可以关注好友，可以评论已经和大家互动，还有很多好处等你探索，你懂的...
+          <a href="<%= new_user_registration_path %>">还没注册？</a>
+        </div>
+      </div>
 
-      <h3>热门标签</h3>
-      我的标签，和我关注的标签（登陆的情况下）
-      <h3>活跃用户</h3>
-      关注的好友（登陆的情况下）
+      <div class="mb5"><strong>热门标签</strong></div>
+      <div>
+        <%= render "tags/hot" %>
+      </div>
+
+      <div class="mb5"><strong>活跃用户</strong></div>
+      <div class="active_users clearfix">
+        <% User.active.each do |user| %>
+          <a href="<%= user_path(user) %>">
+            <img src="<%= user.avatar.middle %>" width="25" height="25"/>
+          </a>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
