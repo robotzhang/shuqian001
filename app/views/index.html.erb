@@ -3,7 +3,32 @@
 <div class="row">
   <div class="span8">
     <div class="box padding20">
-      近期热门链接
+      <div class="mb10">
+        <strong>近期热门链接</strong>
+        <a href="<%= links_path(:sort => "hottest") %>" class="muted fs12">更多</a>
+        <a href="<%= links_path(:sort => "latest") %>" class="muted fs12 pull-right">最新链接</a>
+      </div>
+      <div class="links">
+        <% @links.each do |link| %>
+            <%= render :partial => "links/item_simple", :locals => {:link => link} %>
+        <% end %>
+      </div>
+
+      <div class="line mb10 clearfix"></div>
+      <div class="mb10">
+        <strong>近期热门合集</strong>
+        <a href="<%= collections_path %>" class="muted fs12">更多</a>
+      </div>
+      <div>
+        <% Collection.hottest.each do |collection| %>
+        <div>
+          <a href="<%= collection_path(collection) %>"><%= collection.title %></a>
+          <span class="muted fs12"><%= collection.links.count %>条链接</span>
+          -
+          <span class="muted fs12"><%= collection.comments.count %>条评论</span>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 

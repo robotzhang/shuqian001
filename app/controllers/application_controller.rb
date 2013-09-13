@@ -10,9 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def index
-    @collections = Collection.includes([:links]).order("updated_at DESC").page(params[:page]).per(20)
-    @users = User.active
-    @tags = Collection.tag_counts_on(:tags).limit(20)
+    @links = Link.hottest.limit(20)
     render :template => "index"
   end
 

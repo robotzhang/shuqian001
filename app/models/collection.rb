@@ -47,4 +47,8 @@ class Collection < ActiveRecord::Base
 
     hash
   end
+
+  def self.hottest
+    Collection.order("views DESC").limit(10)
+  end
 end
