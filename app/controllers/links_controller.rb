@@ -8,7 +8,7 @@ class LinksController < ApplicationController
                when "comment" then Link.comment
                else  Link.hottest
              end
-    @links = scope.page(params[:page]).per(20)
+    @links = scope.includes([:tags, :collection, :user]).page(params[:page]).per(20)
   end
 
   def new

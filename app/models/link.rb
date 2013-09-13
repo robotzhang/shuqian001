@@ -24,11 +24,7 @@ class Link < ActiveRecord::Base
 
   # scopes 主要用于排序
   scope :latest, -> { order("created_at DESC") }
-  scope :hottest, -> { select("links.*, count(likes.id) AS likes_count").
-      joins("LEFT JOIN `likes` ON `likes`.`likable_id` = `links`.`id` AND `likes`.`likable_type` = 'Link'").
-      group("likes.id").
-      order("likes_count DESC")
-  }
+  scope :hottest, -> { order("votes_count DESC, id DESC")  }
   scope :comment, -> { order("comments_count DESC") }
 
   # 链接是否是为某个合集添加的
