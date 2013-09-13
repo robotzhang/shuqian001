@@ -25,9 +25,10 @@
 
       <div class="nav-links">
         <a class="current first" href="<%= user_path(@user) %>" title="<%= @user.username+"的主页" %>"><i class="icon-home"></i></a>
-        <a href="javascript:void(0);">合集 <span class="muted"><%= @user.collections.size %></span></a>
-        <a href="javascript:void(0);">留言 <span class="muted"><%= @user.comments.size %></span></a>
-        <a href="javascript:void(0);">收藏 <span class="muted"><%= @user.likes.size %></span></a>
+        <a href="<%= user_path(@user) %>#collections">合集 <span class="muted"><%= @user.collections.count %></span></a>
+        <a href="<%= user_path(@user) %>#links">链接 <span class="muted"><%= @user.links.count %></span></a>
+        <a href="<%= user_path(@user) %>#comments">留言 <span class="muted"><%= @user.comments.count %></span></a>
+        <a href="<%= user_path(@user) %>#likes">收藏 <span class="muted"><%= @user.likes.count %></span></a>
       </div>
     </div>
 
