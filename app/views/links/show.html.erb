@@ -10,7 +10,7 @@
               <a title="<%= @link.user.username %>" class="pull-right" href="<%= user_path(@link.user) %>">
                 <img src="<%= @link.user.avatar.middle %>" width="25" height="25">
               </a>
-              <a href="<%= @link.url %>"><%= @link.title %></a>
+              <a target="_blank" href="<%= @link.url %>"><%= @link.title %></a>
             </h2>
 
             <% unless @link.description.blank? %>
