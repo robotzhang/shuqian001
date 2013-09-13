@@ -11,9 +11,6 @@ class AddCounter < ActiveRecord::Migration
       link.likes_count = link.likes.count
 
       link.save(:validate => false)
-      #link.update_attribute(:votes_count, link.votes.where(:vote => "up").count - link.votes.where(:vote => "down").count)
-      #link.update_attribute(:comments_count, link.comments.count)
-      #link.update_attribute(:likes_count, link.likes.count)
     end
 
     # tags
@@ -23,9 +20,8 @@ class AddCounter < ActiveRecord::Migration
     Tag.all.each do |tag|
       tag.likes_count = tag.likes.count
       tag.taggings_count = tag.taggings.count
+
       tag.save(:validate => false)
-      #tag.update_attribute(:likes_count, tag.likes.count)
-      #tag.update_attribute(:taggings_count, tag.taggings.count)
     end
   end
 
