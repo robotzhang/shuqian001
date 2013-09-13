@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905090621) do
+ActiveRecord::Schema.define(:version => 20130913101938) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -87,10 +87,13 @@ ActiveRecord::Schema.define(:version => 20130905090621) do
     t.string   "status"
     t.integer  "user_id"
     t.integer  "collection_id"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.integer  "views",         :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "views",          :default => 0
     t.integer  "link_group_id"
+    t.integer  "votes_count",    :default => 0
+    t.integer  "comments_count", :default => 0
+    t.integer  "likes_count",    :default => 0
   end
 
   create_table "taggings", :force => true do |t|
@@ -108,7 +111,9 @@ ActiveRecord::Schema.define(:version => 20130905090621) do
 
   create_table "tags", :force => true do |t|
     t.string  "name"
-    t.integer "views", :default => 0
+    t.integer "views",          :default => 0
+    t.integer "likes_count",    :default => 0
+    t.integer "taggings_count", :default => 0
   end
 
   create_table "users", :force => true do |t|

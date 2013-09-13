@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   attr_accessible :comment
   validates :comment, presence: true
 
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :commentable, :polymorphic => true, :counter_cache => true
   has_many :likes, {:as => :likable, :dependent => :destroy}
 
   default_scope :order => 'created_at ASC'

@@ -6,11 +6,14 @@ class AddCounter < ActiveRecord::Migration
     add_column :links, :likes_count, :integer, :default => 0
     Link.reset_column_information
     Link.all.each do |link|
-      link.update_attributes(
-          :votes_count => link.votes.where(:vote => "up").count - link.votes.where(:vote => "down").count,
-          :comments_count => link.comments.count,
-          :likes_count => link.likes.count
-      )
+      link.votes_count = link.votes.where(:vote => "up").count - link.votes.where(:vote => "down").count
+      link.comments_count = link.comments.count
+      link.likes_count = link.likes.count
+
+      link.save(:validate => false)
+      #link.update_attribute(:votes_count, link.votes.where(:vote => "up").count - link.votes.where(:vote => "down").count)
+      #link.update_attribute(:comments_count, link.comments.count)
+      #link.update_attribute(:likes_count, link.likes.count)
     end
 
     # tags
@@ -18,16 +21,17 @@ class AddCounter < ActiveRecord::Migration
     add_column :tags, :taggings_count, :integer, :default => 0
     Tag.reset_column_information
     Tag.all.each do |tag|
-      tag.update_attributes(
-          :likes_count => tag.likes.count,
-          :taggings_count => tag.taggings.count
-      )
+      tag.likes_count = tag.likes.count
+      tag.taggings_count = tag.taggings.count
+      tag.save(:validate => false)
+      #tag.update_attribute(:likes_count, tag.likes.count)
+      #tag.update_attribute(:taggings_count, tag.taggings.count)
     end
   end
 
   def down
     remove_column :links, :votes_count
-    remove_column :links, :comment_count
+    remove_column :links, :comments_count
     remove_column :links, :likes_count
 
     remove_column :tags, :likes_count
