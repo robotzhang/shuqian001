@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     User.order("sign_in_count DESC").limit(18)
   end
 
+  def self.latest
+    User.order("created_at DESC").limit(18)
+  end
+
   # 粉丝
   def followers
     self.user_followers

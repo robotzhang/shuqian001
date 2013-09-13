@@ -23,11 +23,20 @@
       </div>
 
       <div class="mb5"><strong>活跃用户</strong></div>
-      <div class="active_users clearfix">
+      <div class="users mb10 clearfix">
         <% User.active.each do |user| %>
           <a href="<%= user_path(user) %>">
             <img src="<%= user.avatar.middle %>" width="25" height="25"/>
           </a>
+        <% end %>
+      </div>
+
+      <div class="mb5"><strong>最新用户</strong></div>
+      <div class="users clearfix">
+        <% User.latest.each do |user| %>
+            <a href="<%= user_path(user) %>">
+              <img src="<%= user.avatar.middle %>" width="25" height="25"/>
+            </a>
         <% end %>
       </div>
     </div>
