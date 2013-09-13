@@ -1,5 +1,5 @@
 <%= provide(:stylesheets, stylesheet_link_tag("jquery.tagsinput.css")) %>
-<%= provide(:javascripts, javascript_include_tag('jquery.tagsinput.js', "collections")) %>
+<%= provide(:javascripts, javascript_include_tag('jquery.tagsinput.js')) %>
 <%= form_for @collection do |f| %>
   <%= f.hidden_field :types, :value => params[:types] %>
 
