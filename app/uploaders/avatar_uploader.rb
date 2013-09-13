@@ -1,5 +1,7 @@
 # coding: utf-8
 class AvatarUploader < BaseUploader
+  # resize_to_fill 会等比例缩小后截断到48*48
+  # resize_to_fit 也是等比例缩小，但是可能高度or宽度发生了变化
   version :normal do
     process :resize_to_fill => [48, 48]
   end
