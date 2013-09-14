@@ -10,6 +10,7 @@ class Collection < ActiveRecord::Base
 
   has_many :links, :order => 'created_at DESC'
   has_many :link_groups, :order => 'created_at DESC'
+  has_many :votes, {:as => :votable, :dependent => :destroy}
   has_many :likes, {:as => :likable, :dependent => :destroy}
   #has_many :comments, :through => 'commentable_type'
   belongs_to :user

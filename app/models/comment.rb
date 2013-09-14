@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   validates :comment, presence: true
 
   belongs_to :commentable, :polymorphic => true, :counter_cache => true
+
   # 涉及到counter_cache会在数据库表中增加一个comments_count字段，所以必须单独指定关系
   # delegate :link, :to => :commentable, :counter_cache => true
 

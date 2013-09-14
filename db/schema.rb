@@ -17,10 +17,13 @@ ActiveRecord::Schema.define(:version => 20130913101938) do
     t.string   "title"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.integer  "views",       :default => 0
-    t.string   "types",       :default => "share"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.integer  "views",          :default => 0
+    t.string   "types",          :default => "share"
+    t.integer  "votes_count",    :default => 0
+    t.integer  "comments_count", :default => 0
+    t.integer  "likes_count",    :default => 0
   end
 
   create_table "comments", :force => true do |t|
@@ -31,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130913101938) do
     t.integer  "user_id"
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+    t.integer  "likes_count",                    :default => 0
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -137,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20130913101938) do
     t.string   "username"
     t.string   "avatar"
     t.integer  "views",                  :default => 0
+    t.integer  "comments_count",         :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
