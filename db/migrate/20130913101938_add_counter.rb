@@ -1,16 +1,16 @@
 class AddCounter < ActiveRecord::Migration
   def up
+    ActiveRecord::Base.logger=Logger.new(STDOUT)
     # link
     add_column :links, :votes_count, :integer, :default => 0
     add_column :links, :comments_count, :integer, :default => 0
     add_column :links, :likes_count, :integer, :default => 0
     Link.reset_column_information
     Link.all.each do |link|
-      link.votes_count = link.votes.where(:vote => "up").count - link.votes.where(:vote => "down").count
-      link.comments_count = link.comments.count
-      link.likes_count = link.likes.count
-
-      link.save(:validate => false)
+      votes_count = link.votes.where(:vote => "up").count - link.votes.where(:vote => "down").count
+      link.update_column :votes_count, votes_count
+      link.update_column :comments_count, link.comments.count
+      link.update_column :likes_count, link.likes.count
     end
 
     # collection
@@ -19,20 +19,18 @@ class AddCounter < ActiveRecord::Migration
     add_column :collections, :likes_count, :integer, :default => 0
     Collection.reset_column_information
     Collection.all.each do |collection|
-      collection.votes_count = collection.votes.where(:vote => "up").count - collection.votes.where(:vote => "down").count
-      collection.comments_count = collection.comments.count
-      collection.likes_count = collection.likes.count
+      votes_count = collection.votes.where(:vote => "up").count - collection.votes.where(:vote => "down").count
 
-      collection.save(:validate => false)
+      collection.update_column :votes_count, votes_count
+      collection.update_column :comments_count, collection.comments.count
+      collection.update_column :likes_count, collection.likes.count
     end
 
     # comment
     add_column :comments, :likes_count, :integer, :default => 0
     Comment.reset_column_information
     Comment.all.each do |comment|
-      comment.likes_count = comment.likes.count
-
-      comment.save(:validate => false)
+      comment.update_column :likes_count, comment.likes.count
     end
 
     # tags
@@ -40,19 +38,15 @@ class AddCounter < ActiveRecord::Migration
     add_column :tags, :taggings_count, :integer, :default => 0
     Tag.reset_column_information
     Tag.all.each do |tag|
-      tag.likes_count = tag.likes.count
-      tag.taggings_count = tag.taggings.count
-
-      tag.save(:validate => false)
+      tag.update_column :likes_count, tag.likes.count
+      tag.update_column :taggings_count, tag.taggings.count
     end
 
     # users
     add_column :users, :comments_count, :integer, :default => 0
     User.reset_column_information
     User.all.each do |user|
-      user.comments_count = user.comments.count
-
-      user.save(:validate => false)
+      user.update_column :comments_count, user.comments.count
     end
   end
 
