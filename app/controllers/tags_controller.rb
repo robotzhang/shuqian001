@@ -1,6 +1,12 @@
 class TagsController < ApplicationController
   def index
-    @tags = Tag.order("views DESC, id DESC").page(params[:page]).per(20)
+    scope =  case params[:sort]
+               when "latest" then Tag.latest
+               when "hottest" then Tag.hottest
+               when "amount" then Tag.amount
+               else  Tag.hottest
+             end
+    @tags = scope.page(params[:page]).per(20)
   end
 
   def show
