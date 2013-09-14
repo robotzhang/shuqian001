@@ -10,16 +10,16 @@
           <% end %>
 
           <div>
+            <%= f.label :title, "链接标题" %>
+            <%= f.text_field :title, class: "form-input input-block-level" %>
+          </div>
+
+          <div>
             <label for="link_url">
               链接地址
               <a href="javascript:void(0);" class="pull-right muted fs12">自动标题</a>
             </label>
             <%= f.text_field :url, class: "form-input input-block-level" %>
-          </div>
-
-          <div>
-            <%= f.label :title, "链接标题" %>
-            <%= f.text_field :title, class: "form-input input-block-level" %>
           </div>
 
           <div>
