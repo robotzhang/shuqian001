@@ -3,9 +3,10 @@ class Comment < ActiveRecord::Base
   attr_accessible :comment
   validates :comment, presence: true
 
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :commentable, :polymorphic => true, :counter_cache => true
   # 涉及到counter_cache会在数据库表中增加一个comments_count字段，所以必须单独指定关系
-  belongs_to :link, :foreign_key => :commentable_id, :class_name => "Link", :counter_cache => true
+  # delegate :link, :to => :commentable, :counter_cache => true
+
   has_many :likes, {:as => :likable, :dependent => :destroy}
 
   default_scope :order => 'created_at ASC'

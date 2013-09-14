@@ -40,14 +40,14 @@
         <% end %>
       </div>
       <div class="fs12 muted">
-        <%= link_to  link.comments.size.to_s+"条评论",
+        <%= link_to  link.comments_count.to_s+"条评论",
                      comments_path(link.class.to_s.underscore, link.id),
                      remote: true,
                      "data-show" => render_comment_id(link),
                      class: "a_comment muted"
         %>
         •
-        <%= link_to link.likes.size.to_s+"收藏".html_safe,
+        <%= link_to link.likes_count.to_s+"收藏".html_safe,
                     likes_path(link.class.to_s.underscore, link.id),
                     remote: true,
                     class: "muted",

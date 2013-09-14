@@ -30,7 +30,7 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @collection = Collection.find(params[:id])
+    @collection = Collection.includes([:links]).find(params[:id])
     @comment = Comment.new
     @comment.commentable = @collection
 
