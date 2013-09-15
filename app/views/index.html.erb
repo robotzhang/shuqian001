@@ -41,7 +41,14 @@
         <a href="<%= new_user_registration_path %>">还没注册？</a>
       </div>
     </div>
+    <% else %>
+    <div class="box padding10 mb10">
+      <a href="<%= new_link_path(back: request.url) %>" class="btn btn-success btn-block">提交新链接</a>
+      <%= help_new_link %>
+    </div>
     <% end %>
+
+
 
     <div class="box padding10 mb10">
       <div class="mb5"><strong>热门标签</strong></div>
