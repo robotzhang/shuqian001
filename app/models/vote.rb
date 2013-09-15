@@ -10,4 +10,9 @@ class Vote < ActiveRecord::Base
       false
     end
   end
+
+  after_create do
+    amount = self.votable.votes.where(vote: 'up').count - self.votable.votes.where(vote: 'down').count
+    self.votable.update_column(:votes_count, amount)
+  end
 end

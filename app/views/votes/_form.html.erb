@@ -6,7 +6,7 @@
       </button>
   <% end %>
   <div class="number text-center">
-    <%= votable.votes_count.blank? ? (votable.votes.where(vote: 'up').size - votable.votes.where(vote: 'down').size) : votable.votes_count %>
+    <%= votable.votes_count %>
   </div>
   <%= form_tag votes_path(votable.class.to_s.underscore, votable.id), :method => "post", :remote => true do %>
       <input type="hidden" name="vote[vote]" value="down"/>
