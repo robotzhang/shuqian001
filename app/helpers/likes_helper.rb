@@ -1,3 +1,4 @@
+#coding=utf-8
 module LikesHelper
   def link_do_like(object, text="收藏")
     link_to object.likes.count.to_s+text.html_safe,
