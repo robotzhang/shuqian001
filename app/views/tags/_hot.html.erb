@@ -1,7 +1,7 @@
 <ul class="hot_tags unstyled">
 <% Tag.recommend.each do |tag| %>
   <li>
-    <a href="javascript:void(0);" title="共有<%= tag.taggings_count %>个资源" class="pull-right"><%= tag.taggings_count %></a>
+    <a href="javascript:void(0);" title="共有<%= tag.taggings.count %>个资源" class="pull-right"><%= tag.taggings_count %></a>
     <a href="<%= tag_path(tag.name) %>"><%= tag.name %></a>
   </li>
 <% end %>
