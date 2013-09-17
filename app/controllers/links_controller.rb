@@ -17,7 +17,8 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.parser(Link.new(params[:link]))
+    @link = Link.new(params[:link])
+    @link = Link.parser(Link.new(params[:link])) if @link.title.blank?
     if params[:image_ids]
       @link.images = Image.find(params[:image_ids].split(",").map{|id| id.strip unless id.strip.blank?})
     end
