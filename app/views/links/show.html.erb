@@ -28,7 +28,9 @@
 
           <% if image?(@link.url) %>
               <div class="mb10">
-                <img height="50" src="<%= @link.url %>" />
+                <% @link.images.each do |image| %>
+                    <%= image_tag image.file.url %>
+                <% end %>
               </div>
           <% end %>
 

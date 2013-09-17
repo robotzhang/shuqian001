@@ -27,6 +27,19 @@ class Link < ActiveRecord::Base
   scope :hottest, -> { order("votes_count DESC, id DESC")  }
   scope :comment, -> { order("comments_count DESC") }
 
+
+  before_create do
+    # 如果是图片类型则去下载图片
+    if self.image?
+      image = self.images.build
+      image.remote_file_url = self.url
+      image.user_id = self.user_id
+      if image.save
+        #self.url = image.file.url
+      end
+    end
+  end
+
   # 链接是否是为某个合集添加的
   def for_collection?
     !self.collection_id.blank?
@@ -73,5 +86,15 @@ class Link < ActiveRecord::Base
     end
 
     Link.tagged_with(self.tags).limit(20)
+  end
+
+  # link类型是否是image
+  def image?
+    [".gif", ".jpg", ".jpeg", ".png"].include?(File.extname(self.url).downcase)
+  end
+
+  # link类型是否是video
+  def video
+    [".swf"].include?(File.extname(self.url).downcase)
   end
 end
