@@ -25,6 +25,18 @@
               <%= link_do_like(@link) %>
               <a href="<%= link_path(@link) %>#do_comment"><%= @link.comments.count %>评论</a>
             </div>
+
+          <% if image?(@link.url) %>
+              <div class="mb10">
+                <img height="50" src="<%= @link.url %>" />
+              </div>
+          <% end %>
+
+          <% if video?(@link.url) %>
+              <div class="mb10">
+                <embed src="<%= @link.url %>" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+              </div>
+          <% end %>
         </div>
       </div>
 
