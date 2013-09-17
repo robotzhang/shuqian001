@@ -3,8 +3,8 @@
 <div class="row">
   <div class="span9">
     <ul class="sort mb0 nav nav-tabs">
-      <li <%= 'class=active' if params[:sort].blank? || params[:sort] == "hottest" %>><a href="<%= links_path(:sort => "hottest") %>">最热</a></li>
-      <li <%= 'class=active' if params[:sort] == "latest" %>><a href="<%= links_path(:sort => "latest") %>">最新</a></li>
+      <li <%= 'class=active' if params[:sort].blank? || params[:sort] == "hottest" %>><a href="<%= links_path(:sort => "hottest") %>">最热链接</a></li>
+      <li <%= 'class=active' if params[:sort] == "latest" %>><a href="<%= links_path(:sort => "latest") %>">最新链接</a></li>
       <li <%= 'class=active' if params[:sort] == "comment" %>><a href="<%= links_path(:sort => "comment") %>">最多评论</a></li>
     </ul>
 
